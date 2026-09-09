@@ -1,0 +1,8 @@
+{
+  "productId": "product-id",
+  "imageUrls": ["https://media.example/product.jpg"],
+  "voice": {
+    "audioUrl": "https://media.example/product-audio.webm",
+    "language": "hi"
+  }
+}

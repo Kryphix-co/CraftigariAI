@@ -1,0 +1,41 @@
+# ==================================================
+# Craftigari AI — CODEOWNERS
+# ==================================================
+
+# Technical Core
+# Kush and Krish can both work on technical code.
+# Changes to these areas should be reviewed through PRs.
+
+/apps/web/            @kush01007 @krishkumarvl
+/apps/api/            @kush01007 @krishkumarvl
+/services/ai/         @kush01007 @krishkumarvl
+/shared/contracts/    @kush01007 @krishkumarvl
+
+
+# QA
+# Luv owns QA work, while Kush/Krish can also review/edit.
+
+/qa/                  @luvgupta66 @kush01007 @krishkumarvl
+
+
+# Pricing Research
+# Krishna owns pricing research, with Technical Core oversight.
+
+/research/pricing/    @Krishnagupta12-svg @kush01007 @krishkumarvl
+
+
+# Artisan Research
+# Krish Pal owns artisan research, with Technical Core oversight.
+
+/research/artisan/    @palkrish30906 @kush01007 @krishkumarvl
+
+
+# Pitch / Presentation
+# Luv + Nandini own pitch work, while Kush/Krish can also edit/review.
+
+/docs/pitch/          @luvgupta66 @nandnishr456-ship-it @kush01007 @krishkumarvl
+
+
+# Protect CODEOWNERS itself
+
+/.github/CODEOWNERS   @kush01007 @krishkumarvl
