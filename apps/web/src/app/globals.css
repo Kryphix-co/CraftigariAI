@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
+@theme {
+  --color-surface-container: #f1f3f4;
+  --color-background: #f7f9ff;
+  --color-primary-container: #1f1f1f;
+  --color-on-primary: #ffffff;
+  --color-secondary-container: #f1f3f4;
+  --color-inverse-on-surface: #eef1f7;
+  --color-on-tertiary-fixed: #390c00;
+  --color-surface-container-highest: #dadce0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f4fa;
+  --color-on-error: #ffffff;
+  --color-tertiary-container: #3f0e00;
+  --color-secondary-fixed-dim: #c3c7cc;
+  --color-secondary: #5b5f64;
+  --color-on-primary-fixed: #1b1b1c;
+  --color-surface-container-high: #e8eaed;
+  --color-on-tertiary: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-tertiary: #140200;
+  --color-surface-tint: #5f5e5e;
+  --color-success: #137333;
+  --color-on-surface-variant: #5f6368;
+  --color-on-error-container: #93000a;
+  --color-surface-variant: #dfe3e8;
+  --color-outline-variant: #e8eaed;
+  --color-error: #d93025;
+  --color-on-primary-container: #888686;
+  --color-outline: #dadce0;
+  --color-on-secondary-container: #1f1f1f;
+  --color-warning: #b06000;
+  --color-surface-dim: #d7dae0;
+  --color-on-background: #181c20;
+  --color-on-secondary-fixed: #181c20;
+  --color-on-tertiary-container: #d46740;
+  --color-surface: #ffffff;
+  --color-surface-bright: #f7f9ff;
+  --color-on-tertiary-fixed-variant: #802a05;
+  --color-tertiary-fixed: #ffdbcf;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-primary-fixed: #e5e2e1;
+  --color-on-surface: #1f1f1f;
+  --color-secondary-fixed: #dfe3e8;
+  --color-on-primary-fixed-variant: #474746;
+  --color-inverse-surface: #2d3135;
+  --color-on-secondary-fixed-variant: #43474c;
+  --color-error-container: #ffdad6;
+  --color-primary: #060607;
+  --color-tertiary-fixed-dim: #ffb59c;
+  --color-inverse-primary: #c8c6c5;
+  --color-accent-terracotta: #9e3f1b;
+  --color-accent-terracotta-soft: #fbf2ee;
+
+  --spacing-space-64: 4rem;
+  --spacing-container-max: 75rem;
+  --spacing-space-16: 1rem;
+  --spacing-space-40: 2.5rem;
+  --spacing-space-8: 0.5rem;
+  --spacing-space-32: 2rem;
+  --spacing-gutter: 1rem;
+  --spacing-space-48: 3rem;
+  --spacing-space-20: 1.25rem;
+  --spacing-space-2: 0.125rem;
+  --spacing-space-24: 1.5rem;
+  --spacing-space-12: 0.75rem;
+  --spacing-space-4: 0.25rem;
+
+  --font-display: var(--font-plus-jakarta-sans), sans-serif;
+  --font-body-medium: var(--font-plus-jakarta-sans), sans-serif;
+  --font-label-small: var(--font-plus-jakarta-sans), sans-serif;
+  --font-body: var(--font-plus-jakarta-sans), sans-serif;
+  --font-label: var(--font-plus-jakarta-sans), sans-serif;
+  --font-title: var(--font-plus-jakarta-sans), sans-serif;
+  --font-headline: var(--font-plus-jakarta-sans), sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f7f9ff;
+  --foreground: #181c20;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

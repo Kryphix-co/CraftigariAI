@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari AI - Production &amp; Fulfilment Orders</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-background": "#181c20",
+            "surface-container-highest": "#dfe3e8",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "outline": "#dadce0",
+            "surface-container": "#ebeef4",
+            "surface-dim": "#d7dae0",
+            "surface-container-high": "#e8eaed",
+            "warning": "#b06000",
+            "error": "#d93025",
+            "secondary-container": "#dde0e6",
+            "tertiary-fixed-dim": "#ffb59c",
+            "tertiary": "#140200",
+            "primary-container": "#1f1f1f",
+            "surface-bright": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "surface-tint": "#5f5e5e",
+            "on-surface": "#181c20",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#5f6368",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "on-primary-container": "#888686",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "secondary-fixed": "#dfe3e8",
+            "on-tertiary-fixed": "#390c00",
+            "on-tertiary-container": "#d46740",
+            "surface-container-low": "#f8f9fa",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#c4c7c7",
+            "primary-fixed": "#e5e2e1",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "tertiary-container": "#3f0e00",
+            "background": "#f7f9ff",
+            "on-secondary": "#ffffff",
+            "surface": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary-fixed": "#1b1b1c",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-on-surface": "#eef1f7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-48": "3rem",
+            "space-4": "0.25rem",
+            "space-40": "2.5rem",
+            "space-2": "0.125rem",
+            "space-64": "4rem",
+            "space-20": "1.25rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "space-12": "0.75rem",
+            "space-24": "1.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "container-max": "75rem"
+          },
+          "fontFamily": {
+            "label": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen flex">
+<!-- Side Navigation Bar (Fixed 240px / w-60) -->
+<aside class="fixed top-0 left-0 h-screen w-60 z-40 bg-surface-container-low dark:bg-inverse-surface border-r border-outline dark:border-outline-variant flex flex-col justify-between p-space-16">
+<div class="flex flex-col gap-space-20">
+<!-- Header / Logo -->
+<div class="flex items-center gap-space-12 px-space-8 py-space-4">
+<img alt="Craftigari Emblem Logo Mark" class="w-8 h-8 rounded-lg object-contain border border-outline bg-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACbIVj6MytRsg-20TYpzjkyw_Z8GeOIaO3mxdJeohliNAb3l8iLXiX6VrYMvpjCPMcAXG4RaNjPLTMjV48l1N9WS_nNT_0-udDWXSaCFO9pJoftBFZI0hJnTz1s3uAxGlSu6Yq1bvzztcIE8Md1fO7Dq-J2IfkO-KZ9FN7Q_sqoNMXkg-ZK3aql6r6gi8oXnVsObXwLOEBRp33ZvmhZ6Bbs29JoS15ByK37KFts9Jya5XFVQ5d1DLmdOiir-4A2lGS">
+<div class="flex flex-col overflow-hidden">
+<span class="font-title text-title font-bold text-primary dark:text-inverse-on-surface tracking-tight truncate">Craftigari AI</span>
+<span class="font-label text-label-small text-on-surface-variant truncate">Simulated Logistics</span>
+</div>
+</div>
+<!-- Action Button -->
+
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-space-4">
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-body text-body-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-body text-body-medium">Products</span>
+</a>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-body text-body-medium">Artisans</span>
+</a>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+<span class="font-body text-body-medium">Inquiries &amp; Deals</span>
+</a>
+<!-- Orders (Active Tab) -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-inverse-on-surface font-semibold border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-body text-body-medium">Orders</span>
+</a>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-body text-body-medium">AI Review</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-space-4 border-t border-outline dark:border-outline-variant pt-space-12">
+<div class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium">
+<span class="material-symbols-outlined text-[18px] text-success">verified_user</span>
+<span class="font-label text-label truncate">Environment: Test Mode</span>
+</div>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant dark:text-surface-variant font-medium hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="font-body text-body-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main View Area -->
+<div class="pl-60 flex-1 flex flex-col min-w-0">
+<!-- Top Nav Bar -->
+<header class="sticky top-0 right-0 z-30 flex items-center justify-between h-14 px-space-24 w-full bg-surface dark:bg-inverse-surface border-b border-outline dark:border-outline-variant">
+<!-- Search & Brand Identifier -->
+<div class="flex items-center gap-space-20 flex-1 max-w-lg">
+<div class="relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-space-12 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span>
+<input class="h-9 w-full pl-9 pr-space-12 bg-surface-container-low border border-outline rounded-lg text-body-medium text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary" placeholder="Search order #, buyer, artisan..." type="text">
+</div>
+<div class="flex items-center gap-space-8 pl-space-12 border-l border-outline"><span class="font-title text-title font-semibold text-primary">Craftigari Admin</span></div>
+</div>
+<!-- Trailing Actions & Profile -->
+<div class="flex items-center gap-space-16"><div class="flex items-center gap-space-8"><button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-small text-label-small ml-space-4">OA</div></div></div>
+</header>
+<!-- Canvas / Page Content -->
+<main class="p-space-24 flex-1 flex flex-col gap-space-20 max-w-[1600px] w-full mx-auto">
+<!-- Page Title & Header -->
+<div class="flex flex-col gap-space-4">
+<div class="flex items-center gap-space-8">
+<h1 class="font-headline text-headline text-on-surface font-semibold tracking-tight">Production &amp; Fulfilment Orders</h1>
+<span class="px-space-8 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-on-surface-variant border border-outline">Razorpay Test Mode</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Track workshop crafting progress and simulated delivery milestones across craft clusters.</p>
+</div>
+<!-- Summary Strip -->
+<div class="grid grid-cols-4 gap-space-16 bg-surface p-space-16 rounded-xl border border-outline"><div class="flex items-center gap-space-12"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">inventory_2</span></div><div><div class="font-headline text-headline font-semibold text-primary">6 Active Orders</div><div class="font-label text-label text-on-surface-variant">Production Pipeline</div></div></div><div class="flex items-center gap-space-12 border-l border-outline pl-space-16"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">currency_rupee</span></div><div><div class="font-headline text-headline font-semibold text-primary">₹1,48,000</div><div class="font-label text-label text-on-surface-variant">Total Value Committed</div></div></div><div class="flex items-center gap-space-12 border-l border-outline pl-space-16"><div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-success"><span class="material-symbols-outlined text-[20px]">verified</span></div><div><div class="font-headline text-headline font-semibold text-success">100% Verified</div><div class="font-label text-label text-on-surface-variant">Test Payments Verified</div></div></div><div class="flex items-center gap-space-12 border-l border-outline pl-space-16"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">precision_manufacturing</span></div><div><div class="font-headline text-headline font-semibold text-primary">Simulated Fulfilment</div><div class="font-label text-label text-on-surface-variant">Prototype Mode</div></div></div></div>
+<!-- Filter Toolbar -->
+<div class="flex items-center justify-between gap-space-16 bg-surface p-space-12 rounded-xl border border-outline">
+<div class="flex items-center gap-space-8 overflow-x-auto">
+<span class="font-label text-label text-on-surface-variant px-space-8">Filter:</span>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-primary text-on-primary">All</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Confirmed</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Preparing</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Packed</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Ready for Pickup</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">In Transit</button>
+<button class="px-space-12 py-1 rounded-full text-label font-label bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Delivered</button>
+</div>
+<div class="flex items-center gap-space-8">
+<button class="flex items-center gap-space-4 px-space-12 py-1.5 rounded-lg border border-outline text-label font-label text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span class="">More Filters</span>
+</button>
+<button class="flex items-center gap-space-4 px-space-12 py-1.5 rounded-lg border border-outline text-label font-label text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span class="">Export CSV</span>
+</button>
+</div>
+</div>
+<!-- 2-Column Split View: Table (58%) & Detail Inspector (42%) -->
+<div class="grid grid-cols-12 gap-space-20 items-start">
+<!-- Left Table (58% ~ 7 cols) -->
+<div class="col-span-12 lg:col-span-7 bg-surface rounded-xl border border-outline overflow-hidden flex flex-col shadow-sm">
+<div class="px-space-16 py-space-12 border-b border-outline flex items-center justify-between">
+<div class="flex items-center gap-space-8">
+<span class="font-title text-title font-semibold text-on-surface">Active Production Queue</span>
+<span class="px-space-8 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-on-surface">4 items displayed</span>
+</div>
+<span class="text-label-small font-label-small text-on-surface-variant">Craft Clusters: Jaipur &amp; Khurja</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline text-on-surface-variant font-label text-label">
+<th class="py-space-8 px-space-12">Order ID</th>
+<th class="py-space-8 px-space-12">Product &amp; Qty</th>
+<th class="py-space-8 px-space-12">Buyer / Artisan</th>
+<th class="py-space-8 px-space-12">Value</th>
+<th class="py-space-8 px-space-12">Status</th>
+<th class="py-space-8 px-space-12 text-right">Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body text-body-medium text-on-surface">
+<!-- Row 1 (Selected) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container cursor-pointer transition-colors border-l-4 border-l-primary">
+<td class="py-space-12 px-space-12">
+<span class="font-semibold text-primary block">#CR-2849</span>
+<span class="text-label-small font-label-small text-on-surface-variant">Standard SLA</span>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="font-medium text-primary block truncate max-w-[150px]">Handcrafted Terracotta Urn</span>
+<span class="text-label-small font-label-small text-on-surface-variant">80 pcs</span>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="truncate max-w-[130px] font-medium">Rohit Sharma</div>
+<div class="text-label-small font-label-small text-on-surface-variant truncate max-w-[130px]">Artisan: Ram Singh</div>
+</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">
+                    ₹60,000
+                  </td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-success bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Test Payment Verified
+                      </span>
+<span class="inline-flex items-center text-[11px] font-medium text-warning bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 w-fit">
+                        Preparing (Step 2/4)
+                      </span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 text-right text-label font-label text-on-surface-variant">
+                    24m ago
+                  </td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="py-space-12 px-space-12">
+<span class="font-semibold text-primary block">#CR-2780</span>
+<span class="text-label-small font-label-small text-on-surface-variant">Custom Finish</span>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="font-medium text-primary block truncate max-w-[150px]">40 × Heritage Floral Pot</span>
+<span class="text-label-small font-label-small text-on-surface-variant">40 pcs</span>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="truncate max-w-[130px] font-medium">Neelam Jain</div>
+<div class="text-label-small font-label-small text-on-surface-variant truncate max-w-[130px]">Artisan: Ram Singh</div>
+</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">
+                    ₹24,000
+                  </td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-success bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Test Payment Verified
+                      </span>
+<span class="inline-flex items-center text-[11px] font-medium text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 w-fit">
+                        Packed / Pickup Ready
+                      </span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 text-right text-label font-label text-on-surface-variant">
+                    2h ago
+                  </td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="py-space-12 px-space-12">
+<span class="font-semibold text-primary block">#CR-2655</span>
+<span class="text-label-small font-label-small text-on-surface-variant">Bulk Order</span>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="font-medium text-primary block truncate max-w-[150px]">200 × Terracotta Diya Set</span>
+<span class="text-label-small font-label-small text-on-surface-variant">200 sets</span>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="truncate max-w-[130px] font-medium">Anita Gupta</div>
+<div class="text-label-small font-label-small text-on-surface-variant truncate max-w-[130px]">Artisan: Anita Devi</div>
+</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">
+                    ₹36,000
+                  </td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-success bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Test Payment Verified
+                      </span>
+<span class="inline-flex items-center text-[11px] font-medium text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded border border-outline w-fit">
+                        Delivered
+                      </span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 text-right text-label font-label text-on-surface-variant">
+                    3d ago
+                  </td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="py-space-12 px-space-12">
+<span class="font-semibold text-primary block">#CR-2510</span>
+<span class="text-label-small font-label-small text-on-surface-variant">Standard Craft</span>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="font-medium text-primary block truncate max-w-[150px]">15 × Hand-carved Clay Pot</span>
+<span class="text-label-small font-label-small text-on-surface-variant">15 pcs</span>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="truncate max-w-[130px] font-medium">Sanjeev Verma</div>
+<div class="text-label-small font-label-small text-on-surface-variant truncate max-w-[130px]">Artisan: Mohan Lal</div>
+</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">
+                    ₹11,250
+                  </td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-success bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Test Payment Verified
+                      </span>
+<span class="inline-flex items-center text-[11px] font-medium text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded border border-outline w-fit">
+                        Delivered
+                      </span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 text-right text-label font-label text-on-surface-variant">
+                    5d ago
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-16 py-space-12 border-t border-outline bg-surface-container-low flex items-center justify-between text-label font-label text-on-surface-variant">
+<span class="">Showing 4 of 6 active orders in test database</span>
+<div class="flex items-center gap-space-8">
+<button class="px-2.5 py-1 rounded border border-outline bg-surface text-on-surface disabled:opacity-50" disabled="">Previous</button>
+<button class="px-2.5 py-1 rounded border border-outline bg-surface text-on-surface hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Detail Inspector (42% ~ 5 cols) -->
+<div class="col-span-12 lg:col-span-5 bg-surface rounded-xl border border-outline shadow-sm flex flex-col p-space-20 gap-space-20">
+<!-- Detail Header -->
+<div class="flex items-start justify-between border-b border-outline pb-space-16">
+<div class="flex flex-col gap-1">
+<span class="text-label-small font-label-small text-on-surface-variant uppercase tracking-wider">Order Fulfilment Detail Inspector</span>
+<h2 class="font-headline text-headline font-bold text-on-surface">Order #CR-2849</h2>
+<span class="font-body text-body-medium text-on-surface-variant">80 × Terracotta Heritage Urn</span>
+</div>
+<span class="px-space-8 py-1 rounded-full text-label-small font-label-small bg-amber-100 text-warning border border-amber-300">
+              In Production
+            </span>
+</div>
+<!-- Payment Badge Callout -->
+<div class="bg-emerald-50 border border-emerald-200 rounded-lg p-space-12 flex items-start gap-space-12">
+<span class="material-symbols-outlined text-success mt-0.5 text-[20px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-small font-semibold text-success">Razorpay Test Mode · Test Payment Verified</span>
+<span class="font-body text-body-medium text-on-surface mt-0.5">₹62,300 total with simulated shipping &amp; demo fee</span>
+<span class="font-label-small text-label-small text-on-surface-variant mt-1">Payment ID: pay_test_904kL893x · Captured 12 Nov, 10:30 AM</span>
+</div>
+</div>
+<!-- Agreed Specifications & Logistics Target -->
+<div class="grid grid-cols-2 gap-space-12 bg-surface-container-low p-space-12 rounded-lg border border-outline">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-small text-label-small text-on-surface-variant">Agreed Specifications</span>
+<span class="font-body text-body-medium font-medium text-on-surface">80 units @ ₹750/pc</span>
+<span class="font-label text-label text-on-surface-variant">Red colour natural finish</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-small text-label-small text-on-surface-variant">Target Delivery</span>
+<span class="font-body text-body-medium font-medium text-on-surface">28 Nov 2024</span>
+<span class="font-label text-label text-on-surface-variant">15 days crafting timeline</span>
+</div>
+</div>
+<!-- Buyer Location -->
+<div class="flex items-center gap-space-12 p-space-12 bg-surface rounded-lg border border-outline">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-small text-label-small text-on-surface-variant">Delivery Location</span>
+<span class="font-body text-body-medium font-medium text-on-surface">Bandra West, Mumbai, Maharashtra</span>
+</div>
+</div>
+<!-- Simulated Workshop & Delivery Timeline -->
+<div class="flex flex-col gap-space-12">
+<div class="flex items-center justify-between">
+<span class="font-title text-title font-semibold text-on-surface">Simulated Workshop &amp; Delivery Timeline</span>
+<span class="text-label-small font-label-small text-on-surface-variant">Step 3 of 6</span>
+</div>
+<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline">
+<!-- Step 1 -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-success flex items-center justify-center text-white ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Step 1: Order Confirmed &amp; Test Payment Verified</span>
+<span class="font-label text-label-small text-on-surface-variant">12 Nov, 10:30 AM</span>
+</div>
+<span class="font-label text-label text-on-surface-variant">Simulated invoice generated and order sent to artisan workshop.</span>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-success flex items-center justify-center text-white ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Step 2: Clay &amp; Material Preparation</span>
+<span class="font-label text-label-small text-on-surface-variant">13 Nov, 02:15 PM</span>
+</div>
+<span class="font-label text-label text-on-surface-variant">High-grade fine terracotta clay sourced in Jaipur workshop.</span>
+</div>
+<!-- Step 3 (In Progress) -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-warning flex items-center justify-center text-white ring-4 ring-surface animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-semibold text-warning">Step 3: Molding, Carving &amp; Kiln Firing</span>
+<span class="font-label text-label-small font-warning font-semibold">[In Progress]</span>
+</div>
+<span class="font-label text-label text-on-surface font-medium mt-0.5">62/80 pots fired in batch #1</span>
+<!-- Mini Progress Bar -->
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-1.5 overflow-hidden">
+<div class="bg-warning h-1.5 rounded-full" style="width: 77.5%"></div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex flex-col opacity-60">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant ring-4 ring-surface border border-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-medium text-on-surface">Step 4: Workshop Quality Inspection</span>
+<span class="font-label text-label-small text-on-surface-variant">Scheduled 22 Nov</span>
+</div>
+<span class="font-label text-label text-on-surface-variant">Aesthetic review, structural hairline check, dimension compliance.</span>
+</div>
+<!-- Step 5 -->
+<div class="relative flex flex-col opacity-60">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant ring-4 ring-surface border border-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-medium text-on-surface">Step 5: Ready for Pickup &amp; Protective Crating</span>
+<span class="font-label text-label-small text-on-surface-variant">(Simulated)</span>
+</div>
+<span class="font-label text-label text-on-surface-variant">Bubble wrap + eco-straw wooden pallet packing.</span>
+</div>
+<!-- Step 6 -->
+<div class="relative flex flex-col opacity-60">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant ring-4 ring-surface border border-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-medium text-body-medium font-medium text-on-surface">Step 6: In Transit → Delivered</span>
+<span class="font-label text-label-small text-on-surface-variant">(Simulated)</span>
+</div>
+<span class="font-label text-label text-on-surface-variant">Final workshop delivery confirmation to buyer.</span>
+</div>
+</div>
+</div>
+<!-- Disclaimer Callout -->
+<div class="flex items-center gap-space-8 pt-space-4"><button class="flex-1 flex items-center justify-center gap-space-8 bg-primary text-on-primary font-body-medium text-body-medium font-medium py-space-8 px-space-16 rounded-lg hover:bg-neutral-800 transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">check_circle</span><span class="">Mark Step Complete</span></button><button class="flex items-center justify-center gap-space-4 border border-outline bg-surface text-on-surface font-body-medium text-body-medium font-medium py-space-8 px-space-12 rounded-lg hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[18px]">edit_note</span><span class="">Update Status</span></button></div><div class="mt-auto bg-surface-container-low border border-outline rounded-lg p-space-12 flex items-start gap-space-8">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mt-0.5">info</span>
+<p class="font-label text-label text-on-surface-variant leading-relaxed">
+<strong>Note:</strong> Logistics and delivery milestones are simulated for prototype demonstrations. Live courier tracking APIs and real payouts are not connected.
+            </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

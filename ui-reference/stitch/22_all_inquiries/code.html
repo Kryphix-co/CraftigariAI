@@ -1,0 +1,418 @@
+<!DOCTYPE html><html class="light" lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari - पूछताछ (Inquiries)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-primary-fixed-variant": "#474746",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "on-surface": "#1f1f1f",
+            "outline-variant": "#c4c7c7",
+            "surface-dim": "#d7dae0",
+            "outline": "#dadce0",
+            "surface-container-high": "#e8eaed",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary-container": "#1f1f1f",
+            "primary-container": "#f1f3f4",
+            "on-tertiary-fixed": "#390c00",
+            "primary": "#060607",
+            "error-container": "#ffdad6",
+            "tertiary": "#140200",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "secondary": "#5b5f64",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcf",
+            "tertiary-container": "#3f0e00",
+            "surface-container-highest": "#dfe3e8",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-container-low": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-tint": "#5f5e5e",
+            "secondary-container": "#f1f3f4",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#e5e2e1",
+            "on-tertiary-container": "#d46740",
+            "secondary-fixed": "#dfe3e8",
+            "surface-bright": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-background": "#181c20",
+            "inverse-on-surface": "#eef1f7",
+            "error": "#d93025",
+            "surface": "#ffffff",
+            "background": "#f7f9ff",
+            "on-secondary-fixed": "#181c20",
+            "surface-variant": "#dfe3e8",
+            "accent-terracotta": "#9e3f1b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-24": "1.5rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-64": "4rem",
+            "space-40": "2.5rem",
+            "gutter": "1rem",
+            "container-max": "75rem",
+            "space-20": "1.25rem",
+            "space-16": "1rem",
+            "space-32": "2rem"
+          },
+          "fontFamily": {
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen antialiased flex flex-col items-center">
+<!-- TopAppBar Component as defined in Shared Components JSON -->
+<header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-space-16 h-14 bg-surface shadow-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-space-12">
+<button aria-label="Go back" class="p-space-8 rounded-xl hover:bg-surface-container-low transition-colors duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-primary text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline text-headline text-primary font-bold tracking-tight">पूछताछ (Inquiries)</h1>
+</div>
+</div>
+<div class="flex items-center gap-space-8">
+<button aria-label="Listen audio overview" class="p-space-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<button aria-label="Search or filter" class="p-space-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas Container -->
+<main class="w-full max-w-[840px] pt-20 pb-28 px-space-16 md:px-space-24 flex flex-col gap-space-20">
+<!-- Top Artisan Announcement & Summary Strip -->
+<div class="bg-surface-container-low border border-outline rounded-xl p-space-16 flex flex-col sm:flex-row sm:items-center justify-between gap-space-12">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-xl bg-primary text-surface flex items-center justify-center font-title font-bold">
+<span class="material-symbols-outlined text-[20px]">inbox_customize</span>
+</div>
+<div>
+<p class="font-title text-title text-on-surface font-semibold">व्यापार अवसर (Trade Requests)</p>
+<p class="font-body text-body text-on-surface-variant">सीधे खरीदारों से प्राप्त 4 सक्रिय पूछताछ</p>
+</div>
+</div>
+<div class="flex items-center gap-space-8 self-end sm:self-center">
+<span class="inline-flex items-center gap-1 font-label-small text-label-small bg-surface border border-outline rounded-full px-space-8 py-1 text-on-surface"><span class="w-2 h-2 rounded-full bg-success"></span>आपकी भाषा में समझाया गया</span>
+</div>
+</div>
+<!-- Filter chips / status tabs row -->
+<div class="flex items-center gap-space-8 overflow-x-auto pb-1 no-scrollbar">
+<!-- Active Pill -->
+<button class="inline-flex items-center gap-1.5 px-space-16 py-1.5 rounded-full bg-on-surface text-surface font-label text-label font-semibold shadow-sm whitespace-nowrap">
+<span class="">सभी (All)</span>
+<span class="w-5 h-5 rounded-full bg-surface/20 text-surface flex items-center justify-center font-label-small text-label-small">4</span>
+</button>
+<!-- New Tab -->
+<button class="inline-flex items-center gap-1.5 px-space-16 py-1.5 rounded-full bg-surface-container-low border border-outline text-on-surface hover:bg-surface-container-high transition-colors font-label text-label whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+<span class="">नई (New)</span>
+<span class="text-on-surface-variant font-label-small text-label-small">1</span>
+</button>
+<!-- Quote Sent Tab -->
+<button class="inline-flex items-center gap-1.5 px-space-16 py-1.5 rounded-full bg-surface-container-low border border-outline text-on-surface hover:bg-surface-container-high transition-colors font-label text-label whitespace-nowrap">
+<span class="">प्रस्ताव भेजा (Quote Sent)</span>
+<span class="text-on-surface-variant font-label-small text-label-small">2</span>
+</button>
+<!-- Accepted Tab -->
+<button class="inline-flex items-center gap-1.5 px-space-16 py-1.5 rounded-full bg-surface-container-low border border-outline text-on-surface hover:bg-surface-container-high transition-colors font-label text-label whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="">स्वीकृत (Accepted)</span>
+<span class="text-on-surface-variant font-label-small text-label-small">1</span>
+</button>
+</div>
+<!-- Inquiries List -->
+<div class="flex flex-col gap-space-16">
+<!-- Row 1: Status नई / New -->
+<article class="bg-surface border border-outline rounded-xl p-space-16 sm:p-space-20 hover:border-on-surface-variant/40 transition duration-150 flex flex-col gap-space-16 shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="flex items-start justify-between gap-space-12">
+<div class="flex gap-space-16">
+<img class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border border-outline flex-shrink-0 bg-surface-container" data-alt="Close up studio portrait of a handcrafted rustic terracotta urn with authentic clay textures, organic earthen contours, and a smooth neck. Natural soft diffuse lighting illuminates the warm burnt orange baked finish against a stark white minimal architectural studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjXgV37B7OFE9QzzcjSIGMZqDExYGs9x4cdDMFFf5RgTPrrkuCiTiSVsdBYowcHTavJQXjWSBuRppcbd37Oog0J3wA73qitj8ff8NqDGeOBhZAVPIEBirsgAyNqcqY6MmcXzh4730U9sxOzRVbPidiC6T0A5pEQYHUDwdd-F8RcbzHjztasdkzHtkXAFS6GU6KNbn1k3816iox_ncKSqDpo6eomcU4H5D-Lld6I-PsxQG49AFhdRs">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-warning px-2.5 py-0.5 rounded-full font-label-small text-label-small">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                  नई पूछताछ · New
+                </span>
+<span class="text-on-surface-variant font-label text-label">आज 02:15 PM</span>
+</div>
+<h2 class="font-title text-title text-primary font-bold">Handcrafted Terracotta Urn</h2>
+<div class="flex items-center gap-space-8 text-on-surface-variant font-body text-body">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+                  रोहित शर्मा
+                </span>
+<span class="">·</span>
+<span class="text-secondary">मुंबई (Buyer)</span>
+</div>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end">
+<span class="font-label text-label text-on-surface-variant">मांग मात्रा</span>
+<span class="font-title text-title text-primary font-bold">80 पीस</span>
+</div>
+</div>
+<!-- Request Quote Details Box -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-12 sm:p-space-16 flex flex-col sm:flex-row justify-between sm:items-center gap-space-12">
+<div class="flex items-start gap-space-12">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">chat_bubble</span>
+<p class="font-body text-body text-on-surface leading-relaxed">
+<span class="font-semibold text-primary">मांग विवरण:</span> "Can you supply 80 units in custom red colour within 15 days?"
+            </p>
+</div>
+<div class="sm:hidden flex items-center justify-between border-t border-outline-variant pt-2">
+<span class="font-label text-label text-on-surface-variant">मात्रा:</span>
+<span class="font-title text-title text-primary font-bold">80 पीस</span>
+</div>
+</div>
+<!-- Action / CTA affordance -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-accent-terracotta">bolt</span>
+<span class="font-label-small text-label-small text-accent-terracotta font-semibold">AI ड्राफ्ट प्रस्ताव उपलब्ध</span>
+</div>
+<button class="inline-flex items-center gap-1.5 bg-primary text-surface px-space-16 py-space-8 rounded-xl font-body-medium text-body-medium font-semibold hover:bg-neutral-800 active:scale-[0.98] transition">
+<span class="">विवरण देखें व जवाब दें</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Row 2: Status प्रस्ताव भेजा / Quote Sent -->
+<article class="bg-surface border border-outline rounded-xl p-space-16 sm:p-space-20 hover:border-on-surface-variant/40 transition duration-150 flex flex-col gap-space-16 shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="flex items-start justify-between gap-space-12">
+<div class="flex gap-space-16">
+<img class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border border-outline flex-shrink-0 bg-surface-container" data-alt="Top-angle detailed shot of handcrafted terracotta clay diya oil lamps neatly stacked on light grey studio concrete. Crisp warm afternoon sunlight creates delicate shadows highlighting artisan hand-carved edge rims and smooth clay contours in minimal modern product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOOWvlf4DhLLqZFfCRYa6wOuX4BnHy8mz45WOY-ANmLDoGBOnhhOHhAxYnxSRPqK5_LgcZ0QAsSoYu4H-cCnxaPANpQhlRXv8BTRS9Ff4s9jzmbVYzufl-Mpo4XCyh-5q9cYA9LAPnjt5435S3FqtbOhdzo2ooO0DqQAAemDpJ_AJvjCzmnVu0lxdpkgBdijCe9pjZTLEo0O3w4CH7GzYijN64QM6uzfY0l_Y5aSa5AP3HPlHrXH4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 bg-surface-container border border-outline text-on-surface-variant px-2.5 py-0.5 rounded-full font-label-small text-label-small">
+<span class="material-symbols-outlined text-[14px]">send</span>
+                  प्रस्ताव भेजा · Quote Sent
+                </span>
+<span class="text-on-surface-variant font-label text-label">कल 05:40 PM</span>
+</div>
+<h2 class="font-title text-title text-primary font-bold">Terracotta Clay Diya set (Pack of 4)</h2>
+<div class="flex items-center gap-space-8 text-on-surface-variant font-body text-body">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+                  अनीता गुप्ता
+                </span>
+<span class="">·</span>
+<span class="text-secondary">दिल्ली (Retailer)</span>
+</div>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end">
+<span class="font-label text-label text-on-surface-variant">प्रस्तावित राशि</span>
+<span class="font-title text-title text-primary font-bold">₹36,000</span>
+</div>
+</div>
+<!-- Terms Sent Row -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-12 sm:p-space-16 flex flex-col sm:flex-row justify-between sm:items-center gap-space-12">
+<div class="flex items-center gap-space-12">
+<span class="material-symbols-outlined text-secondary text-[20px]">request_quote</span>
+<div class="font-body text-body text-on-surface">
+<span class="font-semibold text-primary">भेजी गई शर्तें:</span> 200 सेट · ₹180/सेट (कुल ₹36,000)
+            </div>
+</div>
+<span class="inline-flex items-center gap-1 font-label text-label text-on-surface-variant bg-surface px-2.5 py-1 rounded-lg border border-outline">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+            खरीदार समीक्षा में
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high">
+<span class="font-label text-label text-on-surface-variant">प्रतिक्रिया की उम्मीद: 24 घंटे में</span>
+<button class="inline-flex items-center gap-1 text-primary font-body-medium text-body-medium font-semibold hover:underline">
+<span class="">प्रस्ताव देखें</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Row 3: Status स्वीकार हुआ / Quote Accepted -->
+<article class="bg-surface border border-outline rounded-xl p-space-16 sm:p-space-20 hover:border-on-surface-variant/40 transition duration-150 flex flex-col gap-space-16 shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="flex items-start justify-between gap-space-12">
+<div class="flex gap-space-16">
+<img class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border border-outline flex-shrink-0 bg-surface-container" data-alt="Artisanal heritage red clay tall decorative vase showcasing traditional fluted geometric carvings along its body. Photographed against clean architectural gallery backdrop in high key lighting with pure neutrals and authentic terracotta earthen hue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTnYgwf5VsJijGul4LD7KJflkTRrWNtkjJnuEueGS-oi3Rt3fq-5wMAmQCtpwZCxiygL9wEQffxQND1Vaf_NgD09v01trlJopMZ-BM-MYxBFwizHQLo7MjQpuQ1-Cbx3Tv_gn6JSaniZG0tQGqfDqZKU8W0ExMLamWJk28Lw6nVTQ8YFqcOSS8X8pPrTasRRxhRavseZkjqjxu8KE3iVwGjzMnb_ldOW3CDn8zkDm3-mgvrTuG6qg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 bg-emerald-50 border border-emerald-200 text-success px-2.5 py-0.5 rounded-full font-label-small text-label-small">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  स्वीकार हुआ · Accepted
+                </span>
+<span class="text-on-surface-variant font-label text-label">2 दिन पहले</span>
+</div>
+<h2 class="font-title text-title text-primary font-bold">Heritage Red Clay Vase</h2>
+<div class="flex items-center gap-space-8 text-on-surface-variant font-body text-body">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">apartment</span>
+                  होटल राज पैलेस
+                </span>
+<span class="">·</span>
+<span class="text-secondary">उदयपुर</span>
+</div>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end">
+<span class="font-label text-label text-on-surface-variant">मात्रा</span>
+<span class="font-title text-title text-primary font-bold">50 पीस</span>
+</div>
+</div>
+<!-- Order active status note -->
+<div class="bg-emerald-50/50 border border-emerald-100 rounded-xl p-space-12 sm:p-space-16 flex flex-col sm:flex-row justify-between sm:items-center gap-space-12">
+<div class="flex items-center gap-space-12">
+<span class="material-symbols-outlined text-success text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="font-body text-body text-on-surface">
+<span class="font-semibold text-success">भुगतान सत्यापित:</span> ₹45,000 अग्रिम प्राप्त (Razorpay Test Mode)
+            </div>
+</div>
+<span class="inline-flex items-center gap-1 font-label text-label font-medium text-success bg-surface px-2.5 py-1 rounded-lg border border-emerald-200">
+            ऑर्डर सक्रिय
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high">
+<span class="font-label text-label text-on-surface-variant">डिलीवरी की समय सीमा: 25 Nov</span>
+<button class="inline-flex items-center gap-1.5 bg-surface border border-outline text-primary px-space-16 py-1.5 rounded-xl font-body-medium text-body-medium font-semibold hover:bg-surface-container-low transition">
+<span class="">उत्पादन स्थिति अपडेट करें</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Row 4: Status पूरा हुआ / Completed -->
+<article class="bg-surface border border-outline rounded-xl p-space-16 sm:p-space-20 hover:border-on-surface-variant/40 transition duration-150 flex flex-col gap-space-16 shadow-[0_2px_6px_rgba(0,0,0,0.02)] opacity-95">
+<div class="flex items-start justify-between gap-space-12">
+<div class="flex gap-space-16">
+<img class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border border-outline flex-shrink-0 bg-surface-container" data-alt="Traditional Indian hand-carved clay water pot with circular concentric motifs displayed in clean contemporary light setting with earthen craft perfection. Minimal studio aesthetic with light grey surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuQMcq48dUJ-ihsJQm-ZzbRL6dGBu-gWWWiPXKlp9RHUxtD_AycLHUc_O_kdiL67UWn3095B-SDG-VN3bEJDdIdQ0co7LJ55DKryujl7WgJxNYYoRPT9uJqMHfAtWMXYDjZZQKN1SmZ5_zemoUULVZV0_jnBYppdPA90Jv_x4ef1wnt89da14IlVfpIQVBKYB-7xDSTIJjgEpjRMeccRv_Q3ya1DjS_zRTEb3ubQPXDsNzTXzRPR0">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 bg-surface-container-high border border-outline text-on-surface-variant px-2.5 py-0.5 rounded-full font-label-small text-label-small">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+                  पूरा हुआ · Completed
+                </span>
+<span class="text-on-surface-variant font-label text-label">12 Nov</span>
+</div>
+<h2 class="font-title text-title text-primary font-bold">Hand-carved Clay Pot</h2>
+<div class="flex items-center gap-space-8 text-on-surface-variant font-body text-body">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+                  संजीव वर्मा
+                </span>
+<span class="">·</span>
+<span class="text-secondary">जयपुर (Buyer)</span>
+</div>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end">
+<span class="font-label text-label text-on-surface-variant">मात्रा</span>
+<span class="font-title text-title text-primary font-bold">20 पीस</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-12 flex items-center justify-between">
+<div class="flex items-center gap-2 font-body text-body text-secondary">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+<span class="">सफलतापूर्वक वितरित और समीक्षा 5.0 ★</span>
+</div>
+<button class="font-label text-label font-semibold text-primary hover:underline">
+            इनवॉइस रसीद
+          </button>
+</div>
+</article>
+</div>
+<!-- Help or Artisan Direct Support Assistance Card -->
+<div class="mt-space-8 bg-surface-container-low border border-outline rounded-xl p-space-16 flex items-center justify-between">
+<div class="flex items-center gap-space-12">
+<div class="w-9 h-9 rounded-full bg-accent-terracotta/10 text-accent-terracotta flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<h3 class="font-title text-title text-primary font-semibold">बोलकर प्रस्ताव बनाएं (Voice Quote)</h3>
+<p class="font-body text-body text-on-surface-variant">माइक दबाएं और अपनी कीमत बोलें, AI फॉर्म भर देगा</p>
+</div>
+</div>
+<button class="px-space-12 py-1.5 rounded-xl border border-outline bg-surface text-primary font-label text-label font-semibold hover:bg-surface-container transition">
+        शुरू करें
+      </button>
+</div>
+</main>
+<!-- BottomNavBar Component as defined in Shared Components JSON -->
+<!-- Contextual Active: 'Market' maps closest to Buyer Trade Inquiries -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-8 py-space-4 min-h-[56px] bg-surface-container shadow-md max-w-container-max mx-auto">
+<!-- Home Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-space-12 py-space-4 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-small text-label-small mt-0.5">Home</span>
+</a>
+<!-- Crafts Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-space-12 py-space-4 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<span class="font-label-small text-label-small mt-0.5">Crafts</span>
+</a>
+<!-- Add Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-space-12 py-space-4 transition-transform active:scale-98" href="#">
+<div class="w-8 h-8 rounded-full bg-primary text-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<span class="font-label-small text-label-small mt-0.5">Add</span>
+</a>
+<!-- Market Item (ACTIVE for Inquiries & Buyer Orders) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold hover:bg-surface-container-high rounded-lg px-space-12 py-space-4 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-label-small text-label-small mt-0.5 text-primary">Market</span>
+</a>
+<!-- Profile Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-space-12 py-space-4 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="font-label-small text-label-small mt-0.5">Profile</span>
+</a>
+</nav>
+
+
+</body></html>

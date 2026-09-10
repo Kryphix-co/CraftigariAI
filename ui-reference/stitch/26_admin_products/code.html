@@ -1,0 +1,554 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari AI - Artisan Product Catalog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-background": "#181c20",
+            "surface-container-highest": "#dfe3e8",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "outline": "#dadce0",
+            "surface-container": "#ebeef4",
+            "surface-dim": "#d7dae0",
+            "surface-container-high": "#e8eaed",
+            "warning": "#b06000",
+            "error": "#d93025",
+            "secondary-container": "#dde0e6",
+            "tertiary-fixed-dim": "#ffb59c",
+            "tertiary": "#140200",
+            "primary-container": "#1f1f1f",
+            "surface-bright": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "surface-tint": "#5f5e5e",
+            "on-surface": "#181c20",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#5f6368",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "on-primary-container": "#888686",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "secondary-fixed": "#dfe3e8",
+            "on-tertiary-fixed": "#390c00",
+            "on-tertiary-container": "#d46740",
+            "surface-container-low": "#f8f9fa",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#c4c7c7",
+            "primary-fixed": "#e5e2e1",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "tertiary-container": "#3f0e00",
+            "background": "#f7f9ff",
+            "on-secondary": "#ffffff",
+            "surface": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary-fixed": "#1b1b1c",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-on-surface": "#eef1f7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-48": "3rem",
+            "space-4": "0.25rem",
+            "space-40": "2.5rem",
+            "space-2": "0.125rem",
+            "space-64": "4rem",
+            "space-20": "1.25rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "space-12": "0.75rem",
+            "space-24": "1.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "container-max": "75rem"
+          },
+          "fontFamily": {
+            "label": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden font-body text-body">
+<!-- SIDEBAR (Fixed Left Navigation Shell) -->
+<aside class="fixed top-0 left-0 h-screen w-60 z-40 bg-surface-container-low border-r border-outline flex flex-col justify-between p-space-16">
+<div class="flex flex-col gap-space-20">
+<!-- Logo & Header -->
+<div class="flex items-center gap-space-12 px-space-8 py-space-4">
+<div class="w-8 h-8 rounded-lg overflow-hidden border border-outline bg-surface shrink-0 flex items-center justify-center">
+<img alt="Craftigari Emblem Logo Mark" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApNkrBvhKGj_Xp1YthaszTYn9tf0kLglnjDufpP-5GFgUgcGPo0oKg9jjDZnAfg_LRZaI0lNZjt0f9eih6sMzqsUM_HAI8ZLflxuCc6_-gefkqTXhgHumMUqMYQkR0Bujcj4laLCwdTD8u_Ik_reVdgejCkz-ujYiXibs-ZLbdqrH7CCUfZDCu_aumv1t6e5469ckD9GIGBxDjZzfHIJi9mAM9AotTSonmeX93bljaSxBva4prxOabjNdr2axKtytt">
+</div>
+<div class="flex flex-col">
+<span class="font-title text-title font-bold text-primary tracking-tight leading-tight">Craftigari AI</span>
+<span class="font-label-small text-label-small text-on-surface-variant">Simulated Logistics</span>
+</div>
+</div>
+<!-- CTA Button -->
+
+<!-- Nav Items -->
+<nav class="flex flex-col gap-space-4">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-body-medium text-body-medium">Dashboard</span>
+</a>
+<!-- Products [Active State] -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg bg-surface-container-high text-primary font-semibold" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-body-medium text-body-medium">Products</span>
+</a>
+<!-- Artisans -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-body-medium text-body-medium">Artisans</span>
+</a>
+<!-- Inquiries & Deals -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+<span class="font-body-medium text-body-medium">Inquiries &amp; Deals</span>
+</a>
+<!-- Orders -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="font-body-medium text-body-medium">Orders</span>
+</a>
+<!-- AI Review -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-body-medium text-body-medium">AI Review</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-space-4 border-t border-outline pt-space-12">
+<div class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[18px] text-success">verified_user</span>
+<span class="font-label text-label">Environment: Test Mode</span>
+</div>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="font-body-medium text-body-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CANVAS -->
+<div class="flex-1 ml-60 flex flex-col h-screen overflow-hidden">
+<!-- TOP BAR -->
+<header class="sticky top-0 z-30 flex items-center justify-between h-14 px-space-24 w-full bg-surface border-b border-outline">
+<div class="flex items-center gap-space-16 w-1/3">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="h-10 pl-9 pr-space-12 w-full rounded-lg border border-outline bg-surface text-on-surface placeholder:text-on-surface-variant text-body-medium font-body focus:border-primary focus:ring-0" placeholder="Search by title, craft, artisan..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-space-16"><div class="flex items-center gap-space-12"><span class="font-title text-title font-semibold text-primary">Craftigari Admin</span><div class="h-4 w-px bg-outline"></div><button class="p-space-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors duration-150"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="p-space-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors duration-150"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline flex items-center justify-center font-bold text-primary text-label">OA</div></div></div>
+</header>
+<!-- CONTENT BODY (Split Layout) -->
+<main class="flex-1 flex flex-col p-space-24 overflow-hidden gap-space-16">
+<!-- Page Header & Filter Bar -->
+<div class="flex flex-col gap-space-12 shrink-0">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-display text-display text-primary leading-tight">Artisan Product Catalog</h1>
+<p class="font-body text-body text-on-surface-variant">Manage AI-catalogued listings, review pending extractions, and publish to marketplace.</p>
+</div>
+<div class="flex items-center gap-space-8">
+<span class="px-space-12 py-space-4 rounded-full bg-surface-container border border-outline font-label text-label text-primary flex items-center gap-space-4">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+              1 Urgent AI Attention Required
+            </span>
+</div>
+</div>
+<!-- Filter Sub-bar -->
+<div class="flex items-center gap-space-12 bg-surface p-space-12 rounded-lg border border-outline">
+<div class="flex items-center gap-space-8">
+<span class="font-label text-label text-on-surface-variant font-medium">Status:</span>
+<select class="h-8 py-0 pl-space-8 pr-space-24 rounded-lg border border-outline bg-surface text-body-medium font-body-medium text-on-surface focus:ring-0 focus:border-primary">
+<option>All</option>
+<option selected="">Needs Information</option>
+<option>Published</option>
+<option>Draft</option>
+<option>Hidden</option>
+</select>
+</div>
+<div class="h-4 w-px bg-outline"></div>
+<div class="flex items-center gap-space-8">
+<span class="font-label text-label text-on-surface-variant font-medium">Craft Category:</span>
+<select class="h-8 py-0 pl-space-8 pr-space-24 rounded-lg border border-outline bg-surface text-body-medium font-body-medium text-on-surface focus:ring-0 focus:border-primary">
+<option>All Categories</option>
+<option selected="">Terracotta</option>
+<option>Blue Pottery</option>
+<option>Textiles</option>
+<option>Woodwork</option>
+</select>
+</div>
+<div class="h-4 w-px bg-outline"></div>
+<div class="flex items-center gap-space-8">
+<span class="font-label text-label text-on-surface-variant font-medium">Artisan Filter:</span>
+<select class="h-8 py-0 pl-space-8 pr-space-24 rounded-lg border border-outline bg-surface text-body-medium font-body-medium text-on-surface focus:ring-0 focus:border-primary">
+<option>All Artisans</option>
+<option>Ram Singh (Jaipur)</option>
+<option>Anita Devi (Khurja)</option>
+<option>Mohan Lal (Alwar)</option>
+<option>Geeta Bai (Gorakhpur)</option>
+</select>
+</div>
+<div class="ml-auto text-on-surface-variant font-label text-label">
+            Showing <span class="font-semibold text-primary">5</span> of 142 catalogued items
+          </div>
+</div>
+</div>
+<!-- 2-COLUMN SPLIT DESKTOP VIEW -->
+<div class="flex-1 flex gap-space-16 overflow-hidden">
+<!-- LEFT COLUMN (65% width): Desktop Data Table -->
+<section class="w-[65%] flex flex-col bg-surface border border-outline rounded-lg overflow-hidden">
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline sticky top-0 z-10">
+<tr>
+<th class="py-space-12 px-space-16 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Product</th>
+<th class="py-space-12 px-space-12 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Artisan</th>
+<th class="py-space-12 px-space-12 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="py-space-12 px-space-12 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Price</th>
+<th class="py-space-12 px-space-12 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-space-12 px-space-12 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Last Updated</th>
+<th class="py-space-12 px-space-16 font-label-small text-label-small text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<!-- Row 1: Selected / Focus Row -->
+<tr class="bg-surface-container-low/70 border-l-2 border-primary hover:bg-surface-container-low transition-colors duration-150">
+<td class="py-space-12 px-space-16">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline bg-surface shrink-0">
+<img alt="Handcrafted Terracotta Heritage Urn" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XGKXklf-y75QaVUcdHJHmrPIxApVmFhIXkqCZmph03mDXhhz-NBVSu8K38CPVcrD5i7Xf0JZK8UXQ0kfbVXl5DVorv70Wa8_62OOFNs28TLLeuwqI2xCmlRK8IpmHC_sJwgt2_VhF1mnw9M2ie6mHw1aoJkXZmFpaFRpAs4YhF-miIHHElMwou5QByyKZpJQ5Mx-nbePhhf3kRoqrjmjLeakshXbTh2Ru1-B-uGmojmii57ZltNCg9TQ">
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-primary">Handcrafted Terracotta Heritage Urn</span>
+<span class="font-label text-label text-on-surface-variant">ID: CR-TERRA-092</span>
+</div>
+</div>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Ram Singh</span>
+<span class="font-label text-label text-on-surface-variant">Jaipur</span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 font-body text-body text-on-surface">Terracotta Clay</td>
+<td class="py-space-12 px-space-12 font-body-medium text-body-medium font-semibold text-on-surface">₹750/pc</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-warning/10 text-warning border border-warning/20">
+                      Needs Information
+                    </span>
+</td>
+<td class="py-space-12 px-space-12 font-label text-label text-on-surface-variant">12m ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="px-space-12 py-space-4 bg-primary text-on-primary rounded-lg font-body-medium text-body-medium hover:bg-on-secondary-container transition-colors duration-150">
+                      Review
+                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="py-space-12 px-space-16">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline bg-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean studio product shot of an Indian handcrafted floral clay planter pot with detailed engraving on pale gray surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe9r-moomEkADnQ3ZneCV4-XH5EKcIaFf2pNLIP9XQNbHGzwpSb-LXtKNtWYeKSd2u7kZkko9csYv3Q7fgfnqba8p09aqLcHcOgRQIuL80elhp43P9lC4t2lSfJPKCeCQKbSjo_g2VnIhK_2Sp2sFrt04xH6qHMkbK06E2q-B0lWbnmKrg7Y1zGHW--bKC72oabPNUi9UMkUmVjq4xwauDXujh8rxaaROcsDhaxMDu2kC3WQgSl7g">
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-medium text-primary">Heritage Floral Clay Planter</span>
+<span class="font-label text-label text-on-surface-variant">ID: CR-TERRA-088</span>
+</div>
+</div>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Ram Singh</span>
+<span class="font-label text-label text-on-surface-variant">Jaipur</span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 font-body text-body text-on-surface">Terracotta Clay</td>
+<td class="py-space-12 px-space-12 font-body-medium text-body-medium font-semibold text-on-surface">₹600/pc</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-success/10 text-success border border-success/20">
+                      Published
+                    </span>
+</td>
+<td class="py-space-12 px-space-12 font-label text-label text-on-surface-variant">2h ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="px-space-12 py-space-4 border border-outline bg-surface text-primary rounded-lg font-body-medium text-body-medium hover:bg-surface-container-low transition-colors duration-150">
+                      View
+                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="py-space-12 px-space-16">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline bg-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up photography of handcrafted terracotta Indian diya oil lamps set resting on soft white background with warm gentle side light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeTkxibgUk1uURAjo8m0xg2oQ-0tYIPlf38u4Z2JER5tSy0oM_brtl2JA7A-dTVh1BqnNl8RhCfAfgOPCUxQHfkkknQ03IGOog8ubJm6KU-bddDBHrlB1P85sjUORhr1qzLbz8FvydGRaH2NKVyjplZf3DJhheKPDiw2iNiWqqmggbicS_xAQvIyvSIwSBR5F9Wdx50eecWvQFlWA5qdxxsKLSnfOIpK8IzdRIMPqkDhIxcaz6rUU">
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-medium text-primary">Hand-carved Traditional Diya Set</span>
+<span class="font-label text-label text-on-surface-variant">ID: CR-CERAM-019</span>
+</div>
+</div>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Anita Devi</span>
+<span class="font-label text-label text-on-surface-variant">Khurja</span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 font-body text-body text-on-surface">Ceramic/Terracotta</td>
+<td class="py-space-12 px-space-12 font-body-medium text-body-medium font-semibold text-on-surface">₹180/set</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-success/10 text-success border border-success/20">
+                      Published
+                    </span>
+</td>
+<td class="py-space-12 px-space-12 font-label text-label text-on-surface-variant">1d ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="px-space-12 py-space-4 border border-outline bg-surface text-primary rounded-lg font-body-medium text-body-medium hover:bg-surface-container-low transition-colors duration-150">
+                      View
+                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="py-space-12 px-space-16">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline bg-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="Traditional Indian engraved earthen kalash water pot with organic patterns on beige background studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJqoLHjIAVXs2TrjizTXvViXeOpJvTuu9PIsHi-tBSgWczJ9hsW1BOTagJs9vpk8jeriEneEw7xg0unhiynkWPHC1xi_LEC0Sa0bQLogkBZgfR7T7__w2kpJRD4f-Oiuz9TlA9yhJOZS0ERP8Ou7t2z6uOn6ak3OTse_72nm35ANZyg_hr_FS1T0gkeDEr0V647mT_IsuXq2SxrzSFnwgWfqcTeTnh540n6hSpxtfApYqd0zT4Ok">
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-medium text-primary">Engraved Earthen Kalash</span>
+<span class="font-label text-label text-on-surface-variant">ID: CR-TERRA-041</span>
+</div>
+</div>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Mohan Lal</span>
+<span class="font-label text-label text-on-surface-variant">Alwar</span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 font-body text-body text-on-surface">Natural Terracotta</td>
+<td class="py-space-12 px-space-12 font-body-medium text-body-medium font-semibold text-on-surface">₹450/pc</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-surface-container-high text-secondary border border-outline">
+                      Draft
+                    </span>
+</td>
+<td class="py-space-12 px-space-12 font-label text-label text-on-surface-variant">2d ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="px-space-12 py-space-4 border border-outline bg-surface text-primary rounded-lg font-body-medium text-body-medium hover:bg-surface-container-low transition-colors duration-150">
+                      Inspect
+                    </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="py-space-12 px-space-16">
+<div class="flex items-center gap-space-12">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline bg-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="Set of small handcrafted terracotta animal figurines aligned in modern clean studio photography with light brown palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_KWWTxiMQnMbWYHXuzfhAT1j6NeQzqGFP8SZ1tDJlKhfYTgQkAbfSsLJLsJbjti_a6it-dxUk5tQX5_uFkEt5P31Jq6CQqNxWZp9x0RQKOr76zNLX2mq9PkONBhpHnZ-mixUNJji--4H4PaQsM7bp_dXQFxCJL55BsD5o1PkI2CwHvSGiV06iROC752fXHBBkSwi2Vjcb5_ebsEHuamywW4xce2JlV8WGK-t4BlBPuEaqIg--VME">
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-medium text-primary">Miniature Terracotta Figurines</span>
+<span class="font-label text-label text-on-surface-variant">ID: CR-TERRA-104</span>
+</div>
+</div>
+</td>
+<td class="py-space-12 px-space-12">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Geeta Bai</span>
+<span class="font-label text-label text-on-surface-variant">Gorakhpur</span>
+</div>
+</td>
+<td class="py-space-12 px-space-12 font-body text-body text-on-surface">Terracotta Clay</td>
+<td class="py-space-12 px-space-12 font-body-medium text-body-medium font-semibold text-on-surface">₹320/pc</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-primary/10 text-primary border border-primary/20">
+                      Ready to Publish
+                    </span>
+</td>
+<td class="py-space-12 px-space-12 font-label text-label text-on-surface-variant">3d ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="px-space-12 py-space-4 bg-primary text-on-primary rounded-lg font-body-medium text-body-medium hover:bg-on-secondary-container transition-colors duration-150">
+                      Publish
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="py-space-8 px-space-16 bg-surface-container-low border-t border-outline flex items-center justify-between text-on-surface-variant font-label text-label">
+<span class="">Page 1 of 29</span>
+<div class="flex items-center gap-space-4">
+<button class="p-space-4 border border-outline rounded bg-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="p-space-4 border border-outline rounded bg-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN (35% width): Product Curation & Detail Panel -->
+<aside class="w-[35%] flex flex-col bg-surface border border-outline rounded-lg overflow-hidden">
+<!-- Panel Header -->
+<div class="p-space-16 border-b border-outline bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<h2 class="font-title text-title text-primary">Product Curation &amp; Detail Panel</h2>
+</div>
+<span class="px-space-8 py-space-2 rounded-full font-label-small text-label-small bg-warning/10 text-warning border border-warning/20">
+              Needs Information
+            </span>
+</div>
+<!-- Panel Scrollable Body -->
+<div class="flex-1 overflow-y-auto p-space-16 flex flex-col gap-space-16">
+<!-- Missing / Uncertain Info Alert (Crucial for Internal Ops) -->
+<div class="p-space-12 rounded-lg bg-warning/5 border border-warning/30 flex gap-space-12 items-start">
+<span class="material-symbols-outlined text-warning text-[20px] shrink-0">report_problem</span>
+<div class="flex flex-col gap-space-4">
+<span class="font-body-medium text-body-medium font-semibold text-warning">Missing / Uncertain Extraction</span>
+<p class="font-body text-body text-on-surface">Clay wall thickness and shipping crate specifications not mentioned in voice note.</p>
+</div>
+</div>
+<!-- Image Gallery Preview -->
+<div class="flex flex-col gap-space-8">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Visual Assets</span>
+<div class="relative rounded-lg overflow-hidden border border-outline h-48 bg-surface-container">
+<img alt="Handcrafted Terracotta Heritage Urn detail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XGKXklf-y75QaVUcdHJHmrPIxApVmFhIXkqCZmph03mDXhhz-NBVSu8K38CPVcrD5i7Xf0JZK8UXQ0kfbVXl5DVorv70Wa8_62OOFNs28TLLeuwqI2xCmlRK8IpmHC_sJwgt2_VhF1mnw9M2ie6mHw1aoJkXZmFpaFRpAs4YhF-miIHHElMwou5QByyKZpJQ5Mx-nbePhhf3kRoqrjmjLeakshXbTh2Ru1-B-uGmojmii57ZltNCg9TQ">
+<div class="absolute bottom-2 right-2 bg-surface/90 backdrop-blur-sm border border-outline px-space-8 py-space-2 rounded font-label-small text-label-small text-primary">
+                  1 of 4 High-Res Photos
+                </div>
+</div>
+</div>
+<!-- Extracted Product Facts -->
+<div class="flex flex-col gap-space-8">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Extracted Product Facts</span>
+<div class="grid grid-cols-2 gap-space-8 p-space-12 rounded-lg bg-surface-container-low border border-outline text-label">
+<div>
+<span class="text-on-surface-variant block font-label-small">Craft</span>
+<span class="font-semibold text-primary font-body-medium">Terracotta</span>
+</div>
+<div>
+<span class="text-on-surface-variant block font-label-small">Material</span>
+<span class="font-semibold text-primary font-body-medium">100% natural clay</span>
+</div>
+<div>
+<span class="text-on-surface-variant block font-label-small">Origin</span>
+<span class="font-semibold text-primary font-body-medium">Amer, Jaipur</span>
+</div>
+<div>
+<span class="text-on-surface-variant block font-label-small">Firing Method</span>
+<span class="font-semibold text-primary font-body-medium">Wood kiln</span>
+</div>
+</div>
+</div>
+<!-- AI Listing Content Preview -->
+<div class="flex flex-col gap-space-8">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">AI Listing Content Preview</span>
+<div class="flex flex-col gap-space-8 p-space-12 rounded-lg border border-outline bg-surface">
+<div>
+<span class="text-on-surface-variant font-label-small">Generated Title</span>
+<p class="font-body-medium text-body-medium font-semibold text-primary">Handcrafted Terracotta Heritage Urn</p>
+</div>
+<div>
+<span class="text-on-surface-variant font-label-small">Story &amp; Craft Provenance</span>
+<p class="font-body text-body text-on-surface leading-relaxed text-[13px]">
+                    Hand-thrown using generational red earth from the Amer ridge, this decorative heritage urn reflects timeless Rajputana clay shaping and slow wood firing techniques.
+                  </p>
+</div>
+<div>
+<span class="text-on-surface-variant font-label-small">Extracted Keywords</span>
+<div class="flex flex-wrap gap-space-4 mt-space-4">
+<span class="px-space-8 py-space-2 rounded bg-surface-container font-label-small text-label-small text-primary">#Terracotta</span>
+<span class="px-space-8 py-space-2 rounded bg-surface-container font-label-small text-label-small text-primary">#WoodKiln</span>
+<span class="px-space-8 py-space-2 rounded bg-surface-container font-label-small text-label-small text-primary">#JaipurCraft</span>
+<span class="px-space-8 py-space-2 rounded bg-surface-container font-label-small text-label-small text-primary">#HeritageUrn</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Explainable Pricing Breakdown -->
+<div class="flex flex-col gap-space-8">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Explainable Pricing Recommendation</span>
+<div class="p-space-12 rounded-lg border border-outline bg-surface flex flex-col gap-space-8">
+<div class="flex items-center justify-between">
+<span class="font-title text-title font-bold text-primary">₹750 / pc</span>
+<span class="font-label-small text-label-small text-success bg-success/10 px-space-8 py-space-2 rounded border border-success/20">AI Confidence 94%</span>
+</div>
+<div class="flex flex-col gap-space-4 text-label border-t border-outline pt-space-8">
+<div class="flex justify-between text-on-surface-variant font-body">
+<span class="">Raw Material Cost (Clay + Minerals)</span>
+<span class="font-medium text-primary">₹410</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body">
+<span class="">Artisan Skilled Labour (3.5 hrs)</span>
+<span class="font-medium text-primary">₹240</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body">
+<span class="">Suggested Fair Margin (15%)</span>
+<span class="font-medium text-primary">₹100</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel Sticky Footer / Admin Actions -->
+<div class="p-space-16 border-t border-outline bg-surface-container-low flex flex-col gap-space-8">
+
+
+
+</div>
+</aside>
+</div>
+</main>
+</div>
+
+
+</body></html>

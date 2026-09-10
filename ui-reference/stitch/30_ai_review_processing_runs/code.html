@@ -1,0 +1,612 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari AI - AI Processing Runs &amp; Curation Review</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-background": "#181c20",
+            "surface-container-highest": "#dfe3e8",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "outline": "#dadce0",
+            "surface-container": "#ebeef4",
+            "surface-dim": "#d7dae0",
+            "surface-container-high": "#e8eaed",
+            "warning": "#b06000",
+            "error": "#d93025",
+            "secondary-container": "#dde0e6",
+            "tertiary-fixed-dim": "#ffb59c",
+            "tertiary": "#140200",
+            "primary-container": "#1f1f1f",
+            "surface-bright": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "surface-tint": "#5f5e5e",
+            "on-surface": "#181c20",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#5f6368",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "on-primary-container": "#888686",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "secondary-fixed": "#dfe3e8",
+            "on-tertiary-fixed": "#390c00",
+            "on-tertiary-container": "#d46740",
+            "surface-container-low": "#f8f9fa",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#c4c7c7",
+            "primary-fixed": "#e5e2e1",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "tertiary-container": "#3f0e00",
+            "background": "#f7f9ff",
+            "on-secondary": "#ffffff",
+            "surface": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary-fixed": "#1b1b1c",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-on-surface": "#eef1f7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-48": "3rem",
+            "space-4": "0.25rem",
+            "space-40": "2.5rem",
+            "space-2": "0.125rem",
+            "space-64": "4rem",
+            "space-20": "1.25rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "space-12": "0.75rem",
+            "space-24": "1.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "container-max": "75rem"
+          },
+          "fontFamily": {
+            "label": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body text-body antialiased min-h-screen flex">
+<!-- ========================================================================= -->
+<!-- 1. FIXED LEFT SIDEBAR (Shared Component: SideNavBar)                      -->
+<!-- ========================================================================= -->
+<aside class="fixed top-0 left-0 h-screen w-60 z-40 bg-surface-container-low border-r border-outline flex flex-col justify-between p-space-16">
+<div class="flex flex-col gap-space-20">
+<!-- Sidebar Header / Logo -->
+<div class="flex items-center gap-space-12 px-space-8 py-space-4">
+<img alt="Craftigari Emblem Logo Mark" class="w-8 h-8 rounded-lg object-contain border border-outline bg-surface p-space-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFpmRGg8Ye2B6jH_PXKFoNC09ysU4S7oP47DU-klLjtLV-iFoCdm1u6LfE_zmcJKvZpQ6nQL0E43mnfPtpswwn-U1oZuwTASO2wqDYUVq5dECYwPPsGWdx_NELispJ25v2QnggI1m-Tr_9s5Nd95yVCy3expASg_bPDHZxDhAAKtXG1LxCb11j7Ahsm-T61nJRJ7X0hBs1tQX6nwV_naDrU0OsUXscpzkYE1A39vkSz3HgS-LgpVw9hyxS_LpVTSZ7">
+<div class="flex flex-col">
+<span class="font-title text-title font-bold text-primary tracking-tight">Craftigari AI</span>
+<span class="font-label-small text-label-small text-on-surface-variant">Simulated Logistics</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+
+<!-- Navigation Tabs Cluster -->
+<nav class="flex flex-col gap-space-4">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-body-medium text-body-medium">Dashboard</span>
+</a>
+<!-- 2. Products -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-body-medium text-body-medium">Products</span>
+</a>
+<!-- 3. Artisans -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-body-medium text-body-medium">Artisans</span>
+</a>
+<!-- 4. Inquiries & Deals -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+<span class="font-body-medium text-body-medium">Inquiries &amp; Deals</span>
+</a>
+<!-- 5. Orders -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="font-body-medium text-body-medium">Orders</span>
+</a>
+<!-- 6. AI Review (ACTIVE TAB) -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg bg-surface-container-high text-primary font-semibold" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-body-medium text-body-medium">AI Review</span>
+<span class="ml-auto bg-warning/15 text-warning font-label-small text-label-small px-space-8 py-0.5 rounded-full">2 Queued</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer Actions -->
+<div class="flex flex-col gap-space-4 pt-space-16 border-t border-outline">
+<div class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium"><span class="w-2 h-2 rounded-full bg-warning"></span><span class="font-label-small text-label-small text-on-surface-variant">Razorpay Test Mode (Simulated)</span></div>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-medium text-body-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- 2. MAIN VIEWPORT CANVAS (TopNavBar + Content)                            -->
+<!-- ========================================================================= -->
+<div class="pl-60 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 right-0 z-30 flex items-center justify-between h-14 pl-space-24 pr-space-24 w-full bg-surface border-b border-outline"><div class="flex items-center gap-space-16"><div class="flex items-center gap-space-8 text-on-surface font-title text-title font-semibold"><span class="text-primary">Craftigari Admin</span><span class="text-on-surface-variant font-normal text-body">/</span><span class="text-on-surface-variant font-medium text-body">AI Review</span></div><div class="h-4 w-px bg-outline"></div><div class="relative w-80"><span class="material-symbols-outlined absolute left-space-12 top-2.5 text-[18px] text-on-surface-variant">search</span><input class="w-full h-9 pl-9 pr-space-12 bg-surface-container-low border border-outline rounded-lg font-body text-body text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-0" placeholder="Search Run ID, Product, or Artisan..." type="text"></div></div><div class="flex items-center gap-space-12"><button class="p-space-8 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors duration-150 relative" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-warning rounded-full"></span></button><button class="p-space-8 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors duration-150" title="Help"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="flex items-center gap-space-8 pl-space-8"><div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label border border-outline">OA</div></div></div></header>
+<!-- Main Workspace Content Area -->
+<main class="flex-1 p-space-24 flex flex-col gap-space-20 max-w-[1700px] w-full mx-auto">
+<!-- Page Header & Metrics Strip -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-16">
+<div><h1 class="font-headline text-headline text-primary">AI Review &amp; Processing Runs</h1><p class="font-body text-body text-on-surface-variant mt-1">Review model extractions, missing attributes, and uncertain field values.</p></div>
+<!-- Metric badges -->
+<div class="flex items-center gap-space-12"><div class="bg-surface border border-outline rounded-xl px-space-16 py-space-8 flex items-center gap-space-12"><div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">history</span></div><div><div class="font-label-small text-label-small text-on-surface-variant">Total Runs Today</div><div class="font-title text-title font-bold text-primary">1,482</div></div></div><div class="bg-surface border border-outline rounded-xl px-space-16 py-space-8 flex items-center gap-space-12"><div class="w-8 h-8 rounded-lg bg-warning/15 flex items-center justify-center text-warning"><span class="material-symbols-outlined text-[20px]">warning</span></div><div><div class="font-label-small text-label-small text-on-surface-variant">Needs Review</div><div class="font-title text-title font-bold text-warning">2 Runs</div></div></div><div class="bg-surface border border-outline rounded-xl px-space-16 py-space-8 flex items-center gap-space-12"><div class="w-8 h-8 rounded-lg bg-success/15 flex items-center justify-center text-success"><span class="material-symbols-outlined text-[20px]">verified</span></div><div><div class="font-label-small text-label-small text-on-surface-variant">Auto-Verified</div><div class="font-title text-title font-bold text-success">98.4%</div></div></div></div>
+</div>
+<!-- Filter & Search Toolbar -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-wrap items-center justify-between gap-space-12">
+<div class="flex flex-wrap items-center gap-space-8">
+<!-- Search input -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-space-8 top-2 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full h-8 pl-8 pr-space-8 bg-surface-container-low border border-outline rounded-lg text-label font-body text-on-surface focus:outline-none focus:border-primary" placeholder="Filter Run ID, Product..." type="text" value="#RN-">
+</div>
+<div class="h-5 w-px bg-outline"></div>
+<!-- Task Type Filters -->
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Task Type:</span>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-outline">
+<button class="px-space-8 py-1 rounded font-label text-label bg-surface shadow-xs font-semibold text-primary">All</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Product Extraction</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Voice Transcription</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Dialect Translation</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Smart Pricing</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Deal Interpretation</button>
+</div>
+</div>
+<!-- Status Filter Cluster -->
+<div class="flex items-center gap-space-8">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">Status:</span>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-outline">
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">All</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Completed</button>
+<button class="px-space-8 py-1 rounded font-label text-label bg-surface shadow-xs font-semibold text-warning">Needs Review (2)</button>
+<button class="px-space-8 py-1 rounded font-label text-label text-on-surface-variant hover:text-primary">Failed (1)</button>
+</div>
+<button class="p-1.5 border border-outline rounded-lg bg-surface text-on-surface-variant hover:text-primary hover:bg-surface-container-low" title="Refresh Feed">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- 3. MAIN 2-COLUMN DESKTOP LAYOUT (55% Table | 45% Inspection Drawer)       -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-12 gap-space-20 items-start">
+<!-- LEFT COLUMN (55% width -> col-span-7) -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-space-12">
+<div class="bg-surface border border-outline rounded-xl overflow-hidden">
+<!-- Table Header -->
+<div class="px-space-16 py-space-12 border-b border-outline flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-primary text-[18px]">view_timeline</span>
+<span class="font-title text-title font-semibold text-primary">In-Flight &amp; Recent Processing Runs</span>
+</div>
+<span class="font-label-small text-label-small text-on-surface-variant">Showing 6 runs</span>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline bg-surface-container text-on-surface-variant font-label-small text-label-small uppercase tracking-wider">
+<th class="py-space-12 px-space-16">Run ID</th>
+<th class="py-space-12 px-space-12">Product / Context</th>
+<th class="py-space-12 px-space-12">Task Type</th>
+<th class="py-space-12 px-space-12">Status</th>
+<th class="py-space-12 px-space-12">Attention Flag</th>
+<th class="py-space-12 px-space-12">Timestamp</th>
+<th class="py-space-12 px-space-16 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body text-body">
+<!-- Row 1: Active selection -->
+<tr class="bg-surface-container-high/40 hover:bg-surface-container-high transition-colors">
+<td class="py-space-12 px-space-16 font-semibold text-primary font-mono text-label">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                        #RN-904
+                      </div>
+</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">
+                      Handcrafted Terracotta Urn
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                        Product Extraction
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-warning/15 text-warning px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                        Needs Review
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-warning font-medium">
+                      Missing dimensions &amp; weight
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">
+                      15m ago
+                    </td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="bg-primary hover:bg-[#303030] text-on-primary px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors inline-flex items-center gap-1">
+<span class="">Review Run</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-12 px-space-16 font-mono text-label text-secondary font-medium">#RN-903</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">Ram Singh Voice Note #3</td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">translate</span>
+                        Dialect Translation
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-success/15 text-success px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Completed
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-on-surface-variant">
+                      Marwari → Standard Hindi
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">40m ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="border border-outline bg-surface hover:bg-surface-container-low text-primary px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors">
+                        Inspect
+                      </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-12 px-space-16 font-mono text-label text-secondary font-medium">#RN-902</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">Ram Singh Listing</td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">price_check</span>
+                        Smart Pricing
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-success/15 text-success px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Completed
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-on-surface-variant">
+                      Cost breakdown reconciled
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">1h ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="border border-outline bg-surface hover:bg-surface-container-low text-primary px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors">
+                        Inspect
+                      </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-12 px-space-16 font-mono text-label text-secondary font-medium">#RN-899</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">Black Clay Planter</td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                        Product Extraction
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-warning/15 text-warning px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                        Needs Review
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-warning font-medium">
+                      Low confidence firing technique
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">3h ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="border border-outline bg-surface hover:bg-surface-container-low text-primary px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors">
+                        Review Run
+                      </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-12 px-space-16 font-mono text-label text-secondary font-medium">#RN-894</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">Diya Pack 4</td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">mark_chat_read</span>
+                        Deal Interpretation
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-success/15 text-success px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                        Completed
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-on-surface-variant">
+                      Inquiry intent matched
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">5h ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="border border-outline bg-surface hover:bg-surface-container-low text-primary px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors">
+                        Inspect
+                      </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-12 px-space-16 font-mono text-label text-secondary font-medium">#RN-880</td>
+<td class="py-space-12 px-space-12 font-medium text-primary">Unknown Clay Sample</td>
+<td class="py-space-12 px-space-12 text-on-surface-variant">
+<div class="inline-flex items-center gap-1 text-label font-label bg-surface border border-outline px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">photo_filter</span>
+                        Background Removal
+                      </div>
+</td>
+<td class="py-space-12 px-space-12">
+<span class="inline-flex items-center gap-1 bg-error/15 text-error px-2.5 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                        Failed
+                      </span>
+</td>
+<td class="py-space-12 px-space-12 text-label text-error font-medium">
+                      Blur / lighting low contrast
+                    </td>
+<td class="py-space-12 px-space-12 text-on-surface-variant text-label">1d ago</td>
+<td class="py-space-12 px-space-16 text-right">
+<button class="border border-error/30 text-error hover:bg-error/5 px-space-12 py-1 rounded-lg text-label-small font-label-small transition-colors">
+                        Retry
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination and Bulk Footnote -->
+<div class="p-space-12 border-t border-outline flex items-center justify-between text-label text-on-surface-variant bg-surface">
+<span class="text-label-small font-label-small">Audit history retained for 90 days. AI-assisted extraction and transcription.</span>
+<div class="flex items-center gap-2">
+<button class="px-2 py-1 border border-outline rounded hover:bg-surface-container text-label disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-medium text-primary">Page 1 of 24</span>
+<button class="px-2 py-1 border border-outline rounded hover:bg-surface-container text-label">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: AI Run Inspection & Curation Drawer (45% width -> col-span-5) -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-space-16">
+<div class="bg-surface border border-outline rounded-xl p-space-20 flex flex-col gap-space-16 shadow-xs">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between border-b border-outline pb-space-12">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-primary text-[20px]">troubleshoot</span>
+<div>
+<h2 class="font-title text-title font-bold text-primary">AI Run Details &amp; Review</h2>
+<div class="font-label text-label text-on-surface-variant">Inspecting Run <span class="font-mono font-semibold text-primary">#RN-904</span></div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 bg-warning/15 text-warning px-space-8 py-0.5 rounded-full font-label-small text-label-small font-semibold">
+                Needs Review
+              </span>
+</div>
+<!-- Run Summary Bar -->
+<div class="grid grid-cols-3 gap-space-8 bg-surface-container-low border border-outline rounded-lg p-space-12 text-label">
+<div>
+<span class="text-on-surface-variant font-label-small text-label-small block">Pipeline Task</span>
+<span class="font-semibold text-primary truncate block" title="Multimodal Product Extraction">Product Extraction</span>
+</div>
+<div>
+<span class="text-on-surface-variant font-label-small text-label-small block">Inference Time</span>
+<span class="font-semibold text-primary">1.4s</span>
+</div>
+<div>
+<span class="text-on-surface-variant font-label-small text-label-small block">Artisan ID</span>
+<span class="font-semibold font-mono text-primary">ART-3091 (R. Singh)</span>
+</div>
+</div>
+<!-- Input Audio/Photo Summary Bento Module -->
+<div class="flex flex-col gap-space-8">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-semibold text-primary uppercase tracking-wide">Input Artifacts (Multimodal)</span>
+<span class="font-label-small text-label-small text-on-surface-variant">2 Assets attached</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-12">
+<!-- Raw Photo Module -->
+<div class="border border-outline rounded-lg p-space-8 bg-surface-container-low flex flex-col gap-space-8">
+<div class="relative w-full h-36 rounded-md overflow-hidden bg-surface-container border border-outline">
+<img alt="Studio photograph of traditional handcrafted Indian terracotta floral pots" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XGKXklf-y75QaVUcdHJHmrPIxApVmFhIXkqCZmph03mDXhhz-NBVSu8K38CPVcrD5i7Xf0JZK8UXQ0kfbVXl5DVorv70Wa8_62OOFNs28TLLeuwqI2xCmlRK8IpmHC_sJwgt2_VhF1mnw9M2ie6mHw1aoJkXZmFpaFRpAs4YhF-miIHHElMwou5QByyKZpJQ5Mx-nbePhhf3kRoqrjmjLeakshXbTh2Ru1-B-uGmojmii57ZltNCg9TQ">
+<span class="absolute bottom-1 right-1 bg-primary/80 text-on-primary text-[10px] font-mono px-1.5 py-0.5 rounded">1024x1024 RAW</span>
+</div>
+<div class="flex items-center justify-between text-label-small font-label-small text-on-surface-variant px-1">
+<span class="">terracotta_urn_01.jpg</span>
+<button class="hover:text-primary underline">Inspect Exif</button>
+</div>
+</div>
+<!-- Voice Note Transcription Card -->
+<div class="border border-outline rounded-lg p-space-12 bg-surface-container-low flex flex-col justify-between">
+<div class="flex flex-col gap-space-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-label font-semibold text-primary">
+<span class="material-symbols-outlined text-[18px] text-primary">mic</span>
+<span class="">42s Voice Note</span>
+</div>
+<span class="bg-surface border border-outline px-1.5 py-0.5 rounded text-[10px] font-mono text-on-surface-variant">Hindi/Marwari</span>
+</div>
+<!-- Audio Waveform preview dummy -->
+<div class="flex items-center gap-1 py-1 px-2 bg-surface rounded border border-outline">
+<button class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span>
+</button>
+<div class="flex-1 h-3 flex items-center gap-0.5">
+<span class="w-1 h-2 bg-secondary rounded-full"></span>
+<span class="w-1 h-3 bg-primary rounded-full"></span>
+<span class="w-1 h-2 bg-secondary rounded-full"></span>
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+<span class="w-1 h-3 bg-secondary rounded-full"></span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="w-1 h-3 bg-primary rounded-full"></span>
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+<span class="w-1 h-2 bg-secondary rounded-full"></span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">0:42</span>
+</div>
+<!-- Raw Transcript Excerpt -->
+<div class="bg-surface p-space-8 rounded border border-outline text-label italic text-on-surface leading-snug">
+                      "80 मटके चाक पे बनाए, लाल गेरू रंग की पॉलिश की है, भट्टी में दो दिन तपाया..."
+                    </div>
+</div>
+<span class="text-label-small text-on-surface-variant mt-2 text-right">AI Audio Transcription (Hindi/Marwari)</span>
+</div>
+</div>
+</div>
+<!-- Extracted Structured JSON / Attributes -->
+<div class="flex flex-col gap-space-8">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-semibold text-primary uppercase tracking-wide">Extracted Schema &amp; Validation State</span>
+<span class="font-label-small text-label-small text-warning font-semibold">2 Flags require review</span>
+</div>
+<div class="border border-outline rounded-lg divide-y divide-outline bg-surface">
+<!-- Validated Field 1 -->
+<div class="p-space-12 flex items-center justify-between bg-surface">
+<div class="flex items-center gap-space-12">
+<span class="material-symbols-outlined text-success text-[18px]">verified</span>
+<div>
+<div class="font-label-small text-label-small text-on-surface-variant">Craft Category</div>
+<div class="font-body-medium text-body-medium font-semibold text-primary">Terracotta Pottery</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-small text-label-small text-success font-semibold">Confidence: 96%</span>
+<span class="block text-[11px] text-on-surface-variant">[Validated ✓]</span>
+</div>
+</div>
+<!-- Validated Field 2 -->
+<div class="p-space-12 flex items-center justify-between bg-surface">
+<div class="flex items-center gap-space-12">
+<span class="material-symbols-outlined text-success text-[18px]">verified</span>
+<div>
+<div class="font-label-small text-label-small text-on-surface-variant">Production Technique</div>
+<div class="font-body-medium text-body-medium font-semibold text-primary">Hand-turned wheel + red slip polish</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-small text-label-small text-success font-semibold">Confidence: 91%</span>
+<span class="block text-[11px] text-on-surface-variant">[Validated ✓]</span>
+</div>
+</div>
+<!-- Missing / Uncertain Field Flag 1 -->
+<div class="p-space-12 flex items-start justify-between bg-warning/5 border-l-4 border-warning">
+<div class="flex items-start gap-space-12">
+<span class="material-symbols-outlined text-warning text-[18px] mt-0.5">warning</span>
+<div>
+<div class="font-label-small text-label-small text-warning font-semibold">Missing Mandatory Attribute</div>
+<div class="font-body-medium text-body-medium text-on-surface font-medium">Dimensions (H × W in cm)</div>
+<div class="font-label-small text-label-small text-on-surface-variant mt-0.5">Not explicitly stated in audio or visually scaled from reference markers.</div>
+</div>
+</div>
+<button class="text-label-small text-primary font-semibold underline hover:text-black">
+                    Add Manual Value
+                  </button>
+</div>
+<!-- Missing / Uncertain Field Flag 2 -->
+<div class="p-space-12 flex items-start justify-between bg-warning/5 border-l-4 border-warning">
+<div class="flex items-start gap-space-12">
+<span class="material-symbols-outlined text-warning text-[18px] mt-0.5">help</span>
+<div>
+<div class="font-label-small text-label-small text-warning font-semibold">Uncertain Field Value</div>
+<div class="font-body-medium text-body-medium text-on-surface font-medium">Clay Weight: ~2.1 kg (Estimated via clay volume)</div>
+<div class="font-label-small text-label-small text-on-surface-variant mt-0.5">Audio mentions "heavy pot", confidence score below threshold (62%).</div>
+</div>
+</div>
+<button class="text-label-small text-primary font-semibold underline hover:text-black">
+                    Override
+                  </button>
+</div>
+</div>
+</div>
+<!-- Administrative Curation Controls -->
+<div class="flex flex-col gap-space-8 pt-space-8 border-t border-outline">
+<span class="font-label text-label font-semibold text-primary uppercase tracking-wide">Administrative Curation Controls</span>
+<div class="flex flex-col gap-space-8">
+<button class="w-full h-10 bg-primary hover:bg-[#303030] text-on-primary font-body-medium text-body-medium font-semibold rounded-lg flex items-center justify-center gap-space-8 transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span class="">Approve Extraction</span>
+</button>
+<div class="grid grid-cols-2 gap-space-8">
+<button class="h-10 bg-surface border border-outline hover:bg-surface-container text-primary font-body-medium text-body-medium font-medium rounded-lg flex items-center justify-center gap-space-4 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary">record_voice_over</span>
+<span class="">Request Artisan Voice Clarification</span>
+</button>
+<button class="h-10 bg-transparent hover:bg-surface-container text-secondary hover:text-primary font-body-medium text-body-medium font-medium rounded-lg flex items-center justify-center gap-space-4 transition-colors">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+<span class="">Rerun Extraction</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Security & Privacy Compliance Note -->
+<div class="p-space-12 rounded-lg bg-surface-container-low border border-outline flex items-start gap-space-8 text-label-small text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">lock</span><p class=""><strong>Admin Note:</strong> Internal review log. Artisan phone numbers and sensitive data are hidden for security.</p></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

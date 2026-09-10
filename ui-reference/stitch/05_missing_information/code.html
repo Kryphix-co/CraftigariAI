@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface-container-lowest" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari नमस्ते - विवरण स्पष्ट करें</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom theme token injector -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#dfe3e8",
+            "on-primary-fixed-variant": "#474746",
+            "on-tertiary-fixed-variant": "#802a05",
+            "background": "#f7f9ff",
+            "outline": "#dadce0",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-secondary-container": "#1f1f1f",
+            "on-primary-fixed": "#1b1b1c",
+            "tertiary": "#140200",
+            "surface-tint": "#5f5e5e",
+            "surface-container": "#f1f3f4",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#888686",
+            "surface-dim": "#d7dae0",
+            "outline-variant": "#e8eaed",
+            "on-secondary": "#ffffff",
+            "error": "#d93025",
+            "inverse-primary": "#c8c6c5",
+            "on-surface": "#181c20",
+            "primary-container": "#f1f3f4",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#d46740",
+            "secondary-container": "#dde0e6",
+            "surface-container-low": "#f8f9fa",
+            "inverse-surface": "#2d3135",
+            "success": "#137333",
+            "surface": "#ffffff",
+            "warning": "#b06000",
+            "on-surface-variant": "#444748",
+            "surface-container-high": "#e5e8ee",
+            "inverse-on-surface": "#eef1f7",
+            "on-secondary-fixed": "#181c20",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-variant": "#dfe3e8",
+            "on-tertiary-fixed": "#390c00",
+            "tertiary-container": "#3f0e00",
+            "primary-fixed-dim": "#c8c6c5",
+            "primary": "#060607",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-bright": "#f7f9ff",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#e5e2e1",
+            "secondary-fixed": "#dfe3e8",
+            "on-background": "#181c20",
+            "tertiary-fixed": "#ffdbcf",
+            "secondary": "#5b5f64"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-16": "1rem",
+            "space-20": "1.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-24": "1.5rem",
+            "space-40": "2.5rem",
+            "space-8": "0.5rem",
+            "container-max": "75rem",
+            "gutter": "1rem",
+            "space-4": "0.25rem",
+            "space-32": "2rem",
+            "space-2": "0.125rem",
+            "space-64": "4rem"
+          },
+          "fontFamily": {
+            "label": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "headline": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-medium": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-small": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "title": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body antialiased min-h-screen flex justify-center selection:bg-surface-container-highest">
+<!-- Mobile Viewport Shell (390px bounded layout) -->
+<div class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col justify-between relative shadow-[0_0_40px_rgba(0,0,0,0.03)] border-x border-outline-variant">
+<!-- TOP SECTION: App Bar & Progress Flow -->
+<header class="w-full bg-surface-container-lowest sticky top-0 z-30 pt-2">
+<!-- TopAppBar Component (from Shared JSON Specification) -->
+<div class="flex items-center justify-between px-space-16 h-14 bg-surface dark:bg-inverse-surface border-b border-outline-variant">
+<button aria-label="पिछला पृष्ठ" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-primary dark:text-inverse-primary hover:bg-surface-container transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Stepper Indicator in App Bar -->
+<div class="flex flex-col items-center">
+<span class="font-label text-label text-secondary tracking-tight">कदम 3 / 4: विवरण स्पष्ट करें</span>
+</div>
+<button aria-label="ध्वनि सहायता सुनें" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-primary dark:text-inverse-primary hover:bg-surface-container transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">volume_up</span>
+</button>
+</div>
+<!-- Segmented Linear Progress (Steps 1, 2, 3 active, step 4 inactive) -->
+<div class="w-full px-space-16 pt-3 pb-2">
+<div aria-hidden="true" class="grid grid-cols-4 gap-1.5 h-1 w-full">
+<!-- Step 1: Completed -->
+<div class="h-full bg-on-secondary-container rounded-full"></div>
+<!-- Step 2: Completed -->
+<div class="h-full bg-on-secondary-container rounded-full"></div>
+<!-- Step 3: Current Active (Terracotta subtle accent tone) -->
+<div class="h-full bg-on-tertiary-container rounded-full"></div>
+<!-- Step 4: Pending Inactive -->
+<div class="h-full bg-outline-variant rounded-full"></div>
+</div>
+</div>
+<!-- Small Product Context Banner (Hairline strip, uncluttered) -->
+<div class="mx-space-16 my-space-8 py-2 px-3 bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<!-- Miniature thumbnail of the craft item being cataloged -->
+<img class="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-outline-variant" data-alt="A studio close-up portrait of a handcrafted Indian terracotta earthen vase with hand-carved ethnic motifs. The ceramic vessel sits on clean neutral pedestal against a crisp pure white studio backdrop under soft diffusion lighting, showcasing rich organic terracotta clay tones and refined artisanal craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGel-sFSXiOvGC5vFZQx3fQHFADE9dcoxToJR3ZSEzpYnIU6cV9jiVfc_o1xcOtD7gb5rBjVw6IhjijsB1kIEIdUN_r7g1h6nRUJ2yYoIPBJJI_FANRVBUFTij48d7OLcgne-48F9kejzDwXncgph93vNo81UzOxZTGV1Rn38Q7r2_WmfpP-Wssr41jTIcfPkqQQrcYI40XE3Hz8-sMn3Hy1kqpWXHH3iq3ERtg9SWHecmhiCd0Ts"/>
+<div class="truncate">
+<p class="font-title text-body-medium text-on-surface truncate">मिट्टी का फूलदान</p>
+<p class="font-label-small text-label-small text-secondary tracking-tight">शिल्प क्र. #284</p>
+</div>
+</div>
+<!-- Amber missing context tag badge -->
+<span class="flex-shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container border border-outline text-warning font-label text-label-small whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+          केवल 1 जानकारी शेष
+        </span>
+</div>
+</header>
+<!-- MAIN INTERACTIVE QUESTION CANVAS (Conversational & uncluttered) -->
+<main class="flex-1 px-space-16 pt-space-16 pb-space-24 flex flex-col justify-start">
+<!-- Conversational Heading Group -->
+<div class="space-y-1">
+<h1 class="font-headline text-[22px] leading-[28px] font-bold text-on-secondary-container tracking-tight">
+          बस एक जानकारी और
+        </h1>
+<p class="font-body text-body text-secondary">
+          सही कीमत और लिस्टिंग बनाने के लिए हमें आकार जानना है
+        </p>
+</div>
+<!-- Prominent Question -->
+<div class="mt-space-24">
+<div class="flex items-center justify-between mb-space-12">
+<label class="font-title text-[17px] leading-[24px] font-medium text-on-secondary-container block">
+            उत्पाद का आकार क्या है?
+          </label>
+<span class="font-label text-label-small text-secondary tracking-wide uppercase">वैकल्पिक इकाई</span>
+</div>
+<!-- Size Options: Large Touch Targets (Min 56px height) -->
+<div aria-label="उत्पाद का आकार चुनें" class="space-y-space-12" role="radiogroup">
+<!-- Option 1: Small (Default state) -->
+<label class="relative flex items-center justify-between w-full min-h-[56px] px-space-16 py-3.5 bg-surface-container-lowest border border-outline-variant rounded-xl cursor-pointer hover:border-outline transition-all duration-150 active:scale-[0.99]">
+<input class="sr-only" name="product_size" type="radio" value="small"/>
+<div class="flex flex-col">
+<span class="font-title text-title text-on-secondary-container">छोटा</span>
+<span class="font-label text-label text-secondary">6–8 इंच (हथेलिया आकार)</span>
+</div>
+<!-- Empty check radio indicator -->
+<div class="w-5 h-5 rounded-full border border-outline flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</label>
+<!-- Option 2: Medium (Active/Selected State with Crisp 2px Dark Charcoal Border) -->
+<label class="relative flex items-center justify-between w-full min-h-[56px] px-space-16 py-3.5 bg-surface-container-lowest border-2 border-on-secondary-container rounded-xl cursor-pointer shadow-sm transition-all duration-150 active:scale-[0.99]">
+<input checked="" class="sr-only" name="product_size" type="radio" value="medium"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title text-title font-semibold text-on-secondary-container">मध्यम</span>
+<span class="inline-block px-1.5 py-0.2 bg-surface-container-high rounded text-[10px] font-label font-medium text-secondary">सुझाव</span>
+</div>
+<span class="font-label text-label text-secondary">10–12 इंच (मानक मेज़ सजावट)</span>
+</div>
+<!-- Active charcoal radio dot -->
+<div class="w-5 h-5 rounded-full border-2 border-on-secondary-container flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-on-secondary-container"></div>
+</div>
+</label>
+<!-- Option 3: Large (Default state) -->
+<label class="relative flex items-center justify-between w-full min-h-[56px] px-space-16 py-3.5 bg-surface-container-lowest border border-outline-variant rounded-xl cursor-pointer hover:border-outline transition-all duration-150 active:scale-[0.99]">
+<input class="sr-only" name="product_size" type="radio" value="large"/>
+<div class="flex flex-col">
+<span class="font-title text-title text-on-secondary-container">बड़ा</span>
+<span class="font-label text-label text-secondary">14+ इंच (फ़र्श या मुख्य शोपीस)</span>
+</div>
+<!-- Empty check radio indicator -->
+<div class="w-5 h-5 rounded-full border border-outline flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Secondary Voice Input Action Pill (AI Voice Assist Helper) -->
+<div class="mt-space-24 flex justify-center">
+<button class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-surface-container-low border border-outline hover:bg-surface-container hover:border-secondary transition-all duration-150 active:scale-98 group" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:text-on-secondary-container transition-colors">mic</span>
+<span class="font-body-medium text-body-medium text-on-secondary-variant font-medium">बोलकर बताएं</span>
+</button>
+</div>
+<!-- Natural Whitespace Spacer -->
+<div class="flex-grow min-h-[32px]"></div>
+<!-- Contextual Hint Strip -->
+<div class="mb-space-12 flex items-center justify-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<p class="font-label text-label-small">
+          आप लिस्टिंग के बाद भी इसे कभी भी बदल सकते हैं
+        </p>
+</div>
+</main>
+<!-- DOCKED BOTTOM ACTION AREA -->
+<!-- Following Semantic Shell Mandate: In a focused sub-task/question step, bottom global nav tabs are suppressed -->
+<footer class="w-full bg-surface-container-lowest p-space-16 border-t border-outline-variant sticky bottom-0 z-30">
+<button class="w-full h-[52px] bg-on-secondary-container text-surface rounded-xl font-headline text-title font-medium flex items-center justify-center gap-2 hover:bg-primary transition-all duration-150 active:scale-[0.98] shadow-sm" type="button">
+<span>जारी रखें</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</footer>
+</div>
+</body></html>

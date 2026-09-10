@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari - प्रस्ताव समीक्षा (Deal Summary)</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "tertiary": "#140200",
+            "on-secondary-container": "#1f1f1f",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#e8eaed",
+            "surface-container-highest": "#dfe3e8",
+            "success": "#137333",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#181c20",
+            "secondary-container": "#dde0e6",
+            "surface-container-high": "#e8eaed",
+            "surface-container": "#ebeef4",
+            "outline": "#dadce0",
+            "on-surface-variant": "#444748",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#e5e2e1",
+            "surface-bright": "#ffffff",
+            "surface-tint": "#5f5e5e",
+            "tertiary-fixed": "#ffdbcf",
+            "error": "#d93025",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9ff",
+            "surface-container-low": "#f8f9fa",
+            "on-background": "#181c20",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-tertiary-container": "#d46740",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#3f0e00",
+            "surface-dim": "#f8f9fa",
+            "inverse-primary": "#c8c6c5",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "inverse-on-surface": "#eef1f7",
+            "primary": "#060607",
+            "inverse-surface": "#2d3135",
+            "primary-container": "#1f1f1f",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-tertiary-fixed": "#390c00",
+            "on-surface": "#181c20",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dfe3e8",
+            "surface": "#ffffff",
+            "on-primary-fixed-variant": "#474746",
+            "secondary-fixed-dim": "#c3c7cc",
+            "terracotta": "#a8421e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-8": "0.5rem",
+            "space-16": "1rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-64": "4rem",
+            "container-max": "75rem",
+            "space-12": "0.75rem",
+            "gutter": "1rem",
+            "space-40": "2.5rem",
+            "space-32": "2rem",
+            "space-48": "3rem",
+            "space-20": "1.25rem",
+            "space-24": "1.5rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface antialiased font-body flex justify-center min-h-full py-0 sm:py-6">
+<!-- Mobile Viewport Shell (390px bounded device frame) -->
+<main class="w-full max-w-[390px] bg-surface min-h-screen flex flex-col relative shadow-sm border border-outline-variant">
+<!-- Top Bar Navigation -->
+<header class="sticky top-0 z-30 bg-surface flex items-center justify-between px-space-16 h-14 border-b border-outline-variant">
+<button aria-label="वापस जाएं" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-primary active:scale-95 transition-transform hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[22px]">arrow_back</span>
+</button>
+<!-- Progress indicator / Screen Identity -->
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-terracotta"></span>
+<span class="font-title text-body-medium font-semibold text-primary">प्रस्ताव समीक्षा (Deal Summary)</span>
+</div>
+<button aria-label="सुनें" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-secondary active:scale-95 transition-transform hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[22px]">volume_up</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas -->
+<section class="flex-1 px-space-16 pt-space-20 pb-space-32 space-y-space-20 overflow-y-auto">
+<!-- Heading & Hierarchy -->
+<div class="space-y-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container border border-outline text-[11px] font-label font-medium text-secondary mb-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span>आवाज़ पहचान संपन्न</span>
+</div>
+<h1 class="font-display text-headline font-bold text-primary tracking-tight">
+          आपका प्रस्ताव तैयार है
+        </h1>
+<p class="font-body text-body-medium text-secondary">
+          खरीदार को भेजने से पहले एक बार जांच लें
+        </p>
+</div>
+<!-- Artisan Voice Quote Snippet -->
+<div class="p-space-16 rounded-xl bg-surface-container-low border border-outline-variant relative overflow-hidden">
+<div class="flex items-center justify-between gap-2 mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-terracotta text-[18px]">mic</span>
+<span class="font-label text-label font-semibold text-terracotta">आपकी आवाज़ से समझा गया:</span>
+</div>
+<span class="font-label-small text-[10px] text-secondary tracking-wider bg-surface px-2 py-0.5 rounded border border-outline-variant uppercase">Original Voice</span>
+</div>
+<p class="font-body text-body text-primary leading-relaxed bg-surface p- space-12 p-3 rounded-lg border border-outline-variant font-medium">
+          “80 पीस दे सकता हूं। 750 रुपये प्रति पीस। 15 दिन लगेंगे। लाल रंग हो जाएगा।”
+        </p>
+<div class="mt-2.5 flex items-center gap-2 text-[11px] font-label text-secondary">
+<span class="material-symbols-outlined text-success text-[14px]">check_circle</span>
+<span>98% सटीकता के साथ स्वतः पार्स किया गया</span>
+</div>
+</div>
+<!-- Structured Deal Summary Card -->
+<div class="rounded-xl border border-outline bg-surface p-space-16 space-y-space-16 shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between pb-space-8 border-b border-outline-variant">
+<span class="font-title text-title text-primary">सौदा विवरण (Details)</span>
+<span class="font-label text-label text-secondary">कदम 2/2</span>
+</div>
+<!-- Spec 1: Product -->
+<div class="flex items-start justify-between py-1 border-b border-outline-variant/60">
+<div class="space-y-0.5">
+<span class="font-label text-label text-secondary block">उत्पाद (Product)</span>
+<span class="font-title text-body-medium text-primary font-semibold">टेराकोटा कलश</span>
+</div>
+<span class="font-label text-label-small bg-surface-container text-on-surface px-2 py-1 rounded-full border border-outline-variant">हस्तनिर्मित</span>
+</div>
+<!-- Spec 2: Quantity -->
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/60">
+<div>
+<span class="font-label text-label text-secondary block">मात्रा (Quantity)</span>
+<span class="font-title text-body-medium text-primary font-semibold">80 पीस</span>
+</div>
+<button aria-label="मात्रा बदलें" class="flex items-center gap-1 text-[12px] font-label text-secondary hover:text-primary active:scale-95 transition-transform">
+<span>बदलें</span>
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<!-- Spec 3: Unit Price (Tap to Edit) -->
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/60 bg-surface-container-low -mx-space-16 px-space-16 py-2 border-y">
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label text-label text-secondary">प्रति पीस दर (Unit Price)</span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-display text-[18px] text-primary font-bold">₹750</span>
+<span class="font-label-small text-[11px] text-secondary">/ प्रति पीस</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface px-2.5 py-1 rounded-lg border border-outline shadow-sm text-primary text-label font-medium active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[15px] text-terracotta">edit</span>
+<span class="text-[12px]">बदलें</span>
+</div>
+</div>
+<!-- Spec 4: Timeline -->
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/60">
+<div>
+<span class="font-label text-label text-secondary block">निर्माण समय (Timeline)</span>
+<span class="font-title text-body-medium text-primary font-semibold">15 दिन</span>
+</div>
+<span class="font-label-small text-[11px] text-secondary">तैयार: 10 मई 2025</span>
+</div>
+<!-- Spec 5: Customization -->
+<div class="flex items-start justify-between py-1 border-b border-outline-variant/60">
+<div class="space-y-0.5">
+<span class="font-label text-label text-secondary block">विशेष विवरण (Customization)</span>
+<span class="font-title text-body-medium text-primary font-semibold">लाल रंग नक्काशी (Red Finish)</span>
+</div>
+<span class="w-3 h-3 rounded-full bg-[#b83820] mt-1 border border-outline" title="लाल रंग"></span>
+</div>
+<!-- Spec 6: Delivery Terms -->
+<div class="flex items-start justify-between py-1 border-b border-outline-variant/60">
+<div class="space-y-0.5">
+<span class="font-label text-label text-secondary block">डिलीवरी नियम</span>
+<span class="font-body text-body-medium text-primary font-medium">डिलीवरी चार्ज खरीदार देगा</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">local_shipping</span>
+</div>
+<!-- Highlight Total Deal Value -->
+<div class="pt-2 bg-surface-container rounded-xl p-3.5 border border-outline flex items-center justify-between">
+<div>
+<span class="font-label text-label text-secondary block uppercase tracking-wider font-semibold">कुल राशि (Total Deal Value)</span>
+<span class="font-label-small text-[11px] text-secondary">80 पीस × ₹750</span>
+</div>
+<div class="text-right">
+<span class="font-display text-[22px] leading-tight font-bold text-primary block">₹60,000</span>
+<span class="font-label-small text-[10px] text-success font-semibold">जीएसटी अतिरिक्त</span>
+</div>
+</div>
+</div>
+<!-- Trust / Approval Reassurance Note -->
+<div class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-body text-label text-secondary leading-relaxed">
+          प्रस्ताव भेजने पर खरीदार को पुष्टि और अग्रिम भुगतान का संदेश जाएगा।
+        </p>
+</div>
+</section>
+<!-- Bottom Actions Container -->
+<footer class="sticky bottom-0 bg-surface/95 backdrop-blur-sm border-t border-outline-variant px-space-16 pt-3 pb-6 space-y-2.5">
+<!-- Primary dominant 52px charcoal CTA -->
+<button class="w-full h-[52px] bg-primary text-surface rounded-xl font-title text-title flex items-center justify-center gap-2 active:scale-[0.98] transition-transform hover:bg-[#303030] shadow-sm">
+<span>प्रस्ताव भेजें / Confirm &amp; Send Quote</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary horizontal button pair -->
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 px-3 bg-surface border border-outline text-primary rounded-xl font-label text-body-medium font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-low active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[17px] text-secondary">edit_note</span>
+<span>बदलाव करें</span>
+</button>
+<button class="h-10 px-3 bg-surface border border-outline text-terracotta rounded-xl font-label text-body-medium font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-low active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[17px] text-terracotta">mic</span>
+<span>फिर से बोलें</span>
+</button>
+</div>
+</footer>
+</main>
+</body></html>

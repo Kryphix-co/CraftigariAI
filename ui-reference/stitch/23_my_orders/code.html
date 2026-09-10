@@ -1,0 +1,340 @@
+<!DOCTYPE html><html class="light" lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>मेरे ऑर्डर (My Orders) - Craftigari AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-primary-fixed-variant": "#474746",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "on-surface": "#1f1f1f",
+            "outline-variant": "#c4c7c7",
+            "surface-dim": "#d7dae0",
+            "outline": "#dadce0",
+            "surface-container-high": "#e8eaed",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary-container": "#1f1f1f",
+            "primary-container": "#f1f3f4",
+            "on-tertiary-fixed": "#390c00",
+            "primary": "#060607",
+            "error-container": "#ffdad6",
+            "tertiary": "#140200",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "secondary": "#5b5f64",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcf",
+            "tertiary-container": "#3f0e00",
+            "surface-container-highest": "#dfe3e8",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-container-low": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-tint": "#5f5e5e",
+            "secondary-container": "#f1f3f4",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#e5e2e1",
+            "on-tertiary-container": "#d46740",
+            "secondary-fixed": "#dfe3e8",
+            "surface-bright": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-background": "#181c20",
+            "inverse-on-surface": "#eef1f7",
+            "error": "#d93025",
+            "surface": "#ffffff",
+            "background": "#f7f9ff",
+            "on-secondary-fixed": "#181c20",
+            "surface-variant": "#dfe3e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-24": "1.5rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-64": "4rem",
+            "space-40": "2.5rem",
+            "gutter": "1rem",
+            "container-max": "75rem",
+            "space-20": "1.25rem",
+            "space-16": "1rem",
+            "space-32": "2rem"
+          },
+          "fontFamily": {
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-small": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "body-medium": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "label": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "title": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "headline": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "display": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+            "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col justify-between selection:bg-surface-container-high">
+<!-- Top App Bar (Semantic Anchor Component) -->
+<header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-space-16 h-14 bg-surface max-w-container-max mx-auto shadow-sm">
+<div class="flex items-center space-x- space-x-3">
+<button aria-label="Go Back" class="p-space-8 text-on-surface rounded-xl hover:bg-surface-container-high transition-all duration-150 flex items-center justify-center active:scale-95" type="button">
+<span class="material-symbols-outlined text-title font-title" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline text-headline text-on-surface font-bold tracking-tight">मेरे ऑर्डर (My Orders)</h1>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<button aria-label="Search Orders" class="p-space-8 text-on-surface rounded-xl hover:bg-surface-container-high transition-all duration-150 flex items-center justify-center active:scale-95" type="button">
+<span class="material-symbols-outlined text-title font-title" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas Container -->
+<main class="w-full max-w-4xl mx-auto px-space-16 pt-20 pb-28 flex-grow">
+<!-- Status & Overview Bar -->
+<section class="mb-space-20">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider block">कारीगर डैशबोर्ड</span>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">कुल 2 सक्रिय उत्पादन आदेश</p>
+</div>
+<div class="flex items-center gap-1.5 px-space-8 py-1 rounded-full bg-surface-container border border-outline">
+<span class="inline-block w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-small text-label-small text-on-surface">सिस्टम सक्रिय</span>
+</div>
+</div>
+</section>
+<!-- Segmented Control Filter Tabs -->
+<nav aria-label="Order Filter Tabs" class="mb-space-24 bg-surface-container p-1 rounded-xl flex items-center gap-1 border border-outline">
+<button class="flex-1 py-2 px-space-16 bg-surface text-on-surface rounded-lg shadow-sm font-title text-body-medium font-semibold text-center flex items-center justify-center gap-2 border border-outline" type="button">
+<span class="">सक्रिय (Active)</span>
+<span class="px-1.5 py-0.5 text-label-small font-label-small bg-primary text-on-primary rounded-full">2</span>
+</button>
+<button class="flex-1 py-2 px-space-16 text-on-surface-variant hover:text-on-surface rounded-lg font-title text-body-medium text-center flex items-center justify-center gap-2 transition-colors duration-150" type="button">
+<span class="">पूर्ण (Completed)</span>
+<span class="px-1.5 py-0.5 text-label-small font-label-small bg-surface-container-high text-on-surface-variant rounded-full">5</span>
+</button>
+</nav>
+<!-- Bento Grid / Cards Area -->
+<div class="space-y-space-20">
+<!-- Order Card 1 -->
+<article class="bg-surface-container-low border border-outline rounded-xl p-space-20 transition-all duration-200 hover:border-outline-variant hover:shadow-sm">
+<!-- Header: Order ID & Status -->
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-12 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="receipt_long">receipt_long</span>
+<span class="font-title text-title text-on-surface font-bold">#CR-2849</span>
+<span class="font-label text-label text-on-surface-variant">· 12 Nov</span>
+</div>
+<!-- Status Badge: Amber Warning State -->
+<div class="flex items-center gap-1.5 px-space-12 py-1 rounded-full bg-surface border border-outline">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+<span class="font-label-small text-label-small text-on-surface font-semibold">तैयारी जारी (In Progress)</span>
+</div>
+</div>
+<!-- Middle: Product & Buyer Details Bento Split -->
+<div class="py-space-16 grid grid-cols-1 md:grid-cols-12 gap-space-16">
+<div class="md:col-span-8 space-y-space-8">
+<div class="flex items-start gap-space-12">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5ALrlinHR-Mfyg2mSNVOGq4nsLlTNrYSKcZXbcvMayShCruR7unYGGV1JmDsnRnyioPAzkpHfihuQa556lH2jkoU5Kfa9swawZa5w1Kc_ZBdimEvXI1FkeZ2x4BWElyDPbePFadpK6LDeAXa68BTVvm0WUvZw_VvTkGiDewmYqCbfoGcY_KNfTZ5iEwWC304RCJoz_XP8jN3OCP2k6ENzUP-YA-pvbSl5030BpMsVH453Cgl5LsM" alt="Handcrafted Terracotta Urn" class="w-14 h-14 rounded-lg object-cover border border-outline flex-shrink-0">
+<div>
+<h2 class="font-title text-title text-on-surface font-bold">80 × Handcrafted Terracotta Heritage Urn</h2>
+<p class="font-body text-body text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-body" data-icon="person">person</span>
+<span class="">खरीदार: <strong class="text-on-surface font-semibold">रोहित शर्मा (Rohit Sharma)</strong> · मुंबई</span>
+</p>
+</div>
+</div>
+<!-- Fulfillment Step Tracker -->
+<div class="mt-space-16 pt-space-8 bg-surface rounded-lg p-space-12 border border-outline">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">उत्पादन प्रगति (Status)</span>
+<span class="font-label-small text-label-small text-on-surface font-bold">स्टेप 2/4: मिट्टी तैयार व नक्काशी</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full rounded-full" style="width: 50%;"></div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant mt-2 font-label text-label">
+<span class="material-symbols-outlined text-label" data-icon="schedule">schedule</span>
+<span class="">28 Nov तक डिस्पैच नियत</span>
+</div>
+</div>
+</div>
+<!-- Financial Summary Box -->
+<div class="md:col-span-4 bg-surface p-space-16 rounded-lg border border-outline flex flex-col justify-between">
+<div>
+<span class="font-label text-label text-on-surface-variant block">कुल राशि (Amount)</span>
+<p class="font-display text-headline text-on-surface font-bold mt-1">₹60,000</p>
+<span class="font-label-small text-label-small text-on-surface-variant block mt-0.5">80 पीस @ ₹750 प्रति पीस</span>
+</div>
+<div class="pt-space-12 border-t border-surface-container mt-space-12"><span class="inline-flex items-center gap-1 font-label-small text-label-small text-success">
+<span class="material-symbols-outlined text-label-small" data-icon="check_circle">check_circle</span>
+भुगतान स्थिति: Razorpay Test Mode सत्यापित
+</span></div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="pt-space-12 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-space-8">
+<div class="flex items-center gap-2 text-on-surface-variant font-label text-label">
+<span class="material-symbols-outlined text-label" data-icon="local_shipping">local_shipping</span>
+<span class="">सिम्युलेटेड ट्रैकिंग आईडी: SIM-CR-9920</span>
+</div>
+<button class="px-space-16 py-2 bg-primary text-on-primary hover:bg-on-surface rounded-lg font-title text-body-medium font-semibold transition-all duration-150 flex items-center gap-1.5 shadow-sm active:scale-98" type="button">
+<span class="">ऑर्डर विवरण व अपडेट</span>
+<span class="material-symbols-outlined text-body-medium font-body-medium" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Order Card 2 -->
+<article class="bg-surface-container-low border border-outline rounded-xl p-space-20 transition-all duration-200 hover:border-outline-variant hover:shadow-sm">
+<!-- Header: Order ID & Status -->
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-12 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="receipt_long">receipt_long</span>
+<span class="font-title text-title text-on-surface font-bold">#CR-2780</span>
+<span class="font-label text-label text-on-surface-variant">· 08 Nov</span>
+</div>
+<!-- Status Badge: Green Ready State -->
+<div class="flex items-center gap-1.5 px-space-12 py-1 rounded-full bg-surface border border-outline">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-small text-label-small text-on-surface font-semibold">Pickup के लिए तैयार</span>
+</div>
+</div>
+<!-- Middle: Product & Buyer Details Bento Split -->
+<div class="py-space-16 grid grid-cols-1 md:grid-cols-12 gap-space-16">
+<div class="md:col-span-8 space-y-space-8">
+<div class="flex items-start gap-space-12">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5ALrlinHR-Mfyg2mSNVOGq4nsLlTNrYSKcZXbcvMayShCruR7unYGGV1JmDsnRnyioPAzkpHfihuQa556lH2jkoU5Kfa9swawZa5w1Kc_ZBdimEvXI1FkeZ2x4BWElyDPbePFadpK6LDeAXa68BTVvm0WUvZw_VvTkGiDewmYqCbfoGcY_KNfTZ5iEwWC304RCJoz_XP8jN3OCP2k6ENzUP-YA-pvbSl5030BpMsVH453Cgl5LsM" alt="Heritage Floral Pot" class="w-14 h-14 rounded-lg object-cover border border-outline flex-shrink-0">
+<div>
+<h2 class="font-title text-title text-on-surface font-bold">40 × Heritage Floral Pot</h2>
+<p class="font-body text-body text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-body" data-icon="person">person</span>
+<span class="">खरीदार: <strong class="text-on-surface font-semibold">नीलम जैन</strong> · पुणे</span>
+</p>
+</div>
+</div>
+<!-- Fulfillment Step Tracker -->
+<div class="mt-space-16 pt-space-8 bg-surface rounded-lg p-space-12 border border-outline">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-small text-label-small text-on-surface-variant uppercase tracking-wider">उत्पादन प्रगति (Status)</span>
+<span class="font-label-small text-label-small text-on-surface font-bold">स्टेप 3/4: क्राफ्ट पैकिंग पूर्ण</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full rounded-full" style="width: 75%;"></div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant mt-2 font-label text-label">
+<span class="material-symbols-outlined text-label" data-icon="check_circle">check_circle</span>
+<span class="">पार्सल डिब्बे सील किए गए · लॉजिस्टिक्स पिकअप प्रतीक्षारत</span>
+</div>
+</div>
+</div>
+<!-- Financial Summary Box -->
+<div class="md:col-span-4 bg-surface p-space-16 rounded-lg border border-outline flex flex-col justify-between">
+<div>
+<span class="font-label text-label text-on-surface-variant block">कुल राशि (Amount)</span>
+<p class="font-display text-headline text-on-surface font-bold mt-1">₹24,000</p>
+<span class="font-label-small text-label-small text-on-surface-variant block mt-0.5">40 पीस @ ₹600 प्रति पीस</span>
+</div>
+<div class="pt-space-12 border-t border-surface-container mt-space-12"><span class="inline-flex items-center gap-1 font-label-small text-label-small text-success">
+<span class="material-symbols-outlined text-label-small" data-icon="verified">verified</span>
+भुगतान स्थिति: Razorpay Test Mode सत्यापित
+</span></div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="pt-space-12 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-space-8">
+<div class="flex items-center gap-2 text-on-surface-variant font-label text-label">
+<span class="material-symbols-outlined text-label" data-icon="pin_drop">pin_drop</span>
+<span class="">वेयरहाउस शेल्फ B-4 में सुरक्षित</span>
+</div>
+<button class="px-space-16 py-2 bg-surface hover:bg-surface-container border border-outline text-on-surface rounded-lg font-title text-body-medium font-semibold transition-all duration-150 flex items-center gap-1.5 active:scale-98" type="button">
+<span class="">विवरण देखें</span>
+<span class="material-symbols-outlined text-body-medium font-body-medium" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Prototype Explicit Disclaimer -->
+<div class="mt-space-32 p-space-12 rounded-xl bg-surface-container border border-outline flex items-start gap-space-12">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5" data-icon="info">info</span>
+<p class="font-body text-body text-on-surface-variant">
+<strong>नोट:</strong> यह प्रोटोटाइप केवल ऑर्डर ट्रैकिंग और चरणबद्ध कार्यप्रवाह प्रदर्शित करता है (सिम्युलेटेड टेस्ट मोड)। वास्तविक कूरियर इंटीग्रेशन लाइव नहीं है।
+      </p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component strictly mapped from JSON) -->
+<nav aria-label="मुख्य नेविगेशन" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-8 py-1 min-h-[56px] pb-safe bg-surface-container shadow-md border-t border-outline">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-3 hover:text-primary transition-colors" href="#home">
+<span class="material-symbols-outlined text-title" data-icon="home">home</span>
+<span class="font-label-small text-label-small mt-0.5">Home</span>
+</a>
+<!-- Crafts (Active for Orders / Craft Management Context) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold py-1 px-3" href="#crafts">
+<span class="material-symbols-outlined text-title" data-icon="inventory_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-small text-label-small mt-0.5">Crafts</span>
+</a>
+<!-- Add -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-3 hover:text-primary transition-colors" href="#add">
+<span class="material-symbols-outlined text-title" data-icon="mic">mic</span>
+<span class="font-label-small text-label-small mt-0.5">Add</span>
+</a>
+<!-- Market -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-3 hover:text-primary transition-colors" href="#market">
+<span class="material-symbols-outlined text-title" data-icon="storefront">storefront</span>
+<span class="font-label-small text-label-small mt-0.5">Market</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-3 hover:text-primary transition-colors" href="#profile">
+<span class="material-symbols-outlined text-title" data-icon="person">person</span>
+<span class="font-label-small text-label-small mt-0.5">Profile</span>
+</a>
+</nav>
+
+
+</body></html>
