@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari — Buyer Quotation</title>
+<!-- Google Font: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#dde0e6",
+            "surface-container-high": "#e5e8ee",
+            "primary-container": "#f1f3f4",
+            "surface-container-highest": "#dfe3e8",
+            "on-error": "#ffffff",
+            "surface": "#ffffff",
+            "error": "#d93025",
+            "primary-fixed": "#e5e2e1",
+            "surface-container": "#ebeef4",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary-container": "#d46740",
+            "outline-variant": "#c4c7c7",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "outline": "#dadce0",
+            "secondary-fixed-dim": "#c3c7cc",
+            "on-tertiary-fixed": "#390c00",
+            "on-background": "#181c20",
+            "primary": "#060607",
+            "surface-variant": "#dfe3e8",
+            "surface-dim": "#f8f9fa",
+            "secondary-fixed": "#dfe3e8",
+            "on-secondary-fixed": "#181c20",
+            "on-primary-fixed": "#1b1b1c",
+            "on-surface-variant": "#444748",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-primary": "#c8c6c5",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9ff",
+            "success": "#137333",
+            "primary-fixed-dim": "#c8c6c5",
+            "tertiary": "#140200",
+            "on-surface": "#1f1f1f",
+            "surface-container-low": "#f1f4fa",
+            "surface-tint": "#5f5e5e",
+            "on-secondary-fixed-variant": "#43474c",
+            "secondary": "#5b5f64",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-tertiary-fixed-variant": "#802a05",
+            "inverse-surface": "#2d3135",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#3f0e00",
+            "inverse-on-surface": "#eef1f7",
+            "warning": "#b06000",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#1f1f1f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-32": "2rem",
+            "space-24": "1.5rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "space-20": "1.25rem",
+            "space-40": "2.5rem",
+            "space-64": "4rem",
+            "space-48": "3rem",
+            "container-max": "75rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="bg-surface-dim font-body text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary-container">
+<!-- Mobile Screen Container (390px baseline) -->
+<div class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative pb-10 shadow-sm">
+<!-- Top Bar Navigation (Task-focused sub-page: BottomNavBar is intentionally suppressed per Destination Rule) -->
+<header class="sticky top-0 z-30 bg-surface flex items-center justify-between px-space-16 h-14 border-b border-surface-container-high">
+<button aria-label="Go Back" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-dim transition-colors text-on-surface" onclick="history.back()" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title text-title text-on-surface tracking-tight">Quotation</h1>
+<button aria-label="Share Quotation" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-dim transition-colors text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-space-16 pt-space-20 pb-space-24 flex flex-col gap-space-20">
+<!-- Screen Header & Artisan Info -->
+<section class="flex flex-col gap-space-4">
+<div class="flex items-center gap-space-8">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-small text-label-small text-secondary tracking-wider uppercase">Direct Craft Submission</span>
+</div>
+<h2 class="font-display text-[22px] leading-7 font-bold text-on-surface tracking-tight">Quotation from Ram Singh</h2>
+<p class="font-body text-body text-secondary">Review the artisan’s offer before confirming</p>
+</section>
+<!-- Compact Product Context Container -->
+<section class="p-space-12 rounded-xl bg-surface border border-outline flex items-center gap-space-12">
+<div class="w-16 h-16 rounded-lg bg-surface-container-low border border-surface-container-high overflow-hidden flex-shrink-0 relative flex items-center justify-center">
+<!-- Handcrafted Terracotta Urn Product Image using provided asset -->
+<img alt="Handcrafted Terracotta Heritage Urn by Ram Singh" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlPkQGAB4FgOKGGah-ZF5dLgS-e4pGxjZyJYhN6LSoZbnmD2dDroglZeIQN7L34joiocs5OyFmM3GD7VpTrRYXqOmmIF7wXO_nNLpDJw-btl6joKBCs5VU8av5T6YNzLXVVaRfsZ4lm3HjSl35rwb4rNEAEmPCRNN-lbnZlDXU_LG4VKGKbgwrQS0RivgZmHJ_LkoqVQ0UJd4GyzRu-hzeFaonOuHK3PLLHjkKz4S7uMqEeU_SmNNFKbawmo5t4G4h"/>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-space-8 mb-0.5">
+<span class="inline-flex items-center px-space-8 py-0.5 rounded-full text-[10px] font-semibold bg-[#fbf0ec] text-on-tertiary-container border border-[#f3d9ce]">
+              Direct Artisan Quote
+            </span>
+</div>
+<h3 class="font-title text-body-medium font-semibold text-on-surface truncate">Handcrafted Terracotta Heritage Urn</h3>
+<p class="font-label text-label text-secondary truncate">Crafted by Ram Singh · Jaipur, Rajasthan</p>
+</div>
+</section>
+<!-- Quotation Details Section (Clean structured list with dividers) -->
+<section class="bg-surface rounded-xl border border-outline overflow-hidden">
+<div class="px-space-16 py-space-12 bg-surface-dim border-b border-surface-container-high flex items-center justify-between">
+<span class="font-label-small text-label-small text-secondary uppercase tracking-wider">Proposal Specifications</span>
+<span class="font-label-small text-label-small text-on-tertiary-container font-semibold">Verified Spec</span>
+</div>
+<div class="divide-y divide-surface-container-high">
+<!-- Item 1 -->
+<div class="px-space-16 py-space-12 flex items-center justify-between gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-secondary" data-icon="inventory_2">inventory_2</span>
+<span class="font-body text-body text-secondary">Quantity</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">80 pieces</span>
+</div>
+<!-- Item 2 -->
+<div class="px-space-16 py-space-12 flex items-center justify-between gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-secondary" data-icon="payments">payments</span>
+<span class="font-body text-body text-secondary">Unit Price</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">₹750 / piece</span>
+</div>
+<!-- Item 3 -->
+<div class="px-space-16 py-space-12 flex items-center justify-between gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+<span class="font-body text-body text-secondary">Production Timeline</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">15 days</span>
+</div>
+<!-- Item 4 -->
+<div class="px-space-16 py-space-12 flex items-center justify-between gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-secondary" data-icon="palette">palette</span>
+<span class="font-body text-body text-secondary">Customization</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface text-right font-medium">Red colour (traditional natural finish)</span>
+</div>
+<!-- Item 5 -->
+<div class="px-space-16 py-space-12 flex items-center justify-between gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-secondary" data-icon="package_2">package_2</span>
+<span class="font-body text-body text-secondary">Delivery Terms</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-medium text-right">Standard craft packing included</span>
+</div>
+</div>
+</section>
+<!-- Total Deal Value Box (Prominent financial hierarchy) -->
+<section class="p-space-16 rounded-xl bg-surface-dim border border-outline flex flex-col gap-space-8">
+<div class="flex items-center justify-between">
+<span class="font-label-small text-label-small uppercase text-secondary font-semibold tracking-wider">Total Quotation Amount</span>
+<span class="inline-flex items-center gap-space-4 font-label-small text-label-small text-success bg-[#e6f4ea] px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span> Fixed Rate
+          </span>
+</div>
+<div class="flex items-baseline gap-space-8">
+<span class="font-display text-[28px] leading-8 font-bold text-on-surface tracking-tight">₹60,000</span>
+<span class="font-label text-label text-secondary font-medium">INR</span>
+</div>
+<p class="font-label text-label text-secondary leading-snug">
+          80 pieces × ₹750 · Taxes included · Shipping will be estimated separately at checkout
+        </p>
+</section>
+<!-- Notice Note -->
+<div class="flex items-center gap-space-8 px-space-12 py-space-8 bg-surface-container-low rounded-lg border border-surface-container-high">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="lock">lock</span>
+<span class="font-label text-label text-secondary leading-tight">This price is held directly with the artisan for 48 hours.</span>
+</div>
+<!-- Action Cluster -->
+<section class="flex flex-col gap-space-12 pt-space-8">
+<!-- Primary CTA: 52px charcoal button -->
+<button class="w-full h-[52px] rounded-xl bg-on-surface text-surface font-title text-title flex items-center justify-center gap-space-8 shadow-sm hover:bg-[#303030] active:scale-[0.99] transition-all" type="button">
+<span>Accept Quote</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary Button: 50px white button -->
+<button class="w-full h-[50px] rounded-xl bg-surface border border-outline text-on-surface font-body-medium text-body-medium flex items-center justify-center gap-space-8 hover:bg-surface-dim active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit_note">edit_note</span>
+<span>Request Change</span>
+</button>
+<!-- Tertiary Quiet Text Link -->
+<div class="flex justify-center pt-space-4">
+<button class="font-label text-label text-secondary hover:text-error transition-colors underline-offset-4 hover:underline py-1" type="button">
+            Decline Quotation
+          </button>
+</div>
+</section>
+</main>
+</div>
+</body></html>

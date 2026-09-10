@@ -1,0 +1,662 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari — Permanent Collection &amp; All Crafts Catalog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background-base": "#F6F1E7",
+            "on-secondary-fixed": "#002108",
+            "on-secondary-container": "#496d4b",
+            "on-tertiary-fixed": "#2e1500",
+            "outline": "#89726b",
+            "surface-variant": "#EFE8DC",
+            "tertiary-container": "#975819",
+            "state-warning": "#B87333",
+            "text-primary": "#24211D",
+            "surface-container": "#FFFCF6",
+            "accent-terracotta-dark": "#7C3318",
+            "state-success": "#2F5233",
+            "on-secondary": "#ffffff",
+            "text-secondary": "#6E685F",
+            "on-surface-variant": "#56423c",
+            "accent-terracotta-soft": "#F4EAE4",
+            "on-primary-fixed-variant": "#7d2d0c",
+            "inverse-surface": "#33302c",
+            "inverse-on-surface": "#f7efe9",
+            "secondary-container": "#c4edc3",
+            "primary": "#893515",
+            "text-tertiary": "#8F887D",
+            "on-tertiary-container": "#ffe1cc",
+            "background": "#fff8f3",
+            "surface-bright": "#fff8f3",
+            "secondary-fixed-dim": "#a9d1a8",
+            "on-tertiary-fixed-variant": "#6d3a00",
+            "forest-green": "#2F5233",
+            "secondary-fixed": "#c4edc3",
+            "on-tertiary": "#ffffff",
+            "border-strong": "#C5B9A7",
+            "border-subtle": "#DDD4C6",
+            "primary-fixed-dim": "#ffb59c",
+            "tertiary-fixed-dim": "#ffb77b",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#1e1b17",
+            "surface-dim": "#e0d9d2",
+            "surface-container-high": "#eee7e0",
+            "surface-container-low": "#faf2eb",
+            "outline-variant": "#dcc1b8",
+            "surface": "#fff8f3",
+            "error-container": "#ffdad6",
+            "accent-clay-ochre": "#C47B2B",
+            "on-error-container": "#93000a",
+            "primary-container": "#a84c2a",
+            "surface-container-highest": "#e9e1db",
+            "inverse-primary": "#ffb59c",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "on-surface": "#1e1b17",
+            "on-secondary-fixed-variant": "#2b4e30",
+            "on-primary-container": "#ffe1d7",
+            "on-primary": "#ffffff",
+            "tertiary": "#7a4100",
+            "on-primary-fixed": "#390c00",
+            "secondary": "#436746",
+            "primary-fixed": "#ffdbcf",
+            "surface-tint": "#9c4322",
+            "forest-green-soft": "#EAF0EA",
+            "tertiary-fixed": "#ffdcc2",
+            "state-error": "#A33B26"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.5rem",
+            "space-2xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter-desktop": "2rem",
+            "touch-target-min": "3rem",
+            "space-sm": "0.75rem",
+            "container-max-w": "75rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter-mobile": "1rem",
+            "space-3xl": "4rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-xl": ["38px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "23px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .sharp-edge {
+      border-radius: 0px !important;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-text-primary font-body-md antialiased selection:bg-accent-terracotta-soft selection:text-primary">
+<!-- TOP APP BAR -->
+<header class="bg-surface-container-lowest border-b border-border-subtle sticky top-0 z-50">
+<div class="w-full max-w-container-max-w mx-auto flex items-center justify-between px-gutter-desktop h-16">
+<!-- Brand Logo & Identity Subtext -->
+<div class="flex items-baseline space-x-space-sm">
+<a class="text-headline-md font-headline-md text-primary tracking-tight font-bold" href="#">Craftigari</a>
+<span class="hidden lg:inline text-label-sm font-label-sm text-text-tertiary border-l border-border-subtle pl-space-sm tracking-wide">
+          Handmade Heritage · Verified Provenance
+        </span>
+</div>
+<!-- Centered Navigation Links -->
+<nav class="hidden md:flex items-center space-x-space-lg">
+<a class="border-b-2 border-primary text-primary pb-1 font-semibold text-label-md font-label-md" href="#">All Crafts</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Terracotta &amp; Earthenware</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Handloom Weaves</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Cast Metal &amp; Dhokra</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Carved Woodcraft</a>
+</nav>
+<!-- Trailing Action Shortcuts -->
+<div class="flex items-center space-x-space-md">
+<!-- Search -->
+<div class="relative hidden sm:block">
+<input class="sharp-edge bg-surface-container-low text-text-primary border border-border-subtle text-label-sm font-label-sm px-space-sm py-1.5 pl-8 w-44 focus:w-56 focus:outline-none focus:border-primary transition-all duration-200 placeholder:text-text-tertiary" placeholder="Search cluster or craft..." type="text">
+<span class="material-symbols-outlined absolute left-2 top-2 text-text-secondary text-sm pointer-events-none">search</span>
+</div>
+<!-- Currency Indicator -->
+<button class="text-label-sm font-label-sm text-text-secondary hover:text-primary px-space-xs py-1 border border-border-subtle sharp-edge transition-colors duration-150">
+          INR (₹)
+        </button>
+<!-- Icon Actions -->
+<button aria-label="Favorites" class="p-1 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button aria-label="Bag" class="p-1 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<!-- Primary CTA: Batch Inquiry -->
+<button class="sharp-edge bg-primary hover:bg-accent-terracotta-dark text-on-primary text-label-sm font-label-sm px-space-md py-2 transition-all duration-150">
+          Batch Inquiry
+        </button>
+</div>
+</div>
+</header>
+<!-- EDITORIAL HERO SECTION -->
+<section class="bg-surface-container-lowest border-b border-border-subtle">
+<div class="w-full max-w-container-max-w mx-auto px-gutter-desktop py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Pane: Editorial Typography & Provenance Tokens -->
+<div class="lg:col-span-6 space-y-space-md">
+<div class="inline-flex items-center space-x-2 border border-border-subtle px-space-sm py-1 text-label-sm font-label-sm text-text-secondary bg-surface-container-low">
+<span class="w-2 h-2 bg-state-success inline-block"></span>
+<span>Live Artisan Cluster Inquiries Open</span>
+</div>
+<h1 class="text-headline-xl font-headline-xl text-text-primary tracking-tight">
+            The Permanent Collection
+          </h1>
+<p class="text-body-lg font-body-lg text-text-secondary max-w-xl leading-relaxed">
+            Authentic Indian mastercrafts catalogued through natural artisan voice and direct workshop provenance. Sourced directly from rural clusters across Jaipur, Bastar, Kachchh, Khurja, and Maheshwar without intermediary markups.
+          </p>
+<!-- Functional Thread Visual Connection Bar -->
+<div class="pt-space-xs pb-space-xs">
+<div class="flex items-center space-x-2 text-label-sm font-label-sm text-text-tertiary">
+<span class="text-primary font-semibold">Fair Floor Protocol</span>
+<span class="h-0.5 flex-1 bg-border-subtle relative">
+<span class="absolute left-0 top-0 h-0.5 w-1/3 bg-primary"></span>
+</span>
+<span>100% Direct Deposit to Guilds</span>
+</div>
+</div>
+<!-- Metadata Badges -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs border-t border-border-subtle">
+<div class="py-space-xs">
+<span class="block text-headline-sm font-headline-sm text-text-primary font-bold">48</span>
+<span class="text-label-sm font-label-sm text-text-secondary">Active Batches</span>
+</div>
+<div class="py-space-xs border-l border-border-subtle pl-space-sm">
+<span class="block text-headline-sm font-headline-sm text-text-primary font-bold">6</span>
+<span class="text-label-sm font-label-sm text-text-secondary">Craft Clusters</span>
+</div>
+<div class="py-space-xs border-l border-border-subtle pl-space-sm">
+<span class="block text-headline-sm font-headline-sm text-state-success font-bold">100%</span>
+<span class="text-label-sm font-label-sm text-text-secondary">Fair Living Wage</span>
+</div>
+</div>
+</div>
+<!-- Right Pane: Curated Image Reference -->
+<div class="lg:col-span-6 relative border border-border-subtle p-space-xs bg-surface-container-low">
+<div class="aspect-[16/9] overflow-hidden relative">
+<img alt="Artisan crafts showroom installation featuring terracotta urns, handloom textiles, and brass sculpture" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABuaKzuKUl5_yrwZvtvpGeINpNXLhUaPqeX2Y7E1cRn1JjpXkql1lr-oO7vQcTqJp8pCIoJwrUCbzes9bxPMabAim-K2RXbe0Oxz6ljiXceviVSEYhGJbZsd7PRTIHPduKLqrGcUk9zk3B3mddgECcAVEZsnuQEuIIRt16mLXx49tQN_67E4JU7BRbb8pOEth_Zhq8UWr6m3BxrR4Uf09OEI01DB6xiXTZj0zPoaowAmNb83lIwws">
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm text-text-tertiary px-space-xs pt-space-xs">
+<span>Studio Installation No. 04</span>
+<span>Jaipur &amp; Bastar Craft Survey</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DISCIPLINE & CATEGORY FILTER BAR -->
+<section class="bg-surface-container border-b border-border-subtle sticky top-16 z-40">
+<div class="w-full max-w-container-max-w mx-auto px-gutter-desktop py-space-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-space-sm">
+<!-- Horizontal Discipline Tabs -->
+<div class="flex items-center space-x-space-md overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
+<button class="sharp-edge text-label-md font-label-md text-primary font-semibold border-b-2 border-primary pb-1 whitespace-nowrap">
+          All Crafts (48)
+        </button>
+<button class="sharp-edge text-label-md font-label-md text-text-secondary hover:text-text-primary pb-1 whitespace-nowrap transition-colors">
+          Terracotta &amp; Earthenware (18)
+        </button>
+<button class="sharp-edge text-label-md font-label-md text-text-secondary hover:text-text-primary pb-1 whitespace-nowrap transition-colors">
+          Handloom Weaves (12)
+        </button>
+<button class="sharp-edge text-label-md font-label-md text-text-secondary hover:text-text-primary pb-1 whitespace-nowrap transition-colors">
+          Cast Metal &amp; Dhokra (9)
+        </button>
+<button class="sharp-edge text-label-md font-label-md text-text-secondary hover:text-text-primary pb-1 whitespace-nowrap transition-colors">
+          Carved Woodcraft (9)
+        </button>
+</div>
+<!-- Right Utility Cluster -->
+<div class="flex items-center space-x-space-md self-end md:self-auto text-label-sm font-label-sm">
+<div class="flex items-center border border-border-subtle bg-surface-container-lowest px-space-sm py-1.5">
+<span class="text-text-tertiary mr-2">Sort:</span>
+<select class="bg-transparent text-text-primary font-medium focus:outline-none cursor-pointer pr-2">
+<option>Latest Kiln Batches</option>
+<option>Lead Time: Under 14 Days</option>
+<option>Price: Low to High</option>
+<option>Artisan Seniority</option>
+</select>
+</div>
+<!-- Sharp View Switcher -->
+<div class="hidden sm:flex border border-border-subtle bg-surface-container-lowest">
+<button class="p-1.5 bg-surface-variant text-text-primary border-r border-border-subtle" title="4-Column Grid">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+<button class="p-1.5 text-text-tertiary hover:text-text-primary" title="Compact Table">
+<span class="material-symbols-outlined text-sm">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4-COLUMN SHARP PRODUCT CATALOG GRID -->
+<main class="w-full max-w-container-max-w mx-auto px-gutter-desktop py-space-xl">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-space-md gap-y-space-xl">
+<!-- PRODUCT CARD 1 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<!-- Imagery Container -->
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Minimalist architectural studio capture of an authentic Amer high-fire terracotta water urn with unglazed natural clay texture and raw burnished surface. Symmetrical centered composition against an off-white stone gallery podium. Soft daylight with delicate architectural shadow lines, highlighting earthy clay tones and craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-HIcBt4grBAnfElpZfRpCL8Tk_nmtw_4bnzJfiQq6N4T7Do-hOH0t_EjXoD5qkbbOfnjHUkZKVfSKJnVZfTY5x64NqbWt7yjmtUJUvhAG49hMVjar_73iVw2Oww5EWRH2h2rYX1J3wc0UdM4diip-RukuabKioJgQH6bn070fzOL865Aj3kM0KAYhUigDxFMkRM5w6ftlp9wFRdHc1zXvijDnxl4sH0dJ2FJKDVTBJdLSpyjv9nk">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #AM-104
+            </span>
+</div>
+<!-- Product Details -->
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Amer, Rajasthan</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">10 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Amer High-Fire Terracotta Water Urn
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Master Ram Singh · Wheel-thrown terracotta wash
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹750</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 25 pcs</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 2 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial close-up of a finely woven Maheshwari silk-cotton textile in raw ecru cream with deep indigo borders, folded neatly upon a sand-colored limestone pedestal. Natural diffused window light accents the delicate warp and weft fibers and woven zari edge. High-end clean showroom aesthetic with warm neutral palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTvfNycCTyV6rPmTqccaish_xNcesUmDznmDHJndwbNHJfBYFKumahn3f8q6NBhDyz15Kfi8fnzrEDjIT8BesxlYWUfby0d_-sfcm0iBTqWaJ_hBRIfn4s2mXtkwo3N8ayTULaJ9P5z9ScOMkqol-od5dSXzmH8-Ev49IqMzmYMXf6TmLg4HzGQfzXTOaMvM3kxQFNcZVAep9sV4f7NJSwj46wwPLRSLUR-iL_8L-dmWI6l62abys">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #MH-082
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Maheshwar, MP</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">14 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Maheshwari Fine Silk-Cotton Weave
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Anita Devi · Natural vegetable dye handloom
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹1,450</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 15 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 3 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Sharp architectural studio still life of an authentic Bastar Dhokra lost-wax cast brass figurine with antiqued bronze patina and intricate tribal filigree detailing. Isolated on a polished concrete and travertine surface with dramatic soft shadows. Pure white gallery background, highlighting ancient tribal metalwork geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5xsRoIXoDe8qq36v8-vRaSCjfUI1b-FSMkoDywHpeiOWa314KKMcdiXfdn5XUk7PbZRsUpvJdWyYe04RUk1xHUbVhXal01dj0qTOBxFaNuqVKJd6ESWQxTii039X21k-qWjDUTijg1DZtCql8nKa110fox83CxgNEL89IJ-jJ3FYiAX21xWiwK2TNbiHxqMYc_-XMsayDbUDEAus5zpMXwkosdQlcLk3Deyw-BnSiIJAbj9EEsE">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #BS-019
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Bastar, Chhattisgarh</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">21 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Bastar Lost-Wax Cast Brass Dhokra
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Shombhu Baghel · Bell metal lost-wax casting
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹2,100</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 10 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 4 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Minimalist product photo of a Saharanpur hand-carved Sheesham hardwood bowl with fluted outer rim and rich natural wood grain textures. Displayed on an architectural white plinth in high-key natural illumination. Minimal, clean styling focusing on natural organic materials, deep walnut undertones, and precise chisel work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyUJGyVUIAtg9EZQbgLDzT5i31u2_0SmBkt6Dc3qtSL_4wM86ZxhVfryvDF2gvnjhBER2e5tyGul5F0GiaBOhgAIb88oc3e6Ye4j-IHuxGxtFfpieUyc7Y77F7M9s3b9u8ppzKm-PwObiFDAyqUOTa34ejUC-3-gtex0o46GJDaE8Njsq8V5V5EnCVrO89cON44HUvJhG2uxda-sM9cltvCWYx0gXw1cUwQx2nHogPChYpnUQzCGs">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #SH-044
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Saharanpur, UP</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">12 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Saharanpur Fluted Sheesham Platter
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Irfan Khan · Chiseled seasoned hardwood
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹1,150</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 20 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 5 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial flatlay of an authentic Ajrakh hand-block printed resist dyed cotton textile with intricate geometric star medallions in indigo, madder red, and ecru tones. Photographed from above on clean architectural white concrete with crisp side lighting revealing fabric texture and dye penetration. Museum quality craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOcAyo2OCWEgF5UtzPE7DlYJtN2sSXy8hbf_XLGA34BQpqCbdebHQqH9_4cT6kcnmemkkEeB2MTq8xKi1uTOsng4XElOpFWTHluOgGVKwHIAUL5sFJSC0RTNE32DslBQm2iw66V7ron9H3U0M7Qn-CZlZPJfwz9NDPch4LFWIu3nCKvvlPLs5s5A_OLzUpFHIrdMreCIbVIo8L1Qex650fCEeZIeX91ySiNPE1-Eum6Vl1OIk6K08">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #AJ-091
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Ajrakhpur, Kachchh</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">18 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Ajrakh Hand-Block Resist Cotton
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Khatri Ismail · 16-stage natural indigo print
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹2,800</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 8 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 6 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Contemporary ceramic vessel crafted in Khurja with high-temperature gas-kiln reactive glaze displaying subtle sage green and bone white mineral gradients. Centered in a serene, bright studio environment on raw travertine stone with balanced shadows. Pure modern ceramic artistry emphasizing clean form and tactile surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE9dZiD_x6ivUsbFy2w4EgbDXe6x0trtDkrCxuIDx9dL9uoNM3wZ3hTmKPjP6UNWjiC68Y20GRuPXnQcI4KOBjMrc1dXem0AHgka96mqBD7mYdjKwS1rvAnZuZ7WL-qzHpDgEpR1roDu_ior2YSATkAL-eMS7XNH5X57Dd0deDeWSI1RJiVk4Gl7jSlnPhsUirP6_EfocrJYUihM1exwLlH9jI1fR5SH_1GY7TIZsBlBF37x6Tj4Q">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #KJ-031
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Khurja, UP</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">8 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Khurja High-Fired Ceramic Vessel
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Ramesh Prajapati · Gas-kiln stoneware
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹890</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 30 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 7 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Architectural still life of a Molela hand-molded terracotta votive tablet plaque showcasing raised clay deity figures sculpted from Banas riverbed clay. Pristine neutral exhibition gallery wall with direct morning light casting rhythmic linear shadows. Earthy ochre and red terracotta tones with authentic artisanal finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwYKRTgRlQGyZnhOQFbx9464kIghlvy7GrAweFKz0mNpUsxI8TTvj-qEYTsZ4Va6G_D2g-krGCnl-8uHrQ8SSqqHNlZIi_PqLo4TYlgwszwCiXLH35kOzMRcDFmZvnzU4MW7T38XnAHUvK29hZNCiolvRkXsxyuRmx0_5Ul_Tma79On0zxSof_pYXT_kci7E4ZXHJrEjeWORIjFjQ0lxoR7YRtnkcNwXd7q3-KuyA-LuOa9fxehA">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #ML-015
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Molela, Rajasthan</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">15 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Molela Hand-Molded Votive Tablet
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Kishore Kumhar · Riverbed clay relief
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹1,850</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 12 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+<!-- PRODUCT CARD 8 -->
+<article class="group border border-border-subtle bg-surface-container-lowest flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative border-b border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High-end studio photograph of a Bidri silver inlay floral bud vase featuring blackened zinc-copper alloy engraved with pure silver thread wire patterns. Displayed elegantly against an austere cream-white architectural interior. Soft, glare-free gallery lighting accentuates the crisp metallic contrast and fine floral engraving." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW_b8z7cJaO8zX56RW39mBtlmmj_H5pBMx7HNwhsy-v0tX1GOXCSAkwYebaU4ZkMP4_kZBdkWTHkxCy7oWrnzdUx5OsAzr6Vgyoz5Smpk44wuGRvE0_dE5-7lKEB2lClMxZrlaw_Pt5BPZDQAZpsLVXI7u3HkKDfdysA2ezxXpblKa3tP2H0rs7SueHqyRo-Tru2WPmjGpR6hivoNMF4skWeY4A3wgtj3q71GFtSewPRH8jbV3RUw">
+<span class="absolute top-2 left-2 bg-surface-container-lowest text-text-primary text-label-sm font-label-sm px-2 py-0.5 border border-border-subtle">
+              Batch #BD-007
+            </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Bidar, Karnataka</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">20 Days Lead</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-text-primary tracking-tight font-semibold line-clamp-1">
+              Bidri Silver Inlay Floral Bud Vase
+            </h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+              Mohd. Rasheed · Pure silver wire inlay
+            </p>
+<div class="pt-space-xs border-t border-border-subtle flex justify-between items-baseline">
+<div>
+<span class="text-headline-sm font-headline-sm text-text-primary font-bold">₹3,400</span>
+<span class="text-label-sm font-label-sm text-text-secondary"> / pc</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-tertiary">Min. 6 pcs</span>
+</div>
+</div>
+</div>
+<div class="px-space-md pb-space-md pt-space-xs flex items-center gap-space-xs">
+<button class="sharp-edge flex-1 bg-surface-container-low hover:bg-primary hover:text-on-primary text-text-primary border border-border-subtle text-label-sm font-label-sm py-2 transition-colors duration-150">
+            Inquire Batch
+          </button>
+<button class="sharp-edge px-space-xs py-2 border border-border-subtle text-text-secondary hover:text-text-primary hover:border-primary text-label-sm font-label-sm transition-colors" title="Download Technical Spec Sheet">
+            Spec
+          </button>
+</div>
+</article>
+</div>
+<!-- PAGINATION & PROGRESS COUNTER -->
+<div class="mt-space-2xl pt-space-xl border-t border-border-subtle flex flex-col items-center justify-center space-y-space-md">
+<div class="flex items-center space-x-3 text-label-sm font-label-sm text-text-secondary">
+<span>Showing 8 of 48 Studio Batches</span>
+<span class="w-32 h-1 bg-border-subtle inline-block relative">
+<span class="absolute left-0 top-0 h-full w-1/6 bg-primary"></span>
+</span>
+</div>
+<button class="sharp-edge border border-border-strong hover:border-primary bg-surface-container-lowest hover:bg-surface-container-low text-text-primary text-label-md font-label-md px-space-xl py-space-sm transition-colors flex items-center space-x-2">
+<span>Load More Batches</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</main>
+<!-- TRADE & INSTITUTION SOURCING BANNER -->
+<section class="bg-surface-container border-t border-border-subtle">
+<div class="w-full max-w-container-max-w mx-auto px-gutter-desktop py-space-2xl">
+<div class="border border-border-subtle p-space-xl bg-surface-container-lowest grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<div class="lg:col-span-8 space-y-space-xs">
+<span class="text-label-sm font-label-sm text-primary font-semibold tracking-wider uppercase">Institutional &amp; Interior Architecture Desk</span>
+<h2 class="text-headline-lg font-headline-lg text-text-primary tracking-tight">
+            Commission Custom Batches Directly with Craft Masters
+          </h2>
+<p class="text-body-md font-body-md text-text-secondary max-w-2xl">
+            For hospitality groups, luxury residences, and public installations. Direct custom dimensioning, high-volume kiln allocation, and verified geographical indication (GI) certificates supplied per consignment.
+          </p>
+<div class="flex flex-wrap gap-space-md pt-space-sm text-label-sm font-label-sm text-text-tertiary">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm text-forest-green mr-1">check_circle</span> Verified Material Origin</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm text-forest-green mr-1">check_circle</span> Lab Safety Certified Finishes</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm text-forest-green mr-1">check_circle</span> Direct Artisan Remittance</span>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-xs">
+<button class="sharp-edge bg-primary hover:bg-accent-terracotta-dark text-on-primary text-label-md font-label-md px-space-lg py-3 transition-colors text-center">
+            Connect with Procurement Desk
+          </button>
+<button class="sharp-edge border border-border-subtle hover:border-primary text-text-primary bg-surface-container-lowest text-label-md font-label-md px-space-lg py-3 transition-colors text-center">
+            Download 2025 Specifier Index
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-surface-container border-t border-border-subtle">
+<div class="w-full max-w-container-max-w mx-auto px-gutter-desktop py-space-xl flex flex-col md:flex-row justify-between items-center gap-space-md">
+<!-- Brand & Copyright -->
+<div class="flex flex-col space-y-1 text-center md:text-left">
+<span class="text-headline-sm font-headline-sm text-primary font-bold">Craftigari</span>
+<p class="text-body-sm font-body-sm text-text-secondary">
+          © 2025 Craftigari AI. Verified Lineage &amp; Transparent Artisan Provenance.
+        </p>
+</div>
+<!-- Protocol & Legal Links -->
+<nav class="flex flex-wrap justify-center gap-x-space-md gap-y-space-xs text-body-sm font-body-sm">
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Provenance Standard</a>
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Batch Logistics &amp; Freight</a>
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Fair Floor Pricing Protocol</a>
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Artisan Cluster Map</a>
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Contact Procurement Desk</a>
+<a class="text-text-secondary hover:text-accent-terracotta-dark transition-colors duration-200" href="#">Privacy Policy</a>
+</nav>
+</div>
+</footer>
+</body></html>

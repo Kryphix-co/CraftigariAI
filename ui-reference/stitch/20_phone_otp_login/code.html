@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari AI - Phone OTP Login</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Engine -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-primary-fixed-variant": "#474746",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "on-surface": "#1f1f1f",
+            "outline-variant": "#c4c7c7",
+            "surface-dim": "#d7dae0",
+            "outline": "#dadce0",
+            "surface-container-high": "#e8eaed",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary-container": "#1f1f1f",
+            "primary-container": "#f1f3f4",
+            "on-tertiary-fixed": "#390c00",
+            "primary": "#060607",
+            "error-container": "#ffdad6",
+            "tertiary": "#140200",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "secondary": "#5b5f64",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcf",
+            "tertiary-container": "#3f0e00",
+            "surface-container-highest": "#dfe3e8",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-container-low": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-tint": "#5f5e5e",
+            "secondary-container": "#f1f3f4",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#e5e2e1",
+            "on-tertiary-container": "#d46740",
+            "secondary-fixed": "#dfe3e8",
+            "surface-bright": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-background": "#181c20",
+            "inverse-on-surface": "#eef1f7",
+            "error": "#d93025",
+            "surface": "#ffffff",
+            "background": "#f7f9ff",
+            "on-secondary-fixed": "#181c20",
+            "surface-variant": "#dfe3e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-24": "1.5rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-64": "4rem",
+            "space-40": "2.5rem",
+            "gutter": "1rem",
+            "container-max": "75rem",
+            "space-20": "1.25rem",
+            "space-16": "1rem",
+            "space-32": "2rem"
+          },
+          "fontFamily": {
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-full flex flex-col antialiased selection:bg-surface-container-high">
+<!-- Top App Bar (Task-specific navigation shell: BottomNav suppressed as per Transactional/Auth screen mandate) -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface h-14 max-w-container-max mx-auto px-space-16 flex items-center justify-between shadow-[0_1px_0_0_#dadce0]">
+<div class="flex items-center gap-space-12">
+<button aria-label="Go Back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title text-title text-on-surface tracking-tight">लॉगिन / Login</h1>
+</div>
+<div class="flex items-center gap-space-8">
+<button aria-label="Audio Instructions" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-lg mx-auto pt-20 pb-space-32 px-space-16 flex flex-col justify-between">
+<div class="w-full space-y-space-24">
+<!-- Screen Greeting & Headline -->
+<section class="space-y-space-8 pt-space-8">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container border border-outline text-label-small font-label-small text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span>कारीगर प्रमाणीकरण • Artisan Access</span>
+</div>
+<h2 class="font-display text-display text-on-surface tracking-tight">
+          Craftigari में आपका स्वागत है
+        </h2>
+<p class="font-body-medium text-body-medium text-on-surface-variant">
+          शुरू करने के लिए अपना 10 अंकों का मोबाइल नंबर दर्ज करें
+        </p>
+</section>
+<!-- Section 1: Phone Number Input State -->
+<section class="bg-surface-container-low border border-outline rounded-xl p-space-16 space-y-space-12">
+<div class="flex items-center justify-between">
+<label class="font-label text-label text-on-surface-variant" for="phone-input">
+            मोबाइल नंबर (Mobile Number)
+          </label>
+<!-- Status: 'OTP भेजा गया' -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline font-label-small text-label-small text-success">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>OTP भेजा गया</span>
+</span>
+</div>
+<div class="flex items-stretch rounded-xl border border-outline bg-surface overflow-hidden focus-within:border-primary transition-colors">
+<div class="flex items-center px-space-12 bg-surface-container border-r border-outline select-none">
+<span class="font-title text-title text-on-surface">🇮🇳 +91</span>
+</div>
+<input class="w-full px-space-12 py-2.5 bg-transparent font-title text-title text-on-surface border-0 focus:ring-0 focus:outline-none tracking-wider" id="phone-input" readonly="" type="tel" value="98765 43210"/>
+<button class="px-space-12 font-label text-label text-on-surface-variant hover:text-on-surface underline underline-offset-2 flex items-center self-center transition-colors" type="button">
+            बदलें
+          </button>
+</div>
+</section>
+<!-- Section 2: Active OTP Verification Card -->
+<section class="bg-surface border border-outline rounded-xl p-space-20 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)] space-y-space-20">
+<div class="space-y-space-4">
+<h3 class="font-headline text-headline text-on-surface">
+            4 अंकों का OTP कोड दर्ज करें
+          </h3>
+<p class="font-body-medium text-body-medium text-on-surface-variant">
+            +91 98765 43210 पर कोड भेजा गया है · 
+            <button class="text-on-surface font-title text-body-medium underline underline-offset-2 hover:opacity-80 transition-opacity" type="button">
+              [नंबर बदलें]
+            </button>
+</p>
+</div>
+<!-- 4 Large OTP Input Boxes -->
+<div class="flex items-center justify-between gap-space-12 max-w-sm mx-auto py-space-4">
+<!-- Box 1: Filled (4) -->
+<div class="w-16 h-16 rounded-xl border border-outline bg-surface-container-low flex items-center justify-center transition-all">
+<span class="font-display text-display text-on-surface font-semibold">4</span>
+</div>
+<!-- Box 2: Filled (8) -->
+<div class="w-16 h-16 rounded-xl border border-outline bg-surface-container-low flex items-center justify-center transition-all">
+<span class="font-display text-display text-on-surface font-semibold">8</span>
+</div>
+<!-- Box 3: Filled (2) -->
+<div class="w-16 h-16 rounded-xl border border-outline bg-surface-container-low flex items-center justify-center transition-all">
+<span class="font-display text-display text-on-surface font-semibold">2</span>
+</div>
+<!-- Box 4: Active/Focus with blinking cursor indicator -->
+<div class="relative w-16 h-16 rounded-xl border-2 border-primary bg-surface flex items-center justify-center shadow-sm">
+<span class="inline-block w-0.5 h-7 bg-primary animate-pulse"></span>
+</div>
+</div>
+<!-- Resend Timer Row -->
+<div class="flex items-center justify-between pt-space-4 border-t border-outline-variant/60">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label text-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span>कोड नहीं मिला? <span class="text-on-surface font-semibold">00:38</span> बाद पुनः भेजें</span>
+</div>
+<button class="font-label text-label text-outline-variant cursor-not-allowed font-medium" disabled="" type="button">
+            पुनः भेजें (Resend)
+          </button>
+</div>
+</section>
+<!-- Security / Auto-detect Info Badge -->
+<div class="flex items-start gap-space-12 p-space-12 rounded-xl bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mt-0.5" data-icon="sms">sms</span>
+<div class="text-on-surface-variant font-body text-body space-y-0.5">
+<span class="text-on-surface font-medium block">स्वचालित OTP पहचान (Auto-detect active)</span>
+<span>एसएमएस आते ही आपका कोड स्वतः भर दिया जाएगा।</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Zone -->
+<div class="pt-space-32 space-y-space-16">
+<!-- Primary Full-Width CTA: 52px height (#1F1F1F charcoal primary) -->
+<button class="w-full h-[52px] rounded-xl bg-[#1f1f1f] text-on-primary font-title text-title flex items-center justify-center gap-2 hover:bg-[#303030] transition-all duration-150 active:scale-[0.99] shadow-sm" type="button">
+<span>सत्यापित करें और आगे बढ़ें</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Context Note at Bottom -->
+<p class="text-center font-body text-body text-on-surface-variant px-space-8">
+        कोई पासवर्ड याद रखने की ज़रूरत नहीं। नया खाता स्वतः बन जाएगा।
+      </p>
+<!-- Trust Footer Info -->
+<div class="flex items-center justify-center gap-space-16 pt-space-8 text-on-surface-variant font-label-small text-label-small">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+          256-बिट सुरक्षित एन्क्रिप्शन
+        </span>
+<span>•</span>
+<span>शिल्प और कला मंच</span>
+</div>
+</div>
+</main>
+<script>
+    // Lightweight atmospheric interaction for mock input experience
+    document.addEventListener('DOMContentLoaded', () => {
+      // Allow clicking on inputs to simulate typing focus
+      const otpContainer = document.querySelector('section:has(.animate-pulse)');
+      if (otpContainer) {
+        otpContainer.addEventListener('click', () => {
+          const cursor = document.querySelector('.animate-pulse');
+          if (cursor) {
+            cursor.classList.toggle('bg-primary');
+          }
+        });
+      }
+    });
+  </script>
+</body></html>

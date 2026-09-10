@@ -1,0 +1,236 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="hi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>कदम 2 / 4: बोलकर बताएं - Craftigari</title>
+<!-- Google Fonts: Plus Jakarta Sans & Noto Sans Devanagari -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#f1f3f4",
+            "background": "#f7f9ff",
+            "primary-container": "#1f1f1f",
+            "on-primary": "#ffffff",
+            "secondary-container": "#f1f3f4",
+            "inverse-on-surface": "#eef1f7",
+            "on-tertiary-fixed": "#390c00",
+            "surface-container-highest": "#dadce0",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f1f4fa",
+            "on-error": "#ffffff",
+            "tertiary-container": "#3f0e00",
+            "secondary-fixed-dim": "#c3c7cc",
+            "secondary": "#5b5f64",
+            "on-primary-fixed": "#1b1b1c",
+            "surface-container-high": "#e8eaed",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "tertiary": "#140200",
+            "surface-tint": "#5f5e5e",
+            "success": "#137333",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#e8eaed",
+            "error": "#d93025",
+            "on-primary-container": "#888686",
+            "outline": "#dadce0",
+            "on-secondary-container": "#1f1f1f",
+            "warning": "#b06000",
+            "surface-dim": "#d7dae0",
+            "on-background": "#181c20",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-container": "#d46740",
+            "surface": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary-fixed-variant": "#802a05",
+            "tertiary-fixed": "#ffdbcf",
+            "primary-fixed-dim": "#c8c6c5",
+            "primary-fixed": "#e5e2e1",
+            "on-surface": "#1f1f1f",
+            "secondary-fixed": "#dfe3e8",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-surface": "#2d3135",
+            "on-secondary-fixed-variant": "#43474c",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "tertiary-fixed-dim": "#ffb59c",
+            "inverse-primary": "#c8c6c5",
+            "terracotta": "#a8421e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-64": "4rem",
+            "container-max": "75rem",
+            "space-16": "1rem",
+            "space-40": "2.5rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "gutter": "1rem",
+            "space-48": "3rem",
+            "space-20": "1.25rem",
+            "space-2": "0.125rem",
+            "space-24": "1.5rem",
+            "space-12": "0.75rem",
+            "space-4": "0.25rem"
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "body-medium": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "label-small": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "body": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "label": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "title": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"],
+            "headline": ["Plus Jakarta Sans", "Noto Sans Devanagari", "sans-serif"]
+          },
+          fontSize: {
+            "display": ["28px", { lineHeight: "36px", fontWeight: "700" }],
+            "body-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+            "label-small": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "body": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "label": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "title": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline": ["20px", { lineHeight: "28px", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", sans-serif;
+      min-height: max(884px, 100dvh);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blink {
+      animation: blink 1s infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-white text-on-surface antialiased flex flex-col justify-between selection:bg-surface-container selection:text-primary">
+<!-- Main Container: Mobile viewport bounded to max 440px -->
+<div class="w-full max-w-[440px] mx-auto min-h-screen bg-white flex flex-col justify-between px-space-20 py-space-16 sm:px-space-24">
+<!-- TOP SECTION: Navigation, Progress Bar, Product Row -->
+<div class="w-full flex flex-col space-y-space-16">
+<!-- Top Step & Action Bar -->
+<header class="flex items-center justify-between pt-space-4">
+<button aria-label="पिछला कदम" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<!-- Segmented Compact Step -->
+<div class="flex items-center gap-space-8">
+<span class="font-title text-title text-[#1F1F1F]">कदम 2 / 4: बोलकर बताएं</span>
+</div>
+<button aria-label="ध्वनि निर्देश" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-[#5F6368] hover:bg-surface-container transition-colors" title="ध्वनि निर्देश सुनें">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</header>
+<!-- 4-Step Progress Indicator Bar -->
+<div class="w-full grid grid-cols-4 gap-1.5 py-space-2">
+<div class="h-1 rounded-full bg-[#1F1F1F]"></div>
+<div class="h-1 rounded-full bg-[#1F1F1F]"></div>
+<div class="h-1 rounded-full bg-[#E8EAED]"></div>
+<div class="h-1 rounded-full bg-[#E8EAED]"></div>
+</div>
+<!-- Small Quiet Product Context Row -->
+<div class="flex items-center justify-between px-space-12 py-space-8 rounded-xl bg-surface-bright border border-outline-variant">
+<div class="flex items-center gap-space-12">
+<img alt="मिट्टी का फूलदान" class="w-10 h-10 rounded-lg object-cover bg-surface-container border border-outline-variant flex-shrink-0" data-alt="A clean top-down studio shot of a handcrafted terracotta ceramic vase with gentle carved concentric textures, rendered against a soft neutral studio backdrop in warm ambient natural lighting with crisp shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARjRmCIpZdZBNjnPSNStvY433ZIo4wu85OobF9wQEnJlXQPcXAETtKZrSADS6gYMH03un5FAvXTqnpn4rwadXTX3jJW944EAIiGhmglhkP4eTHpZLKYs25-xCChuLZ9di-wcwSB_0AGp6c5Wcai5oMXiYszLuNdR8Shmxp8uFVIbRLfxKycaLXNP76nuwR7dag-BH3i7femmqTxPFwkaqpyyoJc60ByO8506SGuSPObYddkOkPyx8">
+<div class="flex flex-col">
+<span class="font-title text-[14px] text-on-surface leading-tight font-medium">मिट्टी का फूलदान</span>
+<span class="font-label text-label-small text-[#5F6368] mt-0.5">शिल्प पहचान क्र. #284</span>
+</div>
+</div>
+<!-- Quiet status dot badge -->
+<div class="flex items-center gap-1.5 px-space-8 py-1 rounded-full bg-surface-container-low border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-[#137333]"></span>
+<span class="font-label text-label-small text-[#137333]">तस्वीर सुरक्षित</span>
+</div>
+</div>
+</div>
+<!-- MAIN OPEN UTILITY CONTENT AREA (Uncontained & Card-Free) -->
+<div class="w-full flex flex-col flex-1 pt-6 pb-2">
+<!-- Large Heading & Helper Line -->
+<div>
+<h1 class="text-[23px] leading-[32px] font-bold text-[#1F1F1F] tracking-tight">
+        अपने उत्पाद के बारे में बताएं
+      </h1>
+<p class="text-[14px] text-[#5F6368] mt-1 leading-normal">
+        जैसे आप किसी ग्राहक को समझा रहे हों
+      </p>
+</div>
+<!-- Microphone & Live Audio State -->
+<div class="flex flex-col items-center justify-center mt-7 mb-6">
+<!-- 72px Circular Charcoal Mic Button on Pure White -->
+<button aria-label="ध्वनि रिकॉर्डिंग रोकें या चालू करें" class="w-[72px] h-[72px] rounded-full bg-[#1F1F1F] text-white flex items-center justify-center shadow-md hover:bg-[#2D3135] active:scale-95 transition-all focus:outline-none" type="button" style="width: 72px; height: 72px; min-width: 72px; min-height: 72px; aspect-ratio: 1 / 1; border-radius: 50% !important;">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<!-- Status Row (Indicator dot + Status + Timer, No pill) -->
+<div class="flex items-center gap-2 mt-[14px]">
+<span class="w-2 h-2 rounded-full bg-[#137333] animate-pulse"></span>
+<span class="text-[14px] font-medium text-[#1F1F1F]">सुन रहे हैं</span>
+<span class="text-[13px] text-[#5F6368] font-normal ml-0.5">00:28</span>
+</div>
+<!-- Live Waveform (~260px wide, 24px high subtle terracotta sine wave) -->
+<div class="w-full max-w-[320px] h-[24px] flex items-center justify-center mt-3.5 opacity-75"><svg class="w-full h-full" fill="none" viewBox="0 0 320 24" xmlns="http://www.w3.org/2000/svg"><path d="M 4 12 C 16 7, 24 17, 36 12 C 48 7, 56 17, 68 12 C 80 5, 92 19, 104 12 C 116 5, 128 19, 140 12 C 152 4, 164 20, 176 12 C 188 4, 200 20, 212 12 C 224 6, 236 18, 248 12 C 260 6, 272 18, 284 12 C 296 8, 308 16, 316 12" stroke="#e08d72" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" opacity="0.85"></path></svg></div>
+</div>
+<!-- Live Transcript Section (Completely Uncontained, No Card) -->
+<div class="w-full mt-1">
+<div class="text-[13px] font-semibold uppercase tracking-wider text-[#5F6368] mb-1.5">
+        आपने कहा
+      </div>
+<p class="text-[16px] leading-relaxed text-[#202124] font-normal">
+        “यह लाल मिट्टी का हाथ से तराशा हुआ फूलदान है, प्राकृतिक रंगों से रंगा है और इसे बनाने में मुझे ३ दिन लगे।”<span class="inline-block w-0.5 h-4 ml-1 -mb-0.5 bg-[#1F1F1F] cursor-blink"></span>
+</p>
+</div>
+<!-- Subtle Divider -->
+<div class="w-full border-t border-[#E8EAED] my-5"></div>
+<!-- Identified Facts Row (Lightweight inline text row, No card badges) -->
+<div class="w-full">
+<div class="text-[12px] font-medium text-[#5F6368] mb-1.5">
+        पहचानी गई जानकारी
+      </div>
+<div class="text-[14px] font-medium text-[#202124] flex items-center flex-wrap gap-x-2 gap-y-1">
+<span class="">लाल मिट्टी</span>
+<span class="text-[#A8421E] text-[12px] font-bold">·</span>
+<span class="">प्राकृतिक रंग</span>
+<span class="text-[#A8421E] text-[12px] font-bold">·</span>
+<span class="">लगभग 3 दिन</span>
+</div>
+</div>
+</div>
+<!-- BOTTOM ACTION GROUP: Primary CTA & Quiet Reset Option -->
+<div class="w-full flex flex-col items-center pt-3 pb-1">
+<button class="w-full h-[52px] rounded-xl bg-[#1F1F1F] text-white font-semibold text-[16px] flex items-center justify-center gap-2 hover:bg-[#303030] active:scale-[0.99] transition-all focus:outline-none" type="button">
+<span class="">आगे बढ़ें</span>
+<span class="text-[18px]">→</span>
+</button>
+<button class="mt-2.5 py-1.5 px-4 text-[#5F6368] hover:text-[#1F1F1F] text-[13.5px] font-medium inline-flex items-center gap-1.5 transition-colors focus:outline-none" type="button">
+<span class="text-[15px]">⟲</span>
+<span class="">फिर से रिकॉर्ड करें</span>
+</button>
+</div>
+</div>
+
+
+</body></html>

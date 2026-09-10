@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background text-on-surface" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>कारीगर से पूछें / Inquire with Artisan - Craftigari</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "tertiary": "#140200",
+            "on-secondary-container": "#1f1f1f",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#e8eaed",
+            "surface-container-highest": "#dfe3e8",
+            "success": "#137333",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#181c20",
+            "secondary-container": "#dde0e6",
+            "surface-container-high": "#e8eaed",
+            "surface-container": "#ebeef4",
+            "outline": "#dadce0",
+            "on-surface-variant": "#444748",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#e5e2e1",
+            "surface-bright": "#ffffff",
+            "surface-tint": "#5f5e5e",
+            "tertiary-fixed": "#ffdbcf",
+            "error": "#d93025",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9ff",
+            "surface-container-low": "#f8f9fa",
+            "on-background": "#181c20",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-tertiary-container": "#d46740",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#3f0e00",
+            "surface-dim": "#f8f9fa",
+            "inverse-primary": "#c8c6c5",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "inverse-on-surface": "#eef1f7",
+            "primary": "#060607",
+            "inverse-surface": "#2d3135",
+            "primary-container": "#1f1f1f",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-tertiary-fixed": "#390c00",
+            "on-surface": "#181c20",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dfe3e8",
+            "surface": "#ffffff",
+            "on-primary-fixed-variant": "#474746",
+            "secondary-fixed-dim": "#c3c7cc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-8": "0.5rem",
+            "space-16": "1rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-64": "4rem",
+            "container-max": "75rem",
+            "space-12": "0.75rem",
+            "gutter": "1rem",
+            "space-40": "2.5rem",
+            "space-32": "2rem",
+            "space-48": "3rem",
+            "space-20": "1.25rem",
+            "space-24": "1.5rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-surface-dim font-body text-body text-on-surface flex justify-center selection:bg-tertiary-fixed selection:text-tertiary">
+<!-- Mobile Viewport Wrapper (390px class device container) -->
+<div class="w-full max-w-[420px] min-h-screen bg-surface flex flex-col relative shadow-sm">
+<!-- Top Navigation Bar (Shared Shell Component with sub-page back flow) -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-space-16 h-14 bg-surface/95 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-space-12">
+<button aria-label="Go Back" class="w-9 h-9 rounded-xl flex items-center justify-center text-primary hover:bg-surface-container transition-colors active:scale-95" onclick="history.back()" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-title text-body-medium font-semibold text-primary tracking-tight">कारीगर से पूछें</span>
+<span class="font-label-small text-label-small text-secondary">Inquire with Artisan</span>
+</div>
+</div>
+<div class="flex items-center gap-space-8">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-small text-label-small bg-surface-container text-secondary font-medium">
+          Direct Connect
+        </span>
+</div>
+</header>
+<!-- Scrollable Form Container -->
+<main class="flex-1 px-space-16 pt-space-16 pb-32 flex flex-col gap-space-20">
+<!-- Product Context Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-space-12 flex items-center gap-space-12 transition-all">
+<div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-surface border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A studio shot of an authentic Indian handcrafted terracotta kalash vase featuring intricate floral relief etchings, set against an earthy neutral warm grey backdrop with soft diffused gallery lighting highlighting genuine handmade earthenware textures in terracotta red and natural clay tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCR7rKbCVkztBl2j5hej2iszE7NrdRWBcoyF2I9xmk0RN9uFccjZ_J6YtXavI7zH5fvmdW3azjBBCmZOTgzQvXaiwmA8h2oeyzg69SF1t1anrtxrA3k6J3PdSz05N_JmbGPu2aRGh2fcHdFaDok7ezTnRJnu7vfIrM8lkbub1Vg0wX6cA2ax2eapH47M1HsE7SwoOea6t-mMcpGJK7rxPl0nwcZ5B1HTJK7174362iRr3JVLxVWnE"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-4 mb-0.5">
+<span class="font-label-small text-label-small text-on-tertiary-container font-semibold">हस्तशिल्प / Terracotta</span>
+</div>
+<h2 class="font-title text-body-medium font-semibold text-primary truncate">पारंपरिक टेराकोटा कलश</h2>
+<p class="font-label text-label text-secondary flex items-center gap-1">
+<span class="text-primary font-semibold">₹1,150</span> / piece 
+            <span class="text-outline">•</span>
+<span class="text-secondary font-normal">कारीगर: राम सिंह (अलवर)</span>
+</p>
+</div>
+</section>
+<!-- Trust Direct Connect Banner -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-space-12 flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-full bg-surface flex items-center justify-center text-on-tertiary-container flex-shrink-0 mt-0.5 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="handshake">handshake</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-title text-label font-semibold text-primary">सीधा संपर्क (No Middlemen)</span>
+<span class="material-symbols-outlined text-success text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body text-label text-secondary leading-snug">
+            कोई बिचौलिया नहीं — आपका संदेश सीधे कारीगर राम सिंह को भेजा जाएगा। वे स्वयं आपके व्हाट्सएप/फोन पर संपर्क करेंगे।
+          </p>
+</div>
+</div>
+<!-- Primary Form -->
+<form class="flex flex-col gap-space-16" id="inquiryForm" onsubmit="event.preventDefault(); submitInquiry();">
+<!-- Field: Quantity -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-baseline">
+<label class="font-title text-label font-semibold text-primary" for="quantity">
+              मात्रा (संख्या) <span class="font-normal text-secondary">/ Required Quantity</span>
+</label>
+<span class="font-label-small text-label-small text-on-tertiary-container">Bulk orders preferred</span>
+</div>
+<div class="relative">
+<input class="w-full h-12 px-space-12 bg-surface text-primary border border-outline rounded-xl font-body text-body-medium focus:border-primary focus:ring-0 transition-colors placeholder:text-secondary" id="quantity" name="quantity" placeholder="e.g. 50 pieces or 100 sets" required="" type="text" value="80 pieces"/>
+<div class="absolute right-3 top-3 text-secondary pointer-events-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory">inventory</span>
+</div>
+</div>
+</div>
+<!-- Field: Delivery City / Pincode -->
+<div class="flex flex-col gap-1.5">
+<label class="font-title text-label font-semibold text-primary" for="location">
+            डिलीवरी का शहर या पिनकोड <span class="font-normal text-secondary">/ Delivery Location</span>
+</label>
+<div class="relative">
+<input class="w-full h-12 px-space-12 bg-surface text-primary border border-outline rounded-xl font-body text-body-medium focus:border-primary focus:ring-0 transition-colors placeholder:text-secondary" id="location" name="location" placeholder="e.g. Mumbai 400001 या जयपुर" required="" type="text"/>
+<div class="absolute right-3 top-3 text-secondary pointer-events-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on">location_on</span>
+</div>
+</div>
+</div>
+<!-- Field: Requirement Details -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-baseline">
+<label class="font-title text-label font-semibold text-primary" for="details">
+              अपनी ज़रूरत का विवरण <span class="font-normal text-secondary">/ Custom Requirement</span>
+</label>
+<span class="font-label-small text-label-small text-secondary">कस्टमाइजेशन संभव</span>
+</div>
+<textarea class="w-full p-space-12 bg-surface text-primary border border-outline rounded-xl font-body text-body-medium focus:border-primary focus:ring-0 transition-colors placeholder:text-secondary resize-none" id="details" name="details" placeholder="जैसे: हमें 15 दिनों में लाल रंग के 80 पीस चाहिए, साथ ही लकड़ी का बेस चाहिए। (e.g., I need 80 pieces in natural terracotta finish delivered within 15 days for festive gifting)." rows="3"></textarea>
+</div>
+<!-- Contact Section Divider -->
+<div class="pt-space-8 border-t border-outline-variant flex flex-col gap-space-12">
+<div>
+<h3 class="font-title text-body-medium font-semibold text-primary">आपकी संपर्क जानकारी</h3>
+<p class="font-label-small text-label-small text-secondary">कारीगर आपसे कैसे संपर्क करें? किसी खाते या पासवर्ड की ज़रूरत नहीं है।</p>
+</div>
+<!-- Field: Buyer Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-title text-label font-semibold text-primary" for="buyer_name">
+              आपका नाम <span class="font-normal text-secondary">/ Your Name or Organization</span>
+</label>
+<input class="w-full h-12 px-space-12 bg-surface text-primary border border-outline rounded-xl font-body text-body-medium focus:border-primary focus:ring-0 transition-colors placeholder:text-secondary" id="buyer_name" name="buyer_name" placeholder="e.g. राजेश शर्मा / Studio Craft" required="" type="text"/>
+</div>
+<!-- Field: WhatsApp / Phone -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-baseline">
+<label class="font-title text-label font-semibold text-primary" for="contact_number">
+                व्हाट्सएप / मोबाइल नंबर <span class="font-normal text-secondary">/ WhatsApp or Mobile</span>
+</label>
+<span class="font-label-small text-label-small text-success flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[13px]" data-icon="chat">chat</span> WhatsApp Reply
+              </span>
+</div>
+<div class="flex rounded-xl border border-outline overflow-hidden focus-within:border-primary transition-colors">
+<span class="inline-flex items-center px-space-12 bg-surface-container text-primary font-title text-body-medium font-medium border-r border-outline select-none">
+                +91
+              </span>
+<input class="w-full h-12 px-space-12 bg-surface text-primary border-0 font-body text-body-medium focus:ring-0 placeholder:text-secondary" id="contact_number" name="contact_number" placeholder="98765 43210" required="" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Privacy & Protection Micro-Note -->
+<div class="flex items-center gap-space-8 text-secondary font-label-small text-label-small pt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="lock">lock</span>
+<span>आपका नंबर सुरक्षित है। हम कभी स्पैम संदेश या विज्ञापन नहीं भेजते।</span>
+</div>
+</form>
+</main>
+<!-- Persistent Bottom Action Area (Floating docked surface) -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[420px] mx-auto bg-surface/95 backdrop-blur-md p-space-16 border-t border-outline-variant shadow-lg z-40">
+<div class="flex flex-col gap-2">
+<button class="w-full h-[52px] bg-primary-container hover:bg-primary text-surface rounded-xl font-title text-body-medium font-semibold flex items-center justify-center gap-space-8 active:scale-98 transition-all shadow-sm" form="inquiryForm" type="submit">
+<span>पूछताछ भेजें / Send Inquiry</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-label-small text-label-small text-center text-secondary">
+          सीधे कारीगर राम सिंह को त्वरित अलर्ट भेजा जाएगा
+        </p>
+</div>
+</div>
+<!-- Feedback Toast Modal Simulation -->
+<div class="fixed top-16 left-4 right-4 max-w-[388px] mx-auto bg-surface border border-outline rounded-xl p-space-16 shadow-xl z-50 transform -translate-y-24 opacity-0 pointer-events-none transition-all duration-300" id="toastSuccess">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-success flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-title text-body-medium font-semibold text-primary">पूछताछ सफलतापूर्वक भेज दी गई!</p>
+<p class="font-body text-label text-secondary mt-0.5">कारीगर राम सिंह को आपका संदेश मिल गया है। वे जल्द ही आपसे संपर्क करेंगे।</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    function submitInquiry() {
+      const toast = document.getElementById('toastSuccess');
+      toast.classList.remove('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+  </script>
+</body></html>

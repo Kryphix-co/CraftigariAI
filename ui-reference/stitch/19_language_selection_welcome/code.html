@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari नमस्ते - भाषा चयन</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration strictly matching design tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-primary-fixed-variant": "#474746",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "on-surface": "#1f1f1f",
+            "outline-variant": "#c4c7c7",
+            "surface-dim": "#d7dae0",
+            "outline": "#dadce0",
+            "surface-container-high": "#e8eaed",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary-container": "#1f1f1f",
+            "primary-container": "#f1f3f4",
+            "on-tertiary-fixed": "#390c00",
+            "primary": "#060607",
+            "error-container": "#ffdad6",
+            "tertiary": "#140200",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "secondary": "#5b5f64",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcf",
+            "tertiary-container": "#3f0e00",
+            "surface-container-highest": "#dfe3e8",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-container-low": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-tint": "#5f5e5e",
+            "secondary-container": "#f1f3f4",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#e5e2e1",
+            "on-tertiary-container": "#d46740",
+            "secondary-fixed": "#dfe3e8",
+            "surface-bright": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-background": "#181c20",
+            "inverse-on-surface": "#eef1f7",
+            "error": "#d93025",
+            "surface": "#ffffff",
+            "background": "#f7f9ff",
+            "on-secondary-fixed": "#181c20",
+            "surface-variant": "#dfe3e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-24": "1.5rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-64": "4rem",
+            "space-40": "2.5rem",
+            "gutter": "1rem",
+            "container-max": "75rem",
+            "space-20": "1.25rem",
+            "space-16": "1rem",
+            "space-32": "2rem"
+          },
+          "fontFamily": {
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-surface text-on-surface font-body antialiased flex flex-col justify-between selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- Top Navigation Bar from Shared Components Specification -->
+<!-- Context Note: This is an Onboarding Screen (Language Selection), therefore BottomNavBar is suppressed per Destination Rule -->
+<header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-space-16 h-14 bg-surface max-w-container-max mx-auto border-b border-outline">
+<button aria-label="पिछला पृष्ठ" class="w-10 h-10 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container-low transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-primary text-[22px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-space-8">
+<span class="font-headline text-headline text-primary font-bold tracking-tight">Craftigari नमस्ते</span>
+</div>
+<!-- Voice Assist / Volume Trigger for Inclusive Indian Artisan UX -->
+<button aria-label="ध्वनि सहायता सुनें" class="w-10 h-10 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">volume_up</span>
+</button>
+</header>
+<!-- Main Content Area: Pure Modern Utility Aesthetic -->
+<main class="w-full max-w-md mx-auto pt-20 pb-8 px-space-20 flex-1 flex flex-col justify-between">
+<div class="flex flex-col items-center text-center">
+<!-- Brand Artisanal Logo Mark (Modern Geometric Weave / Utility Badge) -->
+<div class="mt-space-12 mb-space-20 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-low border border-outline flex items-center justify-center relative mb-space-12 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-[32px]">gesture</span>
+<div class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-on-tertiary-fixed-variant border-2 border-surface"></div>
+</div>
+<h1 class="font-display text-display text-primary tracking-tight font-bold">
+          Craftigari
+        </h1>
+<p class="font-label text-label text-on-surface-variant mt-space-4 tracking-wide font-medium">
+          Handmade Heritage · Brighter Tomorrows
+        </p>
+</div>
+<!-- Welcome Heading in Hindi with Accessibility Anchor -->
+<div class="space-y-space-8 mb-space-32">
+<div class="inline-flex items-center gap-space-4 px-space-12 py-space-4 rounded-full bg-surface-container-low border border-outline mb-space-8">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-fixed-variant"></span>
+<span class="font-label-small text-label-small text-on-surface uppercase">शुरुआती चरण · Step 1</span>
+</div>
+<h2 class="font-display text-display text-on-surface font-bold tracking-tight">
+          अपनी भाषा चुनें
+        </h2>
+<p class="font-body text-body text-on-surface-variant max-w-xs mx-auto leading-relaxed">
+          Craftigari में आपका स्वागत है। वह भाषा चुनें जिसमें आप सहज महसूस करते हैं।
+        </p>
+</div>
+<!-- Interactive Language Selection Container (52px+ touch targets) -->
+<div aria-label="भाषा चयन" class="w-full space-y-space-12 text-left" role="radiogroup">
+<!-- Option 1: Hindi (Active / Selected State) -->
+<div class="group relative w-full p-space-16 rounded-xl bg-surface border-2 border-primary shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]" id="option-hindi" onclick="selectLanguage('hindi')">
+<div class="flex items-center space-x-space-16">
+<!-- Selected Radio Token -->
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center flex-shrink-0 transition-colors" id="radio-hindi">
+<span class="material-symbols-outlined text-surface text-[16px] font-bold">check</span>
+</div>
+<div>
+<div class="flex items-center gap-space-8">
+<span class="font-title text-title text-primary font-bold">हिंदी</span>
+<span class="font-label-small text-label-small px-space-8 py-0.5 rounded-full bg-surface-container-high text-primary font-semibold">प्राथमिक</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mt-0.5">
+                मुख्य भाषा · बोलकर और लिखकर
+              </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-[24px]">record_voice_over</span>
+</div>
+<!-- Option 2: English (Unselected State) -->
+<div class="group relative w-full p-space-16 rounded-xl bg-surface border border-outline hover:border-surface-dim hover:bg-surface-container-low cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]" id="option-english" onclick="selectLanguage('english')">
+<div class="flex items-center space-x-space-16">
+<!-- Unselected Radio Token -->
+<div class="w-6 h-6 rounded-full border-[1.5px] border-outline bg-surface flex items-center justify-center flex-shrink-0 group-hover:border-on-surface-variant transition-colors" id="radio-english">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+<div>
+<div class="flex items-center gap-space-8">
+<span class="font-title text-title text-on-surface font-semibold">English</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mt-0.5">
+                English · Voice and Text
+              </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[24px]">translate</span>
+</div>
+</div>
+<!-- MVP Footnote & Scope Clarification -->
+<div class="mt-space-16 w-full flex items-center justify-center gap-space-8 py-space-8 px-space-12 rounded-lg bg-surface-container-low border border-surface-container-high text-left">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">info</span>
+<p class="font-label-small text-label-small text-on-surface-variant">
+          वर्तमान में केवल हिंदी और English उपलब्ध हैं (Craftigari MVP).
+        </p>
+</div>
+</div>
+<!-- Bottom Action Zone (52px Touch-Friendly CTA & Reassurance) -->
+<div class="w-full mt-space-32 pt-space-16 border-t border-outline">
+<!-- Full-Width Primary Button (Height 52px, Deep Charcoal) -->
+<button class="w-full h-[52px] px-space-24 rounded-xl bg-primary hover:bg-[#303030] active:scale-[0.99] text-surface font-title text-title flex items-center justify-center gap-space-8 shadow-sm transition-all duration-150 group" type="button">
+<span>जारी रखें</span>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-150 group-hover:translate-x-1">arrow_forward</span>
+</button>
+<!-- Persistent Reassurance -->
+<div class="mt-space-12 flex items-center justify-center gap-space-4 text-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">tune</span>
+<p class="font-label-small text-label-small text-on-surface-variant">
+          आप इसे बाद में प्रोफ़ाइल में कभी भी बदल सकते हैं।
+        </p>
+</div>
+</div>
+</main>
+<!-- Interactive Language Switcher Micro-logic -->
+<script>
+    function selectLanguage(lang) {
+      const hindiCard = document.getElementById('option-hindi');
+      const englishCard = document.getElementById('option-english');
+      const radioHindi = document.getElementById('radio-hindi');
+      const radioEnglish = document.getElementById('radio-english');
+
+      if (lang === 'hindi') {
+        // Activate Hindi
+        hindiCard.className = 'group relative w-full p-space-16 rounded-xl bg-surface border-2 border-primary shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]';
+        radioHindi.className = 'w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center flex-shrink-0 transition-colors';
+        radioHindi.innerHTML = '<span class="material-symbols-outlined text-surface text-[16px] font-bold">check</span>';
+
+        // Deactivate English
+        englishCard.className = 'group relative w-full p-space-16 rounded-xl bg-surface border border-outline hover:border-surface-dim hover:bg-surface-container-low cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]';
+        radioEnglish.className = 'w-6 h-6 rounded-full border-[1.5px] border-outline bg-surface flex items-center justify-center flex-shrink-0 group-hover:border-on-surface-variant transition-colors';
+        radioEnglish.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>';
+      } else {
+        // Activate English
+        englishCard.className = 'group relative w-full p-space-16 rounded-xl bg-surface border-2 border-primary shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]';
+        radioEnglish.className = 'w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center flex-shrink-0 transition-colors';
+        radioEnglish.innerHTML = '<span class="material-symbols-outlined text-surface text-[16px] font-bold">check</span>';
+
+        // Deactivate Hindi
+        hindiCard.className = 'group relative w-full p-space-16 rounded-xl bg-surface border border-outline hover:border-surface-dim hover:bg-surface-container-low cursor-pointer transition-all duration-150 flex items-center justify-between min-h-[72px]';
+        radioHindi.className = 'w-6 h-6 rounded-full border-[1.5px] border-outline bg-surface flex items-center justify-center flex-shrink-0 group-hover:border-on-surface-variant transition-colors';
+        radioHindi.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>';
+      }
+    }
+  </script>
+</body></html>

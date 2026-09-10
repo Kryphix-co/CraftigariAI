@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari नमस्ते — Artisan Fair Deal Shield</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#dde0e6",
+            "surface-container-high": "#e5e8ee",
+            "primary-container": "#f1f3f4",
+            "surface-container-highest": "#dfe3e8",
+            "on-error": "#ffffff",
+            "surface": "#ffffff",
+            "error": "#d93025",
+            "primary-fixed": "#e5e2e1",
+            "surface-container": "#ebeef4",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary-container": "#d46740",
+            "outline-variant": "#c4c7c7",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "outline": "#dadce0",
+            "secondary-fixed-dim": "#c3c7cc",
+            "on-tertiary-fixed": "#390c00",
+            "on-background": "#181c20",
+            "primary": "#060607",
+            "surface-variant": "#dfe3e8",
+            "surface-dim": "#f8f9fa",
+            "secondary-fixed": "#dfe3e8",
+            "on-secondary-fixed": "#181c20",
+            "on-primary-fixed": "#1b1b1c",
+            "on-surface-variant": "#444748",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-primary": "#c8c6c5",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9ff",
+            "success": "#137333",
+            "primary-fixed-dim": "#c8c6c5",
+            "tertiary": "#140200",
+            "on-surface": "#1f1f1f",
+            "surface-container-low": "#f1f4fa",
+            "surface-tint": "#5f5e5e",
+            "on-secondary-fixed-variant": "#43474c",
+            "secondary": "#5b5f64",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-tertiary-fixed-variant": "#802a05",
+            "inverse-surface": "#2d3135",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#3f0e00",
+            "inverse-on-surface": "#eef1f7",
+            "warning": "#b06000",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#1f1f1f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-32": "2rem",
+            "space-24": "1.5rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "space-20": "1.25rem",
+            "space-40": "2.5rem",
+            "space-64": "4rem",
+            "space-48": "3rem",
+            "container-max": "75rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+  </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body min-h-screen flex justify-center selection:bg-surface-container-high selection:text-primary">
+<!-- Mobile Viewport Container (390px bounded Google-utility layout) -->
+<div class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col shadow-[0_0_24px_rgba(0,0,0,0.06)] relative border-x border-outline-variant/30 pb-12">
+<!-- Top Navigation Anchor (Task-Focused with Voice Assist & Back) -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-space-16 h-14 bg-surface/95 backdrop-blur-sm border-b border-outline">
+<div class="flex items-center gap-space-12">
+<button aria-label="वापस जाएं (Go back)" class="w-9 h-9 flex items-center justify-center rounded-xl text-primary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline text-headline text-primary tracking-tight leading-none">डील साथी</span>
+<span class="font-label-small text-label-small text-secondary mt-0.5">Deal Saathi</span>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-all active:scale-95 border border-outline" title="ऑडियो में सुनें (Listen to advice)" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="volume_up">volume_up</span>
+<span class="font-label text-label">सुनें</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-space-16 pt-space-16 pb-space-24 space-y-space-16">
+<!-- Status Indicator Pill -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-space-8 px-space-12 py-1 rounded-full bg-surface-container-low border border-outline text-on-surface">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+<span class="font-label text-label font-medium">कीमत समीक्षा (Price Negotiation)</span>
+</div>
+<span class="font-label-small text-label-small text-secondary">ऑर्डर #CR-8041</span>
+</div>
+<!-- Header Section -->
+<div class="space-y-space-4">
+<h1 class="font-display text-headline text-primary tracking-tight font-bold">खरीदार ने कीमत बदलने को कहा</h1>
+<p class="font-body text-body text-secondary">खरीदार ने 80 पीस के लिए नई दर का प्रस्ताव भेजा है</p>
+</div>
+<!-- Buyer Note Card -->
+<div class="bg-surface-container-low rounded-xl p-space-16 border border-outline-variant space-y-space-8">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-medium text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="chat">chat</span>
+            खरीदार का अनुरोध (Buyer Request):
+          </span>
+<span class="font-label-small text-label-small text-secondary">रोहित टेक्सटाइल्स, जयपुर</span>
+</div>
+<div class="pl-space-8 border-l-2 border-primary bg-surface/60 rounded-r-lg py-2 pr-3">
+<p class="font-body-medium text-body-medium text-primary italic">“Can you do ₹550 per piece for 80 units?”</p>
+</div>
+<div class="flex items-center gap-space-16 text-label-small font-label-small text-secondary pt-1">
+<span>मात्रा: <strong class="text-primary font-semibold">80 पीस</strong></span>
+<span>•</span>
+<span>कुल प्रस्तावित: <strong class="text-primary font-semibold">₹44,000</strong></span>
+</div>
+</div>
+<!-- Price Comparison Breakdown (Calm, structured, transparent) -->
+<div class="bg-surface rounded-xl p-space-16 border border-outline space-y-space-12">
+<div class="flex items-center justify-between pb-space-8 border-b border-outline-variant">
+<span class="font-title text-title text-primary">कीमत तुलना व सुरक्षा स्तर</span>
+<span class="font-label-small text-label-small text-secondary">प्रति पीस दर</span>
+</div>
+<div class="space-y-space-8 text-body font-body">
+<!-- Row 1: Buyer Offer -->
+<div class="flex items-center justify-between py-1 px-space-8 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-body text-body text-secondary">खरीदार की नई कीमत</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface">₹550 / पीस</span>
+</div>
+<!-- Row 2: Artisan Safe Floor -->
+<div class="flex items-center justify-between py-1.5 px-space-8 rounded-lg bg-surface-container border border-outline">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-body-medium text-body-medium text-primary font-semibold">आपकी सुरक्षित न्यूनतम लागत</span>
+</div>
+<span class="font-title text-title font-bold text-primary">₹650 / पीस</span>
+</div>
+<!-- Row 3: Initial Catalog Listing -->
+<div class="flex items-center justify-between py-1 px-space-8">
+<span class="font-body text-body text-secondary pl-3">पहले सुझाई गई दर</span>
+<span class="font-body text-body text-secondary line-through">₹750 / पीस</span>
+</div>
+</div>
+<!-- Metric subtext for artisan trust -->
+<div class="pt-space-8 border-t border-outline-variant flex items-center justify-between text-label-small font-label-small text-secondary">
+<span>कच्चा माल: ₹410 • मजदूरी: ₹240</span>
+<span class="text-success font-medium">लागत विश्लेषण सत्यापित</span>
+</div>
+</div>
+<!-- Fair Deal Shield Explanation Box -->
+<div class="rounded-xl p-space-16 bg-surface-container-low border border-warning/40 space-y-space-12 relative overflow-hidden">
+<div class="flex items-start gap-space-12">
+<div class="w-9 h-9 rounded-lg bg-surface border border-outline flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="balance">balance</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-title text-title text-primary tracking-tight">Craftigari फेयर डील साथी सलाह</h2>
+<p class="font-body text-body text-on-surface leading-snug">
+              यह प्रस्ताव आपकी अनुमानित सुरक्षित लागत (₹650) से ₹100 कम है। इस दर पर काम करने से आपको सामग्री या मेहनत का पूरा मूल्य नहीं मिल पाएगा।
+            </p>
+</div>
+</div>
+<!-- Recommended Counter Proposal Callout -->
+<div class="bg-surface rounded-lg p-space-12 border border-outline space-y-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="lightbulb">lightbulb</span>
+<span class="font-label-small text-label-small font-bold text-primary">सुझाया गया जवाबी प्रस्ताव:</span>
+</div>
+<p class="font-body-medium text-body-medium text-primary font-semibold pl-5">
+            ₹700 / पीस <span class="font-body text-label text-secondary font-normal">(लागत सुरक्षित + उचित कारीगरी लाभ)</span>
+</p>
+</div>
+</div>
+<!-- Actions Area: Artisan Retains Full Agency -->
+<div class="pt-space-8 space-y-space-12">
+<!-- Primary Counter CTA -->
+<button class="w-full h-[52px] rounded-xl bg-primary text-on-primary font-body-medium text-body-medium flex items-center justify-center gap-2 hover:bg-neutral-800 active:scale-[0.99] transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+<span>जवाबी कीमत भेजें (₹700 Counter-Offer)</span>
+</button>
+<!-- Secondary Voice Assist Reply -->
+<button class="w-full h-[50px] rounded-xl bg-surface border border-outline text-primary font-body-medium text-body-medium flex items-center justify-center gap-2 hover:bg-surface-dim active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="mic">mic</span>
+<span>बोलकर जवाब दें (Reply by Voice)</span>
+</button>
+<!-- Low-stress Agency Actions -->
+<div class="flex items-center justify-center gap-space-16 pt-space-4">
+<button class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-colors" type="button">
+            फिर भी ₹550 स्वीकार करें
+          </button>
+<span class="text-outline-variant">•</span>
+<button class="font-label text-label text-secondary hover:text-error transition-colors" type="button">
+            मना करें (Decline Request)
+          </button>
+</div>
+</div>
+<!-- Dignity & Protection Trust Badge -->
+<div class="text-center pt-space-12 pb-space-8">
+<p class="font-label-small text-label-small text-secondary flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+<span>कारीगर अधिकार संरक्षण • Craftigari Fair Trade Assurance</span>
+</p>
+</div>
+</main>
+</div>
+</body></html>

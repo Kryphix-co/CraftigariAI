@@ -1,0 +1,503 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari AI - Operations Overview</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-background": "#181c20",
+            "surface-container-highest": "#dfe3e8",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#1f1f1f",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "outline": "#dadce0",
+            "surface-container": "#ebeef4",
+            "surface-dim": "#d7dae0",
+            "surface-container-high": "#e8eaed",
+            "warning": "#b06000",
+            "error": "#d93025",
+            "secondary-container": "#dde0e6",
+            "tertiary-fixed-dim": "#ffb59c",
+            "tertiary": "#140200",
+            "primary-container": "#1f1f1f",
+            "surface-bright": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "surface-tint": "#5f5e5e",
+            "on-surface": "#181c20",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#5f6368",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "on-primary-container": "#888686",
+            "tertiary-fixed": "#ffdbcf",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "secondary-fixed": "#dfe3e8",
+            "on-tertiary-fixed": "#390c00",
+            "on-tertiary-container": "#d46740",
+            "surface-container-low": "#f8f9fa",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#c4c7c7",
+            "primary-fixed": "#e5e2e1",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "tertiary-container": "#3f0e00",
+            "background": "#f7f9ff",
+            "on-secondary": "#ffffff",
+            "surface": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary-fixed": "#1b1b1c",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-on-surface": "#eef1f7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-48": "3rem",
+            "space-4": "0.25rem",
+            "space-40": "2.5rem",
+            "space-2": "0.125rem",
+            "space-64": "4rem",
+            "space-20": "1.25rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "space-12": "0.75rem",
+            "space-24": "1.5rem",
+            "space-16": "1rem",
+            "gutter": "1rem",
+            "container-max": "75rem"
+          },
+          "fontFamily": {
+            "label": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-background font-body text-body text-on-surface antialiased flex flex-col">
+<!-- Fixed Left Sidebar (SideNavBar Anchor) -->
+<aside class="fixed top-0 left-0 h-screen w-60 z-40 bg-surface-container-low border-r border-outline flex flex-col justify-between p-space-16">
+<!-- Sidebar Top Header & Nav Cluster -->
+<div class="flex flex-col gap-space-20">
+<!-- Brand & Emblem -->
+<div class="flex items-center gap-space-12 px-space-8 py-space-4">
+<img alt="Craftigari Emblem Logo Mark" class="w-8 h-8 rounded-lg object-contain border border-outline bg-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCpaHsuWHZ4PCJWwK711kJP8bo01O9sLcoKo2p6LbWvBwvg6GKBZLmH_eYeySxxCm18OCD_H-Ur-3B_mLLm_Iuu8PHKRqzCfsPfCgJVFZRjULf694h2UB3uDwny5AMjyhxK-Wu3OkUaKEWKSXSPx0qOxEKl7hxBpyyow0LD7duca2EKshq69rfly2n9G--VhqBnP4vSbR76Cd2omQJjUCz3uoSP37_rrXUsGMs1LCuTVAIpJQycNbAEz6d72z1-etk">
+<div class="flex flex-col">
+<span class="font-title text-title font-bold text-primary tracking-tight leading-tight">Craftigari AI</span>
+<span class="font-label-small text-label-small text-on-surface-variant">Simulated Logistics</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+
+<!-- Main Navigation Tabs -->
+<nav class="flex flex-col gap-space-4">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg bg-surface-container-high text-primary font-semibold transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-medium text-body-medium">Dashboard</span>
+</a>
+<!-- Products -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-body-medium text-body-medium">Products</span>
+</a>
+<!-- Artisans -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-body-medium text-body-medium">Artisans</span>
+</a>
+<!-- Inquiries & Deals -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+<span class="font-body-medium text-body-medium">Inquiries &amp; Deals</span>
+</a>
+<!-- Orders -->
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="font-body-medium text-body-medium">Orders</span>
+</a>
+<!-- AI Review -->
+<a class="flex items-center justify-between px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-12">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-body-medium text-body-medium">AI Review</span>
+</div>
+<span class="bg-warning/15 text-warning font-label-small text-label-small px-space-8 py-0.5 rounded-full">5</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-space-4 pt-space-16 border-t border-outline">
+<div class="flex items-center gap-space-8 px-space-12 py-space-8 rounded-lg bg-surface-container text-on-surface font-label text-label"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">science</span><span class="">Test Environment</span></div>
+<a class="flex items-center gap-space-12 px-space-12 py-space-8 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-medium text-body-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Sticky Desktop Top Header (TopNavBar Anchor) -->
+<header class="sticky top-0 right-0 z-30 flex items-center justify-between h-14 pl-64 pr-space-24 w-full bg-surface border-b border-outline">
+<!-- Left Area: Search & Tenant Label -->
+<div class="flex items-center gap-space-16 w-full max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-space-12 top-2.5 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full h-9 pl-9 pr-space-12 bg-surface-container-low border border-outline rounded-xl font-body text-body text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search orders, listings, artisans... (⌘K)" type="text">
+<kbd class="absolute right-2.5 top-2 hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-medium text-on-surface-variant bg-surface border border-outline rounded">⌘K</kbd>
+</div>
+</div>
+<!-- Right Area: Status Badges, Trailing Actions & Profile -->
+<div class="flex items-center gap-space-16">
+<div class="hidden lg:flex items-center gap-space-8 px-space-12 py-1 rounded-full bg-surface-container border border-outline"><span class="w-2 h-2 rounded-full bg-success"></span><span class="font-label-small text-label-small text-on-surface font-semibold">Craftigari Admin</span></div>
+
+<div class="h-5 w-px bg-outline"></div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-space-4">
+<button aria-label="Notifications" class="relative p-space-8 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<button aria-label="Help" class="p-space-8 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<div class="h-5 w-px bg-outline"></div>
+<!-- User Profile -->
+
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 pl-64 pr-space-24 py-space-24">
+<div class="max-w-[1240px] mx-auto flex flex-col gap-space-24">
+<!-- Page Header Banner -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-16 border-b border-outline gap-space-12">
+<div>
+<div class="flex items-center gap-space-8">
+<h1 class="font-display text-headline font-bold text-primary tracking-tight">Operations Overview</h1>
+
+</div>
+<p class="font-body text-body text-on-surface-variant mt-0.5">Internal overview for artisan onboarding, deal negotiations, and simulated fulfilment.</p>
+</div>
+<div class="flex items-center gap-space-8 self-start sm:self-auto bg-surface border border-outline px-space-12 py-1.5 rounded-xl text-on-surface font-label text-label">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+<span class="">Today: Oct 24, 2024 · 14:42 IST</span>
+</div>
+</div>
+<!-- Compact 6-Metric Strip -->
+<section aria-label="Key Operational Metrics" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-space-12">
+<!-- Metric 1 -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-label">Total Products</span>
+<span class="material-symbols-outlined text-[16px]">category</span>
+</div>
+<div class="mt-space-8">
+<div class="font-headline text-headline font-bold text-primary">142</div>
+<div class="font-label-small text-label-small text-on-surface-variant">listings cataloged</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-label">Offer ₹380/pc is below safe threshold (Price guidance triggered)</span>
+<span class="material-symbols-outlined text-[16px] text-success">check_circle</span>
+</div>
+<div class="mt-space-8">
+<div class="font-headline text-headline font-bold text-primary">118</div>
+<div class="font-label-small text-label-small text-success font-medium">live on store</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-label">Active Artisans</span>
+<span class="material-symbols-outlined text-[16px]">people</span>
+</div>
+<div class="mt-space-8">
+<div class="font-headline text-headline font-bold text-primary">38</div>
+<div class="font-label-small text-label-small text-on-surface-variant">registered creators</div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-label">Open Inquiries</span>
+<span class="material-symbols-outlined text-[16px]">forum</span>
+</div>
+<div class="mt-space-8">
+<div class="font-headline text-headline font-bold text-primary">14</div>
+<div class="font-label-small text-label-small text-on-surface-variant">pending deal closure</div>
+</div>
+</div>
+<!-- Metric 5 -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-label">Active Orders</span>
+<span class="material-symbols-outlined text-[16px]">conveyor_belt</span>
+</div>
+<div class="mt-space-8">
+<div class="font-headline text-headline font-bold text-primary">6</div>
+<div class="font-label-small text-label-small text-on-surface-variant">in active production</div>
+</div>
+</div>
+<!-- Metric 6 (Highlighted Accent) -->
+<div class="bg-surface border border-outline rounded-xl p-space-12 flex flex-col justify-between hover:border-outline-variant transition-colors"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-label text-label">Items Needing Review</span><span class="material-symbols-outlined text-[16px] text-error">priority_high</span></div><div class="mt-space-8"><div class="font-headline text-headline font-bold text-primary">5</div><div class="font-label-small text-label-small text-error font-medium">pending manual check</div></div></div>
+</section>
+<!-- Split Grid Layout: 60% Activity & 40% Action/Attention Queue -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-20 items-start">
+<!-- Left Column: Recent Operational Activity (7/12 ~ 60%) -->
+<section class="lg:col-span-7 bg-surface border border-outline rounded-xl p-space-20 flex flex-col gap-space-16 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline pb-space-12">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-primary text-[20px]">stream</span>
+<h2 class="font-title text-title text-primary font-semibold">Recent Operational Activity</h2>
+</div>
+<span class="font-label-small text-label-small text-on-surface-variant">Latest Updates</span>
+</div>
+<!-- Activity List Table -->
+<div class="divide-y divide-outline">
+<!-- Item 1 -->
+<div class="py-space-12 flex items-start justify-between gap-space-12 hover:bg-surface-container-low px-space-8 rounded-lg transition-colors">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">add_box</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-primary font-medium">New artisan listing: <strong class="font-semibold text-on-surface">‘Handcrafted Terracotta Urn’</strong></span>
+<span class="font-label text-label text-on-surface-variant">by Ram Singh (Jaipur Guild)</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-warning/10 text-warning border border-warning/20">
+                  Needs Review
+                </span>
+<span class="font-label-small text-label-small text-on-surface-variant">12m ago</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="py-space-12 flex items-start justify-between gap-space-12 hover:bg-surface-container-low px-space-8 rounded-lg transition-colors">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">price_change</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-primary font-medium">Deal update: Inquiry #INQ-4829</span>
+<span class="font-label text-label text-on-surface-variant">Counter-offer submitted (₹700/unit) by Ram Singh</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-on-surface border border-outline">
+                  Counter-Offer
+                </span>
+<span class="font-label-small text-label-small text-on-surface-variant">45m ago</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="py-space-12 flex items-start justify-between gap-space-12 hover:bg-surface-container-low px-space-8 rounded-lg transition-colors">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-success mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-primary font-medium">Test payment verified: Order #CR-2849</span>
+<span class="font-label text-label text-on-surface-variant">₹60,000 processed via Razorpay Test Mode</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-success/10 text-success border border-success/20">
+                  Simulated Paid
+                </span>
+<span class="font-label-small text-label-small text-on-surface-variant">2h ago</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="py-space-12 flex items-start justify-between gap-space-12 hover:bg-surface-container-low px-space-8 rounded-lg transition-colors">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-primary font-medium">Production milestone: Order #CR-2849</span>
+<span class="font-label text-label text-on-surface-variant">80 units kiln firing completed at Sanganer workshop</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-on-surface border border-outline">
+                  Milestone
+                </span>
+<span class="font-label-small text-label-small text-on-surface-variant">3h ago</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="py-space-12 flex items-start justify-between gap-space-12 hover:bg-surface-container-low px-space-8 rounded-lg transition-colors">
+<div class="flex items-start gap-space-12">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">mark_email_unread</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-primary font-medium">New inquiry: Bulk Clay Diya sets</span>
+<span class="font-label text-label text-on-surface-variant">Anita Gupta requested 200 units for festive dispatch</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-on-surface border border-outline">
+                  New Lead
+                </span>
+<span class="font-label-small text-label-small text-on-surface-variant">5h ago</span>
+</div>
+</div>
+</div>
+<!-- Bottom Micro-link -->
+<div class="pt-space-8 border-t border-outline flex justify-between items-center text-on-surface-variant font-label text-label">
+<span class="">Showing recent 5 events from event queue</span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-1">
+<span class="">View full audit trail</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Right Column: Needs Attention & Quick Actions (5/12 ~ 40%) -->
+<div class="lg:col-span-5 flex flex-col gap-space-20">
+<!-- Needs Attention / Review Queue -->
+<section class="bg-surface border border-outline rounded-xl p-space-20 flex flex-col gap-space-16 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline pb-space-12">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">emergency_home</span>
+<h2 class="font-title text-title text-primary font-semibold">Needs Attention / Review Queue</h2>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-small text-label-small px-space-8 py-0.5 rounded-full font-bold">3 Urgent</span>
+</div>
+<!-- Attention Cards Stack -->
+<div class="flex flex-col gap-space-12">
+<!-- Item 1: Dimensions uncertainty -->
+<div class="border border-outline rounded-xl p-space-12 bg-surface-container-low flex flex-col gap-space-8">
+<div class="flex items-start justify-between gap-space-8">
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-primary block">Black Clay Floral Planter</span>
+<span class="font-label text-label text-on-surface-variant block mt-0.5">Missing dimensions &amp; firing technique (AI extraction flagged uncertainty)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-warning flex-shrink-0">warning</span>
+</div>
+<div class="flex items-center justify-between pt-space-4 border-t border-outline/50">
+<span class="font-label-small text-label-small text-on-surface-variant">Queue: Catalog AI Ingestion</span>
+<button class="bg-primary text-on-primary font-label text-label px-space-12 py-1 rounded-lg hover:bg-on-secondary-container transition-colors flex items-center gap-1">
+<span class="">Open AI Review</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Fair deal shield -->
+<div class="border border-outline rounded-xl p-space-12 bg-surface-container-low flex flex-col gap-space-8">
+<div class="flex items-start justify-between gap-space-8">
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-primary block">Deal Inquiry #INQ-4712</span>
+<span class="font-label text-label text-on-surface-variant block mt-0.5">Offer ₹380/pc is below safe threshold (Price guidance triggered)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-error flex-shrink-0">shield</span>
+</div>
+<div class="flex items-center justify-between pt-space-4 border-t border-outline/50">
+<span class="font-label-small text-label-small text-error font-medium">-18% Below Floor</span>
+<button class="bg-surface border border-outline font-label text-label px-space-12 py-1 rounded-lg hover:bg-surface-container text-primary font-semibold transition-colors flex items-center gap-1">
+<span class="">Inspect Deal</span>
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Audio dialect -->
+<div class="border border-outline rounded-xl p-space-12 bg-surface-container-low flex flex-col gap-space-8">
+<div class="flex items-start justify-between gap-space-8">
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-primary block">Voice Recording Run #RN-902</span>
+<span class="font-label text-label text-on-surface-variant block mt-0.5">Low audio confidence on Rajasthani dialect sample</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant flex-shrink-0">mic</span>
+</div>
+<div class="flex items-center justify-between pt-space-4 border-t border-outline/50">
+<span class="font-label-small text-label-small text-on-surface-variant">Confidence: 64%</span>
+<button class="bg-surface border border-outline font-label text-label px-space-12 py-1 rounded-lg hover:bg-surface-container text-primary font-semibold transition-colors flex items-center gap-1">
+<span class="">Listen &amp; Correct</span>
+<span class="material-symbols-outlined text-[14px]">hearing</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Operational Actions Card -->
+<section class="bg-surface border border-outline rounded-xl p-space-20 flex flex-col gap-space-12 shadow-sm">
+<h2 class="font-title text-title text-primary font-semibold">Quick Operational Actions</h2>
+<div class="flex flex-col gap-space-8">
+<button class="w-full bg-primary text-on-primary font-body-medium text-body-medium font-medium py-2 px-space-16 rounded-xl hover:bg-on-secondary-container transition-colors flex items-center justify-between">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+<span class="">Review Flagged Listings (5)</span>
+</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+<button class="w-full bg-surface border border-outline text-on-surface font-body-medium text-body-medium font-medium py-2 px-space-16 rounded-xl hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span class="">View Test Orders</span>
+</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+<button class="w-full bg-surface border border-outline text-on-surface font-body-medium text-body-medium font-medium py-2 px-space-16 rounded-xl hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="">Export Activity Log (CSV)</span>
+</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Notes / Prototype Disclaimer -->
+<footer class="mt-space-16 pt-space-16 border-t border-outline flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-label text-label gap-space-8">
+<div class="flex items-center gap-space-8">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+<span class="">Craftigari Operations Portal · Razorpay Test Mode &amp; Simulated Logistics MVP</span>
+</div>
+<div class="flex items-center gap-space-16">
+<span class="font-label-small text-label-small text-on-surface-variant">Data latency: 240ms</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-small text-label-small text-on-surface-variant">Engine: Craftigari Core v1.4</span>
+</div>
+</footer>
+</div>
+</main>
+
+
+</body></html>

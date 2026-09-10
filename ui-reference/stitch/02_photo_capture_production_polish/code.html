@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari नमस्ते - फ़ोटो लें</title>
+<!-- Material Symbols Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#f1f3f4",
+            "background": "#f7f9ff",
+            "primary-container": "#1f1f1f",
+            "on-primary": "#ffffff",
+            "secondary-container": "#f1f3f4",
+            "inverse-on-surface": "#eef1f7",
+            "on-tertiary-fixed": "#390c00",
+            "surface-container-highest": "#dadce0",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f1f4fa",
+            "on-error": "#ffffff",
+            "tertiary-container": "#3f0e00",
+            "secondary-fixed-dim": "#c3c7cc",
+            "secondary": "#5b5f64",
+            "on-primary-fixed": "#1b1b1c",
+            "surface-container-high": "#e8eaed",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "tertiary": "#140200",
+            "surface-tint": "#5f5e5e",
+            "success": "#137333",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#e8eaed",
+            "error": "#d93025",
+            "on-primary-container": "#888686",
+            "outline": "#dadce0",
+            "on-secondary-container": "#1f1f1f",
+            "warning": "#b06000",
+            "surface-dim": "#d7dae0",
+            "on-background": "#181c20",
+            "on-secondary-fixed": "#181c20",
+            "on-tertiary-container": "#d46740",
+            "surface": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary-fixed-variant": "#802a05",
+            "tertiary-fixed": "#ffdbcf",
+            "primary-fixed-dim": "#c8c6c5",
+            "primary-fixed": "#e5e2e1",
+            "on-surface": "#1f1f1f",
+            "secondary-fixed": "#dfe3e8",
+            "on-primary-fixed-variant": "#474746",
+            "inverse-surface": "#2d3135",
+            "on-secondary-fixed-variant": "#43474c",
+            "error-container": "#ffdad6",
+            "primary": "#060607",
+            "tertiary-fixed-dim": "#ffb59c",
+            "inverse-primary": "#c8c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-64": "4rem",
+            "container-max": "75rem",
+            "space-16": "1rem",
+            "space-40": "2.5rem",
+            "space-8": "0.5rem",
+            "space-32": "2rem",
+            "gutter": "1rem",
+            "space-48": "3rem",
+            "space-20": "1.25rem",
+            "space-2": "0.125rem",
+            "space-24": "1.5rem",
+            "space-12": "0.75rem",
+            "space-4": "0.25rem"
+          },
+          "fontFamily": {
+            "display": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label-small": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Minimalist camera reticle brackets */
+    .viewfinder-corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-color: rgba(255, 255, 255, 0.85);
+      pointer-events: none;
+    }
+    .corner-tl { top: 16px; left: 16px; border-top-width: 2px; border-left-width: 2px; }
+    .corner-tr { top: 16px; right: 16px; border-top-width: 2px; border-right-width: 2px; }
+    .corner-bl { bottom: 16px; left: 16px; border-bottom-width: 2px; border-left-width: 2px; }
+    .corner-br { bottom: 16px; right: 16px; border-bottom-width: 2px; border-right-width: 2px; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-full bg-surface text-on-surface antialiased flex flex-col font-body selection:bg-surface-container-high">
+<!-- Top App Bar (Shared Components Anchor adapted for linear photo task) -->
+<header class="w-full bg-surface z-40 border-b border-outline-variant shrink-0">
+<div class="max-w-md mx-auto h-14 px-space-16 flex items-center justify-between">
+<!-- Back Action -->
+<button aria-label="वापस जाएं" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container transition-colors active:scale-95" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button>
+<!-- Step Counter & Title -->
+<div class="flex flex-col items-center"><h1 class="font-title text-[18px] text-on-surface tracking-tight font-semibold">कदम 1 / 4: फ़ोटो लें</h1></div>
+<!-- Audio Guidance Pill / Trailing Action -->
+<button aria-label="निर्देश सुनें" class="flex items-center gap-space-8 px-space-12 h-10 rounded-full bg-surface-container border border-outline text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 shadow-sm" type="button"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">volume_up</span><span class="font-label text-label text-on-surface font-medium">सुनें</span></button>
+</div>
+</header>
+<!-- Main Viewport / Camera Canvas Flow -->
+<main class="flex-1 w-full max-w-md mx-auto px-space-16 pt-space-12 pb-space-24 flex flex-col justify-between overflow-y-auto">
+<div class="flex flex-col gap-space-16">
+<!-- Dominant Viewfinder Screen -->
+<section class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-surface-container border border-outline shadow-sm flex items-center justify-center">
+<!-- Live Camera Preview Stream (Terracotta Vase in natural lighting) -->
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A refined, natural light product photograph of an authentic handcrafted Indian terracotta clay pot with delicate textured etchings resting serenely on a pale grey stone pedestal by a bright window. The scene is illuminated by gentle, diffused midday daylight casting soft realistic shadows with crisp edge clarity. Clean high-contrast minimalist studio atmosphere with clean architectural surfaces, highlighting earthy burnt-sienna hues and pure craftsmanship in a sharp editorial utility aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTugD0EN3mMtcjo9bga2uHDqdNhioHHWNyXO-yL-VOlo7RTkSkBfvhGSZXuarHPGWiX0RW7xl2XKCs66EGnA9YXDFRBwbkpVYfVUbE0VdX2tiE6aXaRnuGcqFp6Ybv2mTQ4-5SA0s9FHlK4Gkd-59K1gCrVDrOIGUmGjsRXqa1Xb5Mttzwt44uHtoTU5rhnY6mM4RBSA5J26WsK-0Jwc64ugM7ddP86SgFTywAGIoxiO9jOx744bQ"/>
+<!-- Reticle Corner Markers -->
+<div class="viewfinder-corner corner-tl"></div>
+<div class="viewfinder-corner corner-tr"></div>
+<div class="viewfinder-corner corner-bl"></div>
+<div class="viewfinder-corner corner-br"></div>
+<!-- Center Crosshair / Level Indicator (Micro-detail) -->
+<div class="absolute w-8 h-8 pointer-events-none opacity-40 flex items-center justify-center">
+<div class="w-full h-[1px] bg-surface"></div>
+<div class="h-full w-[1px] bg-surface absolute"></div>
+</div>
+<!-- Top Status Pill: Semantic Green Clarity Check -->
+<div class="absolute top-space-12 left-1/2 -translate-x-1/2 z-10">
+<div class="flex items-center gap-space-8 px-space-12 py-1.5 rounded-[9999px] bg-surface/90 backdrop-blur-md border border-outline-variant shadow-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-success ring-4 ring-success/20 animate-pulse"></span>
+<span class="font-label text-label font-semibold text-success">रोशनी सही है</span>
+</div>
+</div>
+<!-- Shutter Trigger Overlay (Micro Action) -->
+<button aria-label="फ़ोटो खींचें" class="absolute bottom-space-20 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-full border-2 border-surface flex items-center justify-center bg-surface/20 backdrop-blur-sm active:scale-95 transition-transform hover:bg-surface/30 shadow-md" type="button"><div class="w-12 h-12 rounded-full bg-surface shadow-sm"></div></button>
+<!-- Bottom Guidance Pill: Alignment Prompt -->
+<div class="absolute bottom-space-2 left-1/2 -translate-x-1/2 z-10 w-full max-w-[240px] mb-space-8 pointer-events-none">
+<div class="text-center py-1 px-space-12 rounded-[9999px] bg-surface/85 backdrop-blur-sm border border-outline/50 shadow-sm">
+<p class="font-label-small text-label-small text-on-surface tracking-wide">सामने रखें (Eye-level)</p>
+</div>
+</div>
+</section>
+<!-- Photo Angle Status Tray Section -->
+<section class="flex flex-col gap-space-8">
+<!-- Tray Header -->
+<div class="flex items-center justify-between px-space-2">
+<h2 class="font-body-medium text-body-medium text-on-surface-variant font-medium">
+            फ़ोटो के कोण <span class="text-on-surface font-semibold">(1 / 3 पूर्ण)</span>
+</h2>
+<span class="font-label-small text-label-small text-on-surface-variant bg-surface-container px-space-8 py-0.5 rounded-full border border-outline-variant">
+            360° विवरण
+          </span>
+</div>
+<!-- 3 Structured Angle Cards -->
+<div class="grid grid-cols-3 gap-space-8">
+<!-- Angle 1: Front (Captured State) -->
+<div class="relative flex flex-col items-center justify-between p-space-8 rounded-xl border-2 border-on-surface bg-surface shadow-sm transition-all">
+<div class="w-full aspect-square rounded-lg overflow-hidden bg-surface-container-high relative border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up macro thumbnail of an Indian terracotta earthenware urn showcasing smooth earthen clay texture in crisp studio window light. High resolution minimal composition with subtle warm earth tones on pure white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkPSwPm9jGQpzStzjpOxLWdehtqgyz4T4VtU7ZeXX9SQR0wWRd60TBb4dB6lxOL3NCTpng_b78YBnHA_164Pk7MZ-zZJO5shwzuMYXZdvBwXGcFEXtM4Vweaq6Ammlwcnl0fkDVybwTG0j8XpZUNZ2TWCyDTAO7DkfIi0_-6EWdYv67p_TL_PPWeUwpEveBMsh4dOKA2zIVAvYrjxlNFjqSUqgfgSucH6K55fBsQ_uCfLObXmMgV8"/>
+<!-- Completed Checkmark Badge -->
+<div class="absolute top-1 right-1 w-5 h-5 rounded-full bg-success flex items-center justify-center text-on-primary shadow">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="mt-space-4 text-center">
+<span class="font-label text-label font-semibold text-on-surface">1. सामने</span>
+</div>
+</div>
+<!-- Angle 2: Detail (Active / Next Angle) -->
+<button class="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline bg-surface-container-low hover:border-on-surface hover:bg-surface transition-all active:scale-98" type="button">
+<div class="w-full aspect-square rounded-lg bg-surface border border-dashed border-outline flex flex-col items-center justify-center gap-1 text-on-surface-variant group-hover:text-on-surface group-hover:border-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+<span class="text-[10px] font-medium text-on-surface-variant group-hover:text-on-surface">क्लिक करें</span>
+</div>
+<div class="mt-space-4 text-center">
+<span class="font-label text-label font-medium text-on-surface-variant group-hover:text-on-surface">2. नज़दीक</span>
+</div>
+</button>
+<!-- Angle 3: Base / Underside (Pending Angle) -->
+<button class="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline-variant bg-surface-container-low/60 hover:border-outline hover:bg-surface transition-all active:scale-98" type="button">
+<div class="w-full aspect-square rounded-lg bg-surface/60 border border-outline-variant flex flex-col items-center justify-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+<span class="text-[10px] text-secondary">बाकी</span>
+</div>
+<div class="mt-space-4 text-center">
+<span class="font-label text-label font-medium text-secondary">3. निचला तल</span>
+</div>
+</button>
+</div>
+</section>
+</div>
+<!-- Action Section: High-Grade Restrained CTAs -->
+<div class="flex flex-col gap-space-12 mt-space-20">
+<!-- Primary Action Button: 52px confident dark CTA -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#303030] text-on-primary font-medium text-[16px] flex items-center justify-center gap-space-8 shadow-sm transition-all active:scale-[0.99] border border-primary-container" type="button">
+<span>आगे बढ़ें: बोलकर बताएं</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Action Button: Quiet Gallery Option -->
+<button class="w-full h-[48px] rounded-xl bg-surface border border-outline text-on-surface font-medium text-[15px] hover:bg-surface-container transition-colors flex items-center justify-center gap-space-8 active:scale-[0.99] shadow-sm" type="button"><span class="material-symbols-outlined text-[20px] text-on-surface-variant">photo_library</span><span>गैलरी से चुनें</span></button>
+<!-- Quiet Trust Anchor Footnote -->
+<div class="flex items-center justify-center gap-space-4 pt-space-4">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">lock</span>
+<p class="font-label-small text-label-small text-on-surface-variant text-center">
+          सुरक्षित और निजी • क्राफ़्टिगारी एआई द्वारा सहायता प्राप्त
+        </p>
+</div>
+</div>
+</main>
+<script>
+    // Lightweight tactile feedback simulation for viewfinder interaction
+    document.addEventListener('DOMContentLoaded', () => {
+      const shutterBtn = document.querySelector('button[aria-label="फ़ोटो खींचें"]');
+      if (shutterBtn) {
+        shutterBtn.addEventListener('click', () => {
+          shutterBtn.classList.add('ring-4', 'ring-surface');
+          setTimeout(() => {
+            shutterBtn.classList.remove('ring-4', 'ring-surface');
+          }, 150);
+        });
+      }
+    });
+  </script>
+</body></html>

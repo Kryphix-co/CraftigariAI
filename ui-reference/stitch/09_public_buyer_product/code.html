@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craftigari - Handcrafted Terracotta Heritage Urn</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "tertiary": "#140200",
+            "on-secondary-container": "#1f1f1f",
+            "surface-variant": "#dfe3e8",
+            "outline-variant": "#e8eaed",
+            "surface-container-highest": "#dfe3e8",
+            "success": "#137333",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#181c20",
+            "secondary-container": "#dde0e6",
+            "surface-container-high": "#e8eaed",
+            "surface-container": "#ebeef4",
+            "outline": "#dadce0",
+            "on-surface-variant": "#444748",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#e5e2e1",
+            "surface-bright": "#ffffff",
+            "surface-tint": "#5f5e5e",
+            "tertiary-fixed": "#ffdbcf",
+            "error": "#d93025",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9ff",
+            "surface-container-low": "#f8f9fa",
+            "on-background": "#181c20",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-tertiary-container": "#d46740",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#3f0e00",
+            "surface-dim": "#f8f9fa",
+            "inverse-primary": "#c8c6c5",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary": "#5b5f64",
+            "inverse-on-surface": "#eef1f7",
+            "primary": "#060607",
+            "inverse-surface": "#2d3135",
+            "primary-container": "#1f1f1f",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-tertiary-fixed": "#390c00",
+            "on-surface": "#181c20",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dfe3e8",
+            "surface": "#ffffff",
+            "on-primary-fixed-variant": "#474746",
+            "secondary-fixed-dim": "#c3c7cc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-8": "0.5rem",
+            "space-16": "1rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-64": "4rem",
+            "container-max": "75rem",
+            "space-12": "0.75rem",
+            "gutter": "1rem",
+            "space-40": "2.5rem",
+            "space-32": "2rem",
+            "space-48": "3rem",
+            "space-20": "1.25rem",
+            "space-24": "1.5rem"
+          },
+          "fontFamily": {
+            "body-medium": [
+              "Plus Jakarta Sans"
+            ],
+            "label": [
+              "Plus Jakarta Sans"
+            ],
+            "title": [
+              "Plus Jakarta Sans"
+            ],
+            "display": [
+              "Plus Jakarta Sans"
+            ],
+            "label-small": [
+              "Plus Jakarta Sans"
+            ],
+            "headline": [
+              "Plus Jakarta Sans"
+            ],
+            "body": [
+              "Plus Jakarta Sans"
+            ]
+          },
+          "fontSize": {
+            "body-medium": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "500"
+              }
+            ],
+            "label": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "500"
+              }
+            ],
+            "title": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "28px",
+              {
+                "lineHeight": "36px",
+                "fontWeight": "700"
+              }
+            ],
+            "label-small": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "body": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body text-body antialiased selection:bg-tertiary-fixed selection:text-tertiary">
+<!-- Mobile Container (~390px centered) -->
+<div class="max-w-[420px] mx-auto min-h-screen bg-surface flex flex-col relative border-x border-outline-variant">
+<!-- Top Bar Component -->
+<header class="sticky top-0 z-40 flex items-center justify-between px-space-16 h-14 bg-surface/95 backdrop-blur-sm border-b border-outline-variant">
+<button aria-label="Go Back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-1.5">
+<span class="font-headline text-title font-bold tracking-tight text-primary">Craftigari</span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+</div>
+<div class="flex items-center gap-1 -mr-2">
+<button aria-label="Listen details" class="w-10 h-10 rounded-xl flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<button aria-label="Share craft" class="w-10 h-10 rounded-xl flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Flow (Buyer Facing Utility Canvas) -->
+<main class="flex-1 pb-32">
+<!-- Visual Showcase Section -->
+<section class="p-space-16 pb-0">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant">
+<img alt="Handcrafted Terracotta Heritage Urn" class="w-full h-full object-cover" data-alt="A studio photograph of an artisanal terracotta heritage urn crafted from warm reddish-brown clay with delicate traditional hand-carved geometric motifs. Clean modern daylight highlighting tactile clay textures and earthen finishes against an ultra-minimal crisp off-white background with subtle soft ambient shadows. Modern editorial product aesthetic with pure organic clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ2Eipg69w5oIkwtb1XVdTcdNB_AEnECXHZGUXEQrdx3TiiN3MXqBxITWTY0JGNTk31uz_egjCeNnq8T_UiwS6eOBWLNfgN5fPFq2eUA3C7F1VYYn_LQRK7y2U9Rfrtdp3cMuDm5uldEGiwA7S8nn5qfHYU7zdLaxeb9MzfgJO-3jCv3NQ4sqz1RyaCz5OpsZr-kxv0_SCAMfF4YPE7OY6hiWwK2WQjKQjKYa0kZIrET5yEpHr6G8"/>
+<!-- Artisan Heritage Badge Floating -->
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-outline flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-small text-label-small uppercase tracking-wider text-primary font-semibold">Authentic Handcraft</span>
+</div>
+</div>
+<!-- Thumbnail / Gallery Dots Indicator -->
+<div class="flex items-center justify-center gap-1.5 mt-3">
+<span class="w-5 h-1.5 rounded-full bg-primary transition-all"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline transition-all"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline transition-all"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline transition-all"></span>
+</div>
+</section>
+<!-- Title & Price Block -->
+<section class="px-space-16 pt-space-20">
+<!-- Dual Language Title -->
+<div class="space-y-1">
+<h1 class="font-headline text-headline font-bold text-primary tracking-tight">
+            Handcrafted Terracotta Heritage Urn
+          </h1>
+<p class="font-body-medium text-body-medium text-secondary">
+            पारंपरिक हाथ से तराशा हुआ टेराकोटा कलश
+          </p>
+</div>
+<!-- Price Display & Trade Transparency -->
+<div class="mt-4 p-space-16 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display font-bold text-primary tracking-tight">₹1,150</span>
+<span class="font-label text-label text-secondary">indicative price</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label text-label">
+<span class="material-symbols-outlined text-[16px] text-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Direct artisan price · Custom quantities available</span>
+</div>
+</div>
+</section>
+<!-- Artisan Context & Heritage Row -->
+<section class="px-space-16 pt-space-20">
+<div class="p-space-16 rounded-xl border border-outline bg-surface flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold font-title text-title border border-outline-variant">
+              RS
+            </div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-title text-title font-semibold text-primary">Ram Singh</span>
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-label text-label text-secondary">Master Potter · Jaipur, Rajasthan</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-small font-label-small bg-surface-container text-secondary border border-outline-variant">
+            3rd Gen Craft
+          </span>
+</div>
+</section>
+<!-- Product Story -->
+<section class="px-space-16 pt-space-20">
+<h2 class="font-title text-title font-bold text-primary mb-2">Artisan Story &amp; Process</h2>
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+          Molded entirely by hand on a manual stone potter’s wheel in Jaipur, this urn highlights authentic sun-dried clay burnished with river pebbles. The intricate geometric carvings are etched by hand using bamboo needles while the clay remains leather-hard, creating a natural porous texture that keeps stored contents pleasantly cool.
+        </p>
+</section>
+<!-- Craft Specifications (Clean Dividers List) -->
+<section class="px-space-16 pt-space-24">
+<h2 class="font-title text-title font-bold text-primary mb-3">Craft Specifications</h2>
+<div class="divide-y divide-outline-variant border-y border-outline-variant">
+<div class="py-3 flex justify-between items-start gap-4">
+<span class="font-body text-body text-secondary shrink-0">Craft Technique</span>
+<span class="font-body-medium text-body-medium text-primary text-right">
+              Traditional Terracotta Carving <br/><span class="text-secondary font-label text-label">(हस्तनिर्मित नक्काशी)</span>
+</span>
+</div>
+<div class="py-3 flex justify-between items-start gap-4">
+<span class="font-body text-body text-secondary shrink-0">Material</span>
+<span class="font-body-medium text-body-medium text-primary text-right">
+              100% Natural Red Clay <br/><span class="text-secondary font-label text-label">(प्राकृतिक लाल चिकनी मिट्टी)</span>
+</span>
+</div>
+<div class="py-3 flex justify-between items-center gap-4">
+<span class="font-body text-body text-secondary">Dimensions</span>
+<span class="font-body-medium text-body-medium text-primary text-right">Medium (11" height, 7" diameter)</span>
+</div>
+<div class="py-3 flex justify-between items-center gap-4">
+<span class="font-body text-body text-secondary">Production Time</span>
+<span class="font-body-medium text-body-medium text-primary text-right">3 days per piece</span>
+</div>
+<div class="py-3 flex justify-between items-start gap-4">
+<span class="font-body text-body text-secondary shrink-0">Customization</span>
+<span class="font-body-medium text-body-medium text-primary text-right">Custom batch sizes and colors available on request</span>
+</div>
+</div>
+</section>
+<!-- Trust Indicators / Quiet Badges -->
+<section class="px-space-16 pt-space-24">
+<div class="grid grid-cols-2 gap-2">
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">eco</span>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-primary">100% Natural</span>
+<span class="font-label-small text-label-small text-secondary">Zero chemical glaze</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">handshake</span>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-primary">Direct Artisan</span>
+<span class="font-label-small text-label-small text-secondary">Fair compensation</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Action Bar (Buyer Direct-To-Artisan Inquiry) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-t border-outline-variant">
+<div class="max-w-[420px] mx-auto px-space-16 py-3 flex items-center gap-3">
+<!-- Secondary Contact / WhatsApp Icon Button -->
+<button aria-label="Direct message via WhatsApp or call" class="w-12 h-12 rounded-xl border border-outline flex items-center justify-center text-primary bg-surface hover:bg-surface-container-low active:scale-95 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+</button>
+<!-- Primary Dominant Buyer Inquiry CTA (No Buy Now / No Add to Cart) -->
+<button class="flex-1 h-12 px-space-16 rounded-xl bg-primary text-surface font-body-medium text-body-medium font-semibold flex items-center justify-center gap-2 hover:bg-[#303030] active:scale-[0.98] transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="truncate">पूछताछ भेजें / Send Inquiry</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

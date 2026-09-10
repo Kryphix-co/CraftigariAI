@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="h-full" lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craftigari AI - Artisan Order Details</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Plus Jakarta Sans Font for typography system -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS Engine -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Config Injection -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#c8c6c5",
+            "on-primary-fixed-variant": "#474746",
+            "on-surface-variant": "#5f6368",
+            "on-error-container": "#93000a",
+            "success": "#137333",
+            "on-surface": "#1f1f1f",
+            "outline-variant": "#c4c7c7",
+            "surface-dim": "#d7dae0",
+            "outline": "#dadce0",
+            "surface-container-high": "#e8eaed",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary-container": "#1f1f1f",
+            "primary-container": "#f1f3f4",
+            "on-tertiary-fixed": "#390c00",
+            "primary": "#060607",
+            "error-container": "#ffdad6",
+            "tertiary": "#140200",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#1b1b1c",
+            "secondary": "#5b5f64",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcf",
+            "tertiary-container": "#3f0e00",
+            "surface-container-highest": "#dfe3e8",
+            "tertiary-fixed-dim": "#ffb59c",
+            "surface-container-low": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#802a05",
+            "secondary-fixed-dim": "#c3c7cc",
+            "surface-tint": "#5f5e5e",
+            "secondary-container": "#f1f3f4",
+            "on-primary-container": "#888686",
+            "on-tertiary": "#ffffff",
+            "warning": "#b06000",
+            "on-secondary-fixed-variant": "#43474c",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#e5e2e1",
+            "on-tertiary-container": "#d46740",
+            "secondary-fixed": "#dfe3e8",
+            "surface-bright": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-background": "#181c20",
+            "inverse-on-surface": "#eef1f7",
+            "error": "#d93025",
+            "surface": "#ffffff",
+            "background": "#f7f9ff",
+            "on-secondary-fixed": "#181c20",
+            "surface-variant": "#dfe3e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-24": "1.5rem",
+            "space-2": "0.125rem",
+            "space-4": "0.25rem",
+            "space-48": "3rem",
+            "space-12": "0.75rem",
+            "space-8": "0.5rem",
+            "space-64": "4rem",
+            "space-40": "2.5rem",
+            "gutter": "1rem",
+            "container-max": "75rem",
+            "space-20": "1.25rem",
+            "space-16": "1rem",
+            "space-32": "2rem"
+          },
+          "fontFamily": {
+            "label-small": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "label": ["Plus Jakarta Sans"],
+            "title": ["Plus Jakarta Sans"],
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-small": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased flex flex-col min-h-full selection:bg-surface-container-high">
+<!-- Top App Bar (Task-focused destination: Clean top navigation bar) -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md shadow-sm h-14 border-b border-outline">
+<div class="max-w-2xl mx-auto h-full px-space-16 flex items-center justify-between">
+<!-- Leading Back Action -->
+<button aria-label="वापस जाएं" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface text-[22px]">arrow_back</span>
+</button>
+<!-- Headline -->
+<h1 class="font-headline text-headline text-on-surface tracking-tight truncate px-2 flex-1 text-center font-bold">
+        ऑर्डर विवरण #CR-2849
+      </h1>
+<!-- Trailing Action: Help / Voice Assistant Guide -->
+<div class="flex items-center gap-1 -mr-2">
+<button aria-label="सहायता व मार्गदर्शन" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" title="सहायता व मार्गदर्शन" type="button">
+<span class="material-symbols-outlined text-on-surface text-[22px]">volume_up</span>
+</button>
+<button aria-label="साझा करें" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" title="साझा करें" type="button">
+<span class="material-symbols-outlined text-on-surface text-[22px]">share</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 max-w-2xl w-full mx-auto px-space-16 pt-20 pb-12 space-y-space-24">
+<!-- Top Status / Mode Indicator -->
+<div class="flex items-center justify-between bg-surface-container-low border border-outline rounded-xl p-space-12">
+<div class="flex items-center gap-space-8">
+<span class="w-2.5 h-2.5 rounded-full bg-success ring-4 ring-success/15 animate-pulse"></span>
+<span class="font-label text-label text-on-surface font-semibold">ऑर्डर प्रगति पर (In Production)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-small text-label-small bg-surface px-space-8 py-1 rounded-full border border-outline">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span class="">सुरक्षित संव्यवहार</span>
+</div>
+</div>
+<!-- 1. Order Summary Card -->
+<section class="bg-surface rounded-xl border border-outline p-space-20 shadow-sm space-y-space-16">
+<!-- Card Header / Product Profile -->
+<div class="flex items-start gap-space-16">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container">
+<img alt="Handcrafted Terracotta Heritage Urn" class="w-full h-full object-cover" data-alt="A collection of handmade terracotta clay heritage urns with detailed traditional Indian motifs and fine red natural slip glaze finish arranged neatly on a clean workshop bench under bright natural daytime light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyuHgU3RmrKyihK3CcutS4eNJaBTiZNXDfH_HXOskRRUS5xB4ag8XZeuhwGPHLjsYgYcSHqJAfSCaXiW_3OM9VPCw9_094Iz52G5Tx20loLNupKnHyIS5qFQAuqScMrzUVVLhZBeQC3mlnzemGf5TNbz8UJW_4_Tl9dwwtSeDC1LBV45R_OmBbW6TpTnIjzZDPKES77OExN5TOgM0Zq6cjhOTslRQUCh2Zzx_kMleRnbu0WWuCAJU">
+</div>
+<div class="flex-1 min-w-0">
+<div class="inline-flex items-center px-space-8 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-small text-label-small mb-1">
+            बल्क ऑर्डर · 80 पीस
+          </div>
+<h2 class="font-title text-title text-on-surface leading-snug truncate">
+            80 × Handcrafted Terracotta Heritage Urn
+          </h2>
+<p class="font-body-medium text-body-medium text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+            खरीदार: <span class="text-on-surface font-semibold">रोहित शर्मा (Rohit Sharma)</span> · मुंबई
+          </p>
+</div>
+</div>
+<!-- Financial & Agreed Terms Box -->
+<div class="grid grid-cols-2 gap-space-12 pt-space-12 border-t border-outline-variant">
+<div class="bg-surface-container-low rounded-xl p-space-12 border border-outline">
+<span class="font-label text-label text-on-surface-variant block">तय दर (Agreed Rate)</span>
+<p class="font-title text-title text-on-surface mt-0.5 font-bold">₹750 <span class="font-body text-body font-normal text-on-surface-variant">/ पीस</span></p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-12 border border-outline">
+<span class="font-label text-label text-on-surface-variant block">कुल मूल्य (Total Order)</span>
+<p class="font-title text-title text-on-surface mt-0.5 font-bold">₹60,000</p>
+</div>
+</div>
+<!-- Detail Specs List -->
+<div class="space-y-space-12 pt-space-4">
+<!-- Customization -->
+<div class="flex items-start justify-between gap-4 py-2 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">palette</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant">कस्टमाइज़ेशन</span>
+</div>
+<div class="font-body-medium text-body-medium text-on-surface font-medium text-right flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#a3381a] inline-block border border-outline"></span>
+<span class="">लाल रंग पारंपरिक नक्काशी (Red Finish)</span>
+</div>
+</div>
+<!-- Deadline -->
+<div class="flex items-start justify-between gap-4 py-2 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant">निर्माण अवधि</span>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold block">28 नवंबर तक</span>
+<span class="font-label-small text-label-small text-warning font-semibold">(15 दिन शेष)</span>
+</div>
+</div>
+<!-- Payment Verification Badge -->
+<div class="flex items-center justify-between gap-4 pt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant">भुगतान स्थिति</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-space-8 py-1 rounded-full bg-[#137333]/10 text-success border border-[#137333]/30 font-label text-label">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-semibold">Razorpay Test Mode सत्यापित</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Artisan Fulfilment Progress (Simple 4-stage vertical tracker) -->
+<section class="bg-surface rounded-xl border border-outline p-space-20 shadow-sm space-y-space-16">
+<div class="flex items-center justify-between pb-space-8 border-b border-outline-variant">
+<div>
+<h3 class="font-title text-title text-on-surface">निर्माण प्रगति ट्रैकर</h3>
+<p class="font-label text-label text-on-surface-variant">प्रत्येक चरण पूरा होने पर प्रगति अपडेट करें</p>
+</div>
+<span class="px-space-8 py-1 bg-surface-container-high text-on-surface rounded-full font-label-small text-label-small">
+          चरण 3/4 चालू
+        </span>
+</div>
+<!-- Vertical Timeline Component -->
+<div class="relative pl-6 space-y-space-24 before:absolute before:left-3 before:top-3.5 before:bottom-4 before:w-[2px] before:bg-outline-variant">
+<!-- Stage 1: Completed -->
+<div class="relative flex items-start group">
+<div class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-success text-on-error flex items-center justify-center ring-4 ring-surface shadow-xs">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-title text-body-medium text-on-surface font-semibold">चरण 1: ऑर्डर मिला व पुष्टि</h4>
+<span class="font-label-small text-label-small text-success font-semibold">सत्यापित</span>
+</div>
+<p class="font-body text-label text-on-surface-variant mt-0.5">Agreed terms &amp; Razorpay Test Mode सत्यापित</p>
+</div>
+</div>
+<!-- Stage 2: Completed -->
+<div class="relative flex items-start group">
+<div class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-success text-on-error flex items-center justify-center ring-4 ring-surface shadow-xs">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-title text-body-medium text-on-surface font-semibold">चरण 2: मिट्टी व सामग्री तैयारी</h4>
+<span class="font-label-small text-label-small text-success font-semibold">तैयार</span>
+</div>
+<p class="font-body text-label text-on-surface-variant mt-0.5">टेराकोटा मिट्टी, प्राकृतिक रंग और सांचे तैयार</p>
+</div>
+</div>
+<!-- Stage 3: Current Active State (In Progress) -->
+<div class="relative flex items-start group">
+<div class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-on-surface text-surface flex items-center justify-center ring-4 ring-on-surface/20">
+<span class="w-2 h-2 rounded-full bg-surface animate-ping"></span>
+</div>
+<div class="ml-4 flex-1 bg-surface-container-low p-space-12 rounded-xl border border-outline">
+<div class="flex items-center justify-between">
+<h4 class="font-title text-body-medium text-on-surface font-bold">चरण 3: नक्काशी व पकाई</h4>
+<span class="font-label-small text-label-small px-2 py-0.5 rounded-full bg-on-surface text-surface font-bold">वर्तमान कार्य</span>
+</div>
+<p class="font-body text-label text-on-surface-variant mt-1">
+              Molding &amp; Kiln Firing जारी है। वर्तमान में 62/80 घड़े भट्टी में पक चुके हैं।
+            </p>
+<!-- Mini progress meter inside stage -->
+<div class="mt-space-8">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-on-surface h-full rounded-full transition-all duration-500" style="width: 77%;"></div>
+</div>
+<div class="flex justify-between font-label-small text-label-small text-on-surface-variant mt-1">
+<span class="">77% कार्य पूर्ण</span>
+<span class="">अनुमानित समापन: 25 नवंबर</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stage 4: Scheduled -->
+<div class="relative flex items-start opacity-70">
+<div class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-surface border-2 border-outline flex items-center justify-center ring-4 ring-surface">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-title text-body-medium text-on-surface font-medium">चरण 4: सुरक्षित पैकिंग व Pickup</h4>
+<span class="font-label-small text-label-small text-on-surface-variant">प्रतीक्षित</span>
+</div>
+<p class="font-body text-label text-on-surface-variant mt-0.5">
+              स्ट्रॉ और बबल रैप में 80 पीस की क्रेटिंग व डिस्पेच
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Workshop Action Card -->
+<section class="bg-surface rounded-xl border border-outline p-space-20 shadow-sm space-y-space-16">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">construction</span>
+<h3 class="font-title text-title text-on-surface">अगला कारीगर कदम (Next Step)</h3>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+          जब सभी 80 पीस तैयार और सूख जाएं, तो पैकिंग शुरू करने के लिए बटन दबाएं।
+        </p>
+</div>
+<div class="space-y-space-12 pt-2">
+<!-- Primary 52px Action Button -->
+<button class="w-full h-[52px] bg-[#1f1f1f] hover:bg-[#303030] text-surface font-title text-title rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all duration-150 active:scale-[0.99]" type="button">
+<span class="">पैकिंग शुरू करें</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Quiet Action Button -->
+<button class="w-full h-11 bg-surface hover:bg-surface-container-low text-on-surface border border-outline font-body-medium text-body-medium rounded-xl flex items-center justify-center gap-2 transition-colors active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">chat</span>
+<span class="">खरीदार को Deal Saathi पर संदेश भेजें</span>
+</button>
+</div>
+<!-- Contextual Quick Action: Capture Work in Progress Photo -->
+<div class="pt-space-8 border-t border-outline-variant flex items-center justify-between">
+<span class="font-label text-label text-on-surface-variant">गुणवत्ता प्रमाण फोटो अपलोड करें</span>
+<button class="inline-flex items-center gap-1.5 text-on-surface hover:text-primary font-label text-label font-semibold py-1 px-2 rounded-lg hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+<span class="">फोटो जोड़ें</span>
+</button>
+</div>
+</section>
+<!-- 4. Prototype Verification Note -->
+<footer class="text-center pt-space-8 pb-space-16">
+<div class="inline-flex items-center gap-2 px-space-16 py-space-8 rounded-xl bg-surface-container-high/60 border border-outline max-w-lg mx-auto">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<p class="font-label-small text-label-small text-on-surface-variant text-left leading-relaxed">
+          सिम्युलेटेड पूर्ति मोड: यह स्क्रीन कारीगर को काम की प्रगति रिकॉर्ड करने में मदद करती है।
+        </p>
+</div>
+</footer>
+</main>
+<!-- Interactive script for demo button triggers -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const advanceBtn = document.querySelector('button:has(span:contains("पैकिंग शुरू करें"))') || document.querySelector('button');
+      if (advanceBtn) {
+        advanceBtn.addEventListener('click', (e) => {
+          if (e.target.closest('button').innerText.includes('पैकिंग शुरू करें')) {
+            alert('सिमुलेशन: पैकिंग चरण सक्रिय हो गया है और खरीदार रोहित शर्मा को प्रगति सूचना भेज दी गई है।');
+          }
+        });
+      }
+    });
+  </script>
+
+
+</body></html>
