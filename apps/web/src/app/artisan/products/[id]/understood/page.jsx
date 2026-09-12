@@ -1,3 +1,3 @@
 export default function ProductUnderstoodPage() {
-  return <main>Product summary</main>;
+ return <main>Product summary</main>;
 }

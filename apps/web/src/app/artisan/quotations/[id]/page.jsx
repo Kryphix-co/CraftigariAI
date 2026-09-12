@@ -1,3 +1,3 @@
 export default function QuotationPage() {
-  return <main>Quotation</main>;
+ return <main>Quotation</main>;
 }
