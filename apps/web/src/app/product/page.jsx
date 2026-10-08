@@ -44,7 +44,7 @@ const MOCK_PRODUCTS = [
     price: 1200,
     minQty: 15,
     leadTime: "10 Days Lead",
-    image: "https://images.unsplash.com/photo-1595865886071-7059db9ec227?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?q=80&w=800&auto=format&fit=crop",
     batch: "AS-014",
     featured: false,
   },
@@ -57,7 +57,7 @@ const MOCK_PRODUCTS = [
     price: 1850,
     minQty: 25,
     leadTime: "18 Days Lead",
-    image: "https://images.unsplash.com/photo-1549488344-c740b2efd488?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop",
     batch: "SH-201",
     featured: false,
   }
@@ -121,16 +121,16 @@ export default function ProductPage() {
                   <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary text-white px-1 sm:px-1.5 uppercase font-mono">01/04</span>
                 </button>
                 <button className="relative border border-border hover:border-primary transition-colors bg-white aspect-square overflow-hidden group">
-                  <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Clay" src="https://images.unsplash.com/photo-1584444533036-7c9886f45cc3?q=80&w=600&auto=format&fit=crop" />
-                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Clay</span>
+                  <img className="w-full h-full object-cover scale-[2.5] origin-bottom-right group-hover:scale-[2.7] transition-transform duration-300" alt="Clay Texture" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=600&auto=format&fit=crop" />
+                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Texture</span>
                 </button>
                 <button className="relative border border-border hover:border-primary transition-colors bg-white aspect-square overflow-hidden group">
-                  <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Wheel" src="https://images.unsplash.com/photo-1590502593747-42a996133562?q=80&w=600&auto=format&fit=crop" />
-                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Wheel</span>
+                  <img className="w-full h-full object-cover scale-[2] origin-top group-hover:scale-[2.2] transition-transform duration-300" alt="Rim Details" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=600&auto=format&fit=crop" />
+                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Rim</span>
                 </button>
                 <button className="relative border border-border hover:border-primary transition-colors bg-white aspect-square overflow-hidden group">
-                  <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Seal" src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=600&auto=format&fit=crop" />
-                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Seal</span>
+                  <img className="w-full h-full object-cover scale-[3] origin-left group-hover:scale-[3.2] transition-transform duration-300" alt="Profile" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=600&auto=format&fit=crop" />
+                  <span className="absolute bottom-1 right-1 text-[8px] sm:text-[9px] bg-primary/80 text-white px-1 sm:px-1.5 uppercase font-mono">Profile</span>
                 </button>
               </div>
 
@@ -298,7 +298,7 @@ export default function ProductPage() {
                     <span className="text-[10px] sm:text-[11px] text-tertiary">Units (Batch increments of 5)</span>
                   </div>
                   <div className="space-y-2 sm:space-y-3 pt-2 sm:pt-3">
-                    <Link href="/artisan/inquiries/demo" className="w-full bg-primary text-white py-3 sm:py-3.5 px-4 sm:px-6 text-[13px] sm:text-[14px] font-bold tracking-tight hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 rounded-full">
+                    <Link href="/product/inquiry" className="w-full bg-primary text-white py-3 sm:py-3.5 px-4 sm:px-6 text-[13px] sm:text-[14px] font-bold tracking-tight hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 rounded-full">
                       <span className="material-symbols-outlined text-[18px] sm:text-[20px]">assignment</span>
                       <span className="">Request Batch Allocation / Inquire</span>
                     </Link>

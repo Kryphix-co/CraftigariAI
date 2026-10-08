@@ -43,7 +43,7 @@ const MOCK_PRODUCTS = [
     price: 1200,
     minQty: 15,
     leadTime: "10 Days Lead",
-    image: "https://images.unsplash.com/photo-1595865886071-7059db9ec227?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?q=80&w=800&auto=format&fit=crop",
     batch: "AS-014",
     featured: false,
   },
@@ -56,7 +56,7 @@ const MOCK_PRODUCTS = [
     price: 1850,
     minQty: 25,
     leadTime: "18 Days Lead",
-    image: "https://images.unsplash.com/photo-1549488344-c740b2efd488?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop",
     batch: "SH-201",
     featured: false,
   }
@@ -163,7 +163,7 @@ export default function Home() {
     </a>
     <a className="group flex flex-col items-center min-w-[100px] sm:min-w-0 snap-start" href="#inventory">
     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border border-border p-0.5 bg-white group-hover:border-primary transition-all duration-300">
-     <img alt="Heritage Woodcraft" className="w-full h-full object-cover object-right rounded-full group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1549488344-c740b2efd488?q=80&w=600&auto=format&fit=crop" />
+     <img alt="Heritage Woodcraft" className="w-full h-full object-cover object-right rounded-full group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop" />
     </div>
     <span className="mt-2.5 text-[12px] font-medium text-primary group-hover:text-terracotta transition-colors leading-tight">Carved Woodcraft</span>
     <span className="text-[10px] text-tertiary font-mono mt-0.5">19 Batches</span>
