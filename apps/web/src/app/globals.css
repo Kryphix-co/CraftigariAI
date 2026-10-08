@@ -74,6 +74,14 @@
   --font-label: var(--font-plus-jakarta-sans), sans-serif;
   --font-title: var(--font-plus-jakarta-sans), sans-serif;
   --font-headline: var(--font-plus-jakarta-sans), sans-serif;
+
+  /* Custom Homepage Colors */
+  --color-surface-muted: #fbfbfb;
+  --color-surface-card: #f7f7f8;
+  --color-border: #e5e5e5;
+  --color-border-light: #f0f0f0;
+  --color-terracotta: #a34424;
+  --color-forest: #24613b;
 }
 
 :root {

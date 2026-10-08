@@ -1,3 +1,3 @@
 export default function ProductPreviewPage() {
-  return <main>Product preview</main>;
+ return <main>Product preview</main>;
 }
