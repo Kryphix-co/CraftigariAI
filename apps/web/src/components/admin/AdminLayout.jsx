@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { LanguageSelector } from "@/features/i18n/LanguageSelector";
 
 export function AdminLayout({ children }) {
   const pathname = usePathname();
@@ -22,7 +23,10 @@ export function AdminLayout({ children }) {
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col w-64 bg-surface border-r border-outline-variant h-screen sticky top-0 shrink-0">
         <div className="h-16 flex items-center px-6 border-b border-outline-variant">
-          <span className="font-bold tracking-tight text-[18px] text-primary">Craftigari Admin</span>
+          <div className="flex w-full items-center justify-between gap-2">
+            <span className="font-bold tracking-tight text-[18px] text-primary">Craftigari Admin</span>
+            <LanguageSelector compact />
+          </div>
         </div>
         <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">
           {navItems.map((item) => {
@@ -61,6 +65,7 @@ export function AdminLayout({ children }) {
             </button>
             <span className="font-bold tracking-tight text-[16px] text-primary">Admin</span>
           </div>
+          <LanguageSelector compact />
         </header>
 
         {/* Mobile Menu Drawer */}

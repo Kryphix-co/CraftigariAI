@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import {
+  SUPPORTED_UI_LANGUAGES,
+  useLanguage,
+} from "@/features/i18n/LanguageContext";
 
 export default function WelcomeLanguagePage() {
-  const [selected, setSelected] = useState("hi");
+  const { language: selected, setLanguage, t } = useLanguage();
 
   return (
     <div className="bg-surface text-on-surface antialiased font-sans min-h-screen flex flex-col items-center justify-center p-4">
@@ -13,34 +16,28 @@ export default function WelcomeLanguagePage() {
           <span className="material-symbols-outlined text-[32px] text-primary">language</span>
         </div>
         
-        <h1 className="text-3xl font-bold text-primary mb-2 tracking-tight">अपनी भाषा चुनें</h1>
-        <p className="text-[14px] text-secondary mb-10">Choose the language you are comfortable using.</p>
+        <h1 className="text-3xl font-bold text-primary mb-2 tracking-tight">{t("welcomeTitle", "Choose your language")}</h1>
+        <p className="text-[14px] text-secondary mb-10">{t("welcomeSubtitle", "Choose the language you are comfortable using.")}</p>
 
-        <div className="space-y-4 mb-10">
-          <button 
-            onClick={() => setSelected("hi")}
-            className={`w-full p-5 border text-left flex items-center justify-between transition-colors ${selected === "hi" ? "border-primary bg-surface-container-low" : "border-outline hover:border-outline-variant"}`}
-          >
-            <div className="flex items-center gap-4">
-              <span className={`text-[20px] font-bold ${selected === "hi" ? "text-primary" : "text-secondary"}`}>हिन्दी</span>
-              <span className="text-[13px] text-tertiary">(Hindi)</span>
-            </div>
-            {selected === "hi" && <span className="material-symbols-outlined text-primary">check_circle</span>}
-          </button>
-
-          <button 
-            onClick={() => setSelected("en")}
-            className={`w-full p-5 border text-left flex items-center justify-between transition-colors ${selected === "en" ? "border-primary bg-surface-container-low" : "border-outline hover:border-outline-variant"}`}
-          >
-            <div className="flex items-center gap-4">
-              <span className={`text-[20px] font-bold ${selected === "en" ? "text-primary" : "text-secondary"}`}>English</span>
-            </div>
-            {selected === "en" && <span className="material-symbols-outlined text-primary">check_circle</span>}
-          </button>
+        <div className="mb-10 grid max-h-[420px] grid-cols-1 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
+          {SUPPORTED_UI_LANGUAGES.map((option) => (
+            <button
+              className={`flex w-full items-center justify-between border p-4 text-left transition-colors ${selected === option.code ? "border-primary bg-surface-container-low" : "border-outline hover:border-outline-variant"}`}
+              key={option.code}
+              onClick={() => setLanguage(option.code)}
+              type="button"
+            >
+              <div className="min-w-0">
+                <span className={`block truncate text-[18px] font-bold ${selected === option.code ? "text-primary" : "text-secondary"}`}>{option.label}</span>
+                <span className="text-[12px] text-tertiary">{option.name}</span>
+              </div>
+              {selected === option.code && <span className="material-symbols-outlined text-primary">check_circle</span>}
+            </button>
+          ))}
         </div>
 
         <Link href="/login" className="w-full block bg-primary text-white py-4 px-6 text-[16px] font-bold hover:bg-neutral-800 transition-colors text-center">
-          Continue / आगे बढ़ें
+          {t("continue", "Continue")}
         </Link>
         
       </div>

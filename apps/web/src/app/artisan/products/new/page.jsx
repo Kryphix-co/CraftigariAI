@@ -1,8 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
+import { LanguageSelector } from "@/features/i18n/LanguageSelector";
+import PhotoCapture from "@/features/product/PhotoCapture";
+import { useProductDraft } from "@/features/product/ProductDraftContext";
 
 export default function NewProductPhotoPage() {
+ const cameraInputRef = useRef(null);
+ const galleryInputRef = useRef(null);
+ const { addPhotos, photos } = useProductDraft();
+ const primaryPhoto = photos[0];
+
  return (
  <div className="h-full bg-surface text-on-surface antialiased flex flex-col font-body selection:bg-surface-container-high pb-20 lg:pb-0">
+  <PhotoCapture
+   cameraInputRef={cameraInputRef}
+   galleryInputRef={galleryInputRef}
+   onFilesSelected={addPhotos}
+  />
   {/* Top App Bar */}
   <header className="w-full sticky top-0 left-0 right-0 z-40 bg-surface border-b border-outline-variant shrink-0 px-4 lg:px-12">
   <div className="w-full h-14 px-4 lg:px-12 flex items-center justify-between">
@@ -21,24 +37,17 @@ export default function NewProductPhotoPage() {
    {/* Desktop Navigation (Hidden on mobile/tablet) */}
    <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
    <Link href="/artisan/dashboard" className="text-secondary hover:text-primary transition-colors">Home</Link>
-   <Link href="#crafts" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
    <Link href="/artisan/products/new" className="flex items-center gap-1.5 text-accent-terracotta bg-accent-terracotta-soft px-3 py-1.5 rounded-full hover:bg-tertiary-fixed transition-colors">
     <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
     Add
    </Link>
-   <Link href="#market" className="text-secondary hover:text-primary transition-colors">Market</Link>
-   <Link href="#profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Market</Link>
+   <Link href="/artisan/profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
    </nav>
 
    <div className="flex items-center space-x-2">
-   {/* Desktop Language Switcher (Hidden on mobile) */}
-   <button
-    className="hidden lg:flex h-8 px-2.5 rounded-full border border-outline bg-surface-container text-on-surface font-label text-[12px] hover:bg-surface-container-high active:scale-95 transition-all items-center gap-1"
-    type="button"
-   >
-    <span>हिंदी</span>
-    <span className="text-on-surface-variant font-normal">/ EN</span>
-   </button>
+   <LanguageSelector compact />
    {/* Audio Guidance Speaker Button */}
    <button
     aria-label="ऑडियो सहायता सुनें"
@@ -67,7 +76,7 @@ export default function NewProductPhotoPage() {
    <img
     className="absolute inset-0 w-full h-full object-cover"
     alt="Live Camera Preview"
-    src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"
+    src={primaryPhoto?.url ?? "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"}
    />
    
    {/* Reticle Corner Markers */}
@@ -94,6 +103,7 @@ export default function NewProductPhotoPage() {
    <button
     aria-label="फ़ोटो खींचें"
     className="absolute bottom-space-20 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-full border-2 border-surface flex items-center justify-center bg-surface/20 backdrop-blur-sm active:scale-95 transition-transform hover:bg-surface/30 shadow-md group"
+    onClick={() => cameraInputRef.current?.click()}
     type="button"
    >
     <div className="w-12 h-12 rounded-full bg-surface shadow-sm group-active:scale-90 transition-transform"></div>
@@ -114,7 +124,7 @@ export default function NewProductPhotoPage() {
    <section className="flex flex-col gap-space-8 lg:mt-[100px]">
    <div className="flex items-center justify-between px-space-2">
     <h2 className="font-body-medium text-[14px] text-on-surface-variant font-medium">
-    फ़ोटो के कोण <span className="text-on-surface font-semibold">(1 / 3 पूर्ण)</span>
+    फ़ोटो के कोण <span className="text-on-surface font-semibold">({photos.length} / 3 पूर्ण)</span>
     </h2>
     <span className="font-label-small text-[11px] text-on-surface-variant bg-surface-container px-space-8 py-0.5 rounded-full border border-outline-variant">
     360° विवरण
@@ -129,11 +139,11 @@ export default function NewProductPhotoPage() {
      <img
      className="w-full h-full object-cover"
      alt="Front Angle Thumbnail"
-     src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"
+     src={primaryPhoto?.url ?? "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"}
      />
-     <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-success flex items-center justify-center text-on-primary shadow">
+     {primaryPhoto && <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-success flex items-center justify-center text-on-primary shadow">
      <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
-     </div>
+     </div>}
     </div>
     <div className="mt-space-4 text-center">
      <span className="font-label text-[12px] font-semibold text-on-surface">1. सामने</span>
@@ -141,10 +151,12 @@ export default function NewProductPhotoPage() {
     </div>
 
     {/* Angle 2: Detail (Active / Next Angle) */}
-    <button className="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline bg-surface-container-low hover:border-on-surface hover:bg-surface transition-all active:scale-98" type="button">
+    <button className="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline bg-surface-container-low hover:border-on-surface hover:bg-surface transition-all active:scale-98" onClick={() => cameraInputRef.current?.click()} type="button">
     <div className="w-full aspect-square rounded-lg bg-surface border border-dashed border-outline flex flex-col items-center justify-center gap-1 text-on-surface-variant group-hover:text-on-surface group-hover:border-on-surface transition-colors">
-     <span className="material-symbols-outlined text-[20px]">zoom_in</span>
-     <span className="text-[10px] font-medium text-on-surface-variant group-hover:text-on-surface">क्लिक करें</span>
+     {photos[1] ? <img className="w-full h-full object-cover rounded-lg" alt="Detail Angle Thumbnail" src={photos[1].url} /> : <>
+      <span className="material-symbols-outlined text-[20px]">zoom_in</span>
+      <span className="text-[10px] font-medium text-on-surface-variant group-hover:text-on-surface">क्लिक करें</span>
+     </>}
     </div>
     <div className="mt-space-4 text-center">
      <span className="font-label text-[12px] font-medium text-on-surface-variant group-hover:text-on-surface">2. नज़दीक</span>
@@ -152,10 +164,12 @@ export default function NewProductPhotoPage() {
     </button>
 
     {/* Angle 3: Base / Underside (Pending Angle) */}
-    <button className="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline-variant bg-surface-container-low/60 hover:border-outline hover:bg-surface transition-all active:scale-98" type="button">
+    <button className="group relative flex flex-col items-center justify-between p-space-8 rounded-xl border border-outline-variant bg-surface-container-low/60 hover:border-outline hover:bg-surface transition-all active:scale-98" onClick={() => cameraInputRef.current?.click()} type="button">
     <div className="w-full aspect-square rounded-lg bg-surface/60 border border-outline-variant flex flex-col items-center justify-center gap-1 text-secondary">
-     <span className="material-symbols-outlined text-[20px]">layers</span>
-     <span className="text-[10px] text-secondary">बाकी</span>
+     {photos[2] ? <img className="w-full h-full object-cover rounded-lg" alt="Base Angle Thumbnail" src={photos[2].url} /> : <>
+      <span className="material-symbols-outlined text-[20px]">layers</span>
+      <span className="text-[10px] text-secondary">बाकी</span>
+     </>}
     </div>
     <div className="mt-space-4 text-center">
      <span className="font-label text-[12px] font-medium text-secondary">3. निचला तल</span>
@@ -170,14 +184,14 @@ export default function NewProductPhotoPage() {
     <span>आगे बढ़ें: बोलकर बताएं</span>
     <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
    </Link>
-   <button className="w-full h-[48px] rounded-xl bg-surface border border-outline text-on-surface font-medium text-[15px] hover:bg-surface-container transition-colors flex items-center justify-center gap-space-8 active:scale-[0.99] shadow-sm" type="button">
+   <button className="w-full h-[48px] rounded-xl bg-surface border border-outline text-on-surface font-medium text-[15px] hover:bg-surface-container transition-colors flex items-center justify-center gap-space-8 active:scale-[0.99] shadow-sm" onClick={() => galleryInputRef.current?.click()} type="button">
     <span className="material-symbols-outlined text-[20px] text-on-surface-variant">photo_library</span>
     <span>गैलरी से चुनें</span>
    </button>
    <div className="flex items-center justify-center gap-space-4 pt-space-4">
     <span className="material-symbols-outlined text-[14px] text-on-surface-variant">lock</span>
     <p className="font-label-small text-[11px] text-on-surface-variant text-center">
-    सुरक्षित और निजी • क्राफ़्टिगारी एआई द्वारा सहायता प्राप्त
+    सुरक्षित और निजी • उत्पाद मसौदा
     </p>
    </div>
    </div>

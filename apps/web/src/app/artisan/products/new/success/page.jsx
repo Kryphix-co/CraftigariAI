@@ -2,14 +2,40 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { QRCodeModal } from "@/components/buyer/QRCodeModal";
+import { LanguageSelector } from "@/features/i18n/LanguageSelector";
+import {
+ PRODUCT_PRICE_OPTIONS,
+ PRODUCT_SIZE_LABELS,
+ useProductDraft,
+} from "@/features/product/ProductDraftContext";
+import { usePublicUrl } from "@/hooks/usePublicUrl";
 
 export default function PublishedSuccessPage() {
  const [copied, setCopied] = useState(false);
+ const [isQrOpen, setIsQrOpen] = useState(false);
+ const { draft, photos } = useProductDraft();
+ const productImage = draft.photoUploads[0]?.url ?? photos[0]?.url ?? null;
+ const productTitle = draft.summary.title || "उत्पाद मसौदा";
+ const selectedPrice = PRODUCT_PRICE_OPTIONS[draft.selectedPrice];
+ const productId = draft.publishedProductId;
+ const productPath = productId ? `/products/${productId}` : "/products";
+ const passportPath = productId ? `/passport/${productId}` : "/products";
+ const productUrl = usePublicUrl(productPath);
+ const passportUrl = usePublicUrl(passportPath);
+ const publishError = productId
+  ? ""
+  : "Publishing has not been confirmed. Return to preview and publish again.";
 
- const handleCopy = () => {
- navigator.clipboard.writeText('https://craftigari.in/p/terracotta-kalash-284');
- setCopied(true);
- setTimeout(() => setCopied(false), 2000);
+ const handleCopy = async () => {
+  if (!productId) return;
+  try {
+   await navigator.clipboard.writeText(productUrl);
+   setCopied(true);
+   window.setTimeout(() => setCopied(false), 2000);
+  } catch {
+   setCopied(false);
+  }
  };
 
  return (
@@ -33,24 +59,17 @@ export default function PublishedSuccessPage() {
    {/* Desktop Navigation (Hidden on mobile/tablet) */}
    <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
    <Link href="/artisan/dashboard" className="text-secondary hover:text-primary transition-colors">Home</Link>
-   <Link href="#crafts" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
    <Link href="/artisan/products/new" className="flex items-center gap-1.5 text-accent-terracotta bg-accent-terracotta-soft px-3 py-1.5 rounded-full hover:bg-tertiary-fixed transition-colors">
     <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
     Add
    </Link>
-   <Link href="#market" className="text-secondary hover:text-primary transition-colors">Market</Link>
-   <Link href="#profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Market</Link>
+   <Link href="/artisan/profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
    </nav>
 
    <div className="flex items-center space-x-2">
-   {/* Desktop Language Switcher (Hidden on mobile) */}
-   <button
-    className="hidden lg:flex h-8 px-2.5 rounded-full border border-outline bg-surface-container text-on-surface font-label text-[12px] hover:bg-surface-container-high active:scale-95 transition-all items-center gap-1"
-    type="button"
-   >
-    <span>हिंदी</span>
-    <span className="text-on-surface-variant font-normal">/ EN</span>
-   </button>
+   <LanguageSelector compact />
    {/* Audio Guidance Speaker Button */}
    <button
     aria-label="ध्वनि सहायता"
@@ -74,30 +93,34 @@ export default function PublishedSuccessPage() {
    {/* Title & Subtitle */}
    <div className="text-center mb-6">
     <h2 className="text-[22px] leading-7 font-bold text-on-surface">
-    आपका उत्पाद प्रकाशित हो गया
+    {productId ? "आपका उत्पाद प्रकाशित हो गया" : "प्रकाशन की पुष्टि नहीं हुई"}
     </h2>
     <p className="text-[14px] font-body text-secondary mt-1 w-full ">
-    अब खरीदार आपकी लिस्टिंग देख सकते हैं और सीधे ऑर्डर कर सकते हैं।
+    {productId ? "यह लिस्टिंग अब सार्वजनिक बाज़ार में उपलब्ध है।" : "पूर्वावलोकन पर लौटकर दोबारा प्रकाशित करें।"}
     </p>
    </div>
 
    {/* Published Product Card */}
    <section aria-label="प्रकाशित उत्पाद विवरण" className="bg-surface-container-low border border-outline-variant rounded-xl p-space-16 flex items-center gap-3.5 mb-4 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
     <div className="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 border border-outline-variant">
-    <img className="w-full h-full object-cover" alt="Product" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop" />
+    {productImage ? (
+     <img className="w-full h-full object-cover" alt={productTitle} src={productImage} />
+    ) : (
+     <div className="flex h-full w-full items-center justify-center text-secondary">
+      <span className="material-symbols-outlined text-[24px]">image_not_supported</span>
+     </div>
+    )}
     </div>
     <div className="flex-1 min-w-0">
     <h3 className="text-[15px] font-semibold text-on-surface truncate leading-snug">
-     पारंपरिक टेराकोटा नक्काशी कलश
+     {productTitle}
     </h3>
     <p className="text-[13px] font-body text-secondary mt-0.5">
-     मूल्य: ₹1,150 · मध्यम आकार
+     मूल्य: ₹{selectedPrice.toLocaleString("en-IN")} · {PRODUCT_SIZE_LABELS[draft.size]}
     </p>
     <div className="inline-flex items-center gap-1.5 mt-1 px-2 py-0.5 rounded-full bg-[#e6f4ea] border border-[#ceead6]">
      <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-     <span className="text-[11px] font-semibold text-success tracking-wide">
-     बाज़ार में लाइव (Live on Market)
-     </span>
+     <span className="text-[11px] font-semibold text-success tracking-wide">Published product</span>
     </div>
     </div>
    </section>
@@ -107,12 +130,13 @@ export default function PublishedSuccessPage() {
     <div className="flex items-center gap-2 overflow-hidden">
     <span className="material-symbols-outlined text-secondary text-[18px] flex-shrink-0">link</span>
     <span className="text-[11px] font-medium font-mono text-secondary truncate select-all">
-     craftigari.in/p/terracotta-kalash-284
+     {productId ? productUrl : "स्थानीय लिंक बनाया जा रहा है…"}
     </span>
     </div>
     <button 
     aria-label="लिंक कॉपी करें" 
     className="flex items-center gap-1 text-[11px] font-medium text-on-surface px-2.5 py-1 rounded-md hover:bg-surface-container active:scale-95 transition-all border border-outline-variant flex-shrink-0 bg-surface-container-low" 
+    disabled={!productId}
     onClick={handleCopy}
     type="button"
     >
@@ -125,7 +149,7 @@ export default function PublishedSuccessPage() {
    <div className="grid grid-cols-2 gap-3 mb-6">
     <div className="p-3 bg-surface border border-outline-variant rounded-lg">
     <span className="text-[11px] font-medium text-secondary block">लिस्टिंग आईडी</span>
-    <span className="text-[16px] font-semibold text-on-surface mt-0.5 block">#CRF-2849</span>
+    <span className="text-[13px] font-semibold text-on-surface mt-0.5 block truncate">{productId ?? "Creating…"}</span>
     </div>
     <div className="p-3 bg-surface border border-outline-variant rounded-lg">
     <span className="text-[11px] font-medium text-secondary block">डिलीवरी उपलब्धता</span>
@@ -142,18 +166,20 @@ export default function PublishedSuccessPage() {
     <span className="material-symbols-outlined text-[20px]">visibility</span>
     <span>डैशबोर्ड पर लौटें</span>
     </Link>
-    <Link href="/product" className="w-full h-[52px] bg-surface text-on-surface border border-outline hover:bg-surface-container-low font-medium text-[14px] rounded-lg flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
+     {productId ? <Link href={productPath} className="w-full h-[52px] bg-surface text-on-surface border border-outline hover:bg-surface-container-low font-medium text-[14px] rounded-lg flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
     <span className="material-symbols-outlined text-[20px] text-success">visibility</span>
     <span>खरीदार के रूप में देखें (View Listing)</span>
-    </Link>
-    <button className="w-full py-2 text-secondary hover:text-on-surface text-[14px] font-medium flex items-center justify-center gap-1.5 transition-colors" type="button">
+     </Link> : <div className="w-full h-[52px] bg-surface-container text-secondary border border-outline font-medium text-[14px] rounded-lg flex items-center justify-center">लिस्टिंग बनाई जा रही है…</div>}
+     <button className="w-full py-2 text-secondary hover:text-on-surface text-[14px] font-medium flex items-center justify-center gap-1.5 transition-colors disabled:opacity-40" disabled={!productId} onClick={() => setIsQrOpen(true)} type="button">
     <span className="material-symbols-outlined text-[18px]">qr_code_2</span>
     <span>QR कोड दिखाएं</span>
     </button>
    </div>
+   {publishError && <p className="mt-3 text-center text-[12px] text-error">{publishError}</p>}
    </div>
   </main>
   </div>
+  <QRCodeModal onClose={() => setIsQrOpen(false)} open={isQrOpen} passportUrl={passportUrl} productName={productTitle} />
  </div>
  );
 }

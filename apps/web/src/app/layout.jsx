@@ -1,4 +1,6 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { LanguageProvider } from "@/features/i18n/LanguageContext";
+import { RouteLanguageFallback } from "@/features/i18n/RouteLanguageFallback";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -14,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
  return (
  <html
-  lang="en"
+  lang="hi"
   className={`${plusJakartaSans.variable} h-full antialiased`}
  >
   <head>
@@ -23,7 +25,12 @@ export default function RootLayout({ children }) {
    rel="stylesheet"
   />
   </head>
-  <body className="min-h-full flex flex-col font-body selection:bg-surface-container-high">{children}</body>
+  <body className="min-h-full flex flex-col font-body selection:bg-surface-container-high">
+    <LanguageProvider>
+     {children}
+     <RouteLanguageFallback />
+    </LanguageProvider>
+  </body>
  </html>
  );
 }

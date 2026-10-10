@@ -1,8 +1,31 @@
 import { createApp } from "./app.js";
 import { env } from "./config/env.js";
+import {
+  connectToDatabase,
+  disconnectFromDatabase,
+} from "./config/database.js";
 
 const app = createApp();
 
-app.listen(env.port, () => {
+const server = app.listen(env.port, () => {
   console.log(`Craftigari API listening on port ${env.port}`);
 });
+
+if (env.mongodbUri) {
+  connectToDatabase()
+    .then(() => console.log("MongoDB connection established"))
+    .catch(() => console.error("MongoDB connection failed; data routes are unavailable"));
+} else {
+  console.warn("MONGODB_URI is not configured; data routes are unavailable");
+}
+
+async function shutdown(signal) {
+  console.log(`${signal} received; shutting down`);
+  server.close(async () => {
+    await disconnectFromDatabase();
+    process.exit(0);
+  });
+}
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
