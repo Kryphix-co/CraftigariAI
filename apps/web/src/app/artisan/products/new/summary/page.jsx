@@ -1,6 +1,95 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { useLanguage } from "@/features/i18n/LanguageContext";
+import { LanguageSelector } from "@/features/i18n/LanguageSelector";
+import { useProductDraft } from "@/features/product/ProductDraftContext";
+import { apiPost } from "@/lib/api";
+import { analyzeProductDraft } from "@/lib/productAnalysis";
 
 export default function NewProductSummaryPage() {
+ const { draft, photos, updateDraft, voice } = useProductDraft();
+ const { t } = useLanguage();
+ const [aiStatus, setAiStatus] = useState("idle");
+ const [aiError, setAiError] = useState("");
+ const [isTranslating, setIsTranslating] = useState(false);
+ const [translationError, setTranslationError] = useState("");
+ const [isShowingOriginal, setIsShowingOriginal] = useState(false);
+ const completedFacts = Object.values(draft.summary).filter((value) =>
+  Array.isArray(value) ? value.length > 0 : Boolean(value),
+ ).length;
+ const productImage = photos[0]?.url ?? draft.photoUploads[0]?.url ?? "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop";
+ const focusField = (field) => document.getElementById(`summary-${field}`)?.focus();
+
+ const handleTranslateDescription = async () => {
+  const textToTranslate = draft.summary.description?.trim();
+  if (!textToTranslate) return;
+
+  setIsTranslating(true);
+  setTranslationError("");
+
+  const hasHindiChars = /[\u0900-\u097F]/.test(textToTranslate);
+  const sourceLang = hasHindiChars ? "hi" : (draft.aiLanguage || "en");
+  const targetLang = sourceLang === "hi" ? "en" : "hi";
+
+  try {
+   const data = await apiPost("/api/ai/translate", {
+    text: textToTranslate,
+    sourceLanguage: sourceLang,
+    targetLanguage: targetLang,
+   });
+
+   if (data?.translatedText) {
+    updateDraft({
+     summary: {
+      ...draft.summary,
+      originalDescription: draft.summary.originalDescription || textToTranslate,
+      translatedDescription: data.translatedText,
+      description: data.translatedText,
+     },
+    });
+    setIsShowingOriginal(false);
+   }
+  } catch (err) {
+   setTranslationError(err.message || "Translation unavailable. You can continue editing manually.");
+  } finally {
+   setIsTranslating(false);
+  }
+ };
+
+ const toggleOriginalTranslated = () => {
+  if (isShowingOriginal) {
+   updateDraft({
+    summary: {
+     ...draft.summary,
+     description: draft.summary.translatedDescription || draft.summary.description,
+    },
+   });
+   setIsShowingOriginal(false);
+  } else {
+   updateDraft({
+    summary: {
+     ...draft.summary,
+     description: draft.summary.originalDescription || draft.summary.description,
+    },
+   });
+   setIsShowingOriginal(true);
+  }
+ };
+
+ const runAnalysis = async () => {
+  setAiStatus("loading");
+  setAiError("");
+  try {
+   await analyzeProductDraft({ draft, photos, updateDraft });
+   setAiStatus("complete");
+  } catch (error) {
+   setAiStatus("error");
+   setAiError(error.message || "AI analysis failed. Continue by entering details manually.");
+  }
+ };
+
  return (
  <div className="bg-surface text-on-surface font-body antialiased min-h-full flex flex-col justify-between selection:bg-outline selection:text-primary pb-20 lg:pb-0">
   {/* Main Sub-Flow Task Context */}
@@ -23,24 +112,17 @@ export default function NewProductSummaryPage() {
    {/* Desktop Navigation (Hidden on mobile/tablet) */}
    <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
    <Link href="/artisan/dashboard" className="text-secondary hover:text-primary transition-colors">Home</Link>
-   <Link href="#crafts" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
    <Link href="/artisan/products/new" className="flex items-center gap-1.5 text-accent-terracotta bg-accent-terracotta-soft px-3 py-1.5 rounded-full hover:bg-tertiary-fixed transition-colors">
     <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
     Add
    </Link>
-   <Link href="#market" className="text-secondary hover:text-primary transition-colors">Market</Link>
-   <Link href="#profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Market</Link>
+   <Link href="/artisan/profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
    </nav>
 
    <div className="flex items-center space-x-2">
-   {/* Desktop Language Switcher (Hidden on mobile) */}
-   <button
-    className="hidden lg:flex h-8 px-2.5 rounded-full border border-outline bg-surface-container text-on-surface font-label text-[12px] hover:bg-surface-container-high active:scale-95 transition-all items-center gap-1"
-    type="button"
-   >
-    <span>हिंदी</span>
-    <span className="text-on-surface-variant font-normal">/ EN</span>
-   </button>
+   <LanguageSelector compact />
    {/* Audio Guidance Speaker Button */}
    <button
     aria-label="ध्वनि निर्देश सुनें"
@@ -59,7 +141,7 @@ export default function NewProductSummaryPage() {
    <div className="lg:col-span-6 flex flex-col">
    <div className="hidden lg:block mb-8">
     <h1 className="font-display text-[24px] font-bold text-on-surface tracking-tight">कदम 3 / 4: विवरण समीक्षा</h1>
-    <p className="font-body text-[14px] text-on-surface-variant mt-1">आपकी आवाज़ और फ़ोटो से तैयार सारांश</p>
+    <p className="font-body text-[14px] text-on-surface-variant mt-1">आपके उत्पाद मसौदे का सारांश</p>
    </div>
 
    {/* Screen Context & Single Unified Status State (Mobile) */}
@@ -68,10 +150,10 @@ export default function NewProductSummaryPage() {
     <h1 className="font-display text-[22px] font-bold text-on-surface tracking-tight">कारीगरी का विवरण</h1>
     <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E6F4EA] text-success border border-[#CEEAD6]">
      <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-     <span className="font-label-small text-[12px] font-semibold tracking-tight">4 तथ्य सत्यापित</span>
+     <span className="font-label-small text-[12px] font-semibold tracking-tight">{completedFacts} विवरण सुरक्षित</span>
     </div>
     </div>
-    <p className="font-body text-on-surface-variant text-[14px]">आपकी आवाज़ और फ़ोटो से तैयार सारांश</p>
+    <p className="font-body text-on-surface-variant text-[14px]">आपके उत्पाद मसौदे का सारांश</p>
    </section>
 
    {/* Artifact AI Visual Thumbnail Preview */}
@@ -80,34 +162,109 @@ export default function NewProductSummaryPage() {
     <img
      className="w-full h-full object-cover"
      alt="Product Thumbnail"
-     src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"
+     src={productImage}
     />
     </div>
     <div className="flex-1 min-w-0 flex flex-col justify-center">
     <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-secondary mb-1">
      <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
-     <span>AI द्वारा विश्लेषण पूर्ण</span>
+     <span>मसौदा जानकारी</span>
     </div>
-    <p className="font-title text-[15px] lg:text-[18px] text-on-surface font-semibold truncate">टेराकोटा सजावटी कलश</p>
-    <p className="font-body text-[12px] lg:text-[14px] text-on-surface-variant mt-0.5">अपलोड की गई 2 तस्वीरें व 1 वॉयस नोट</p>
+    <input
+     className="w-full bg-transparent border-0 p-0 font-title text-[15px] lg:text-[18px] text-on-surface font-semibold truncate outline-none"
+     onChange={(event) => updateDraft({ summary: { title: event.target.value } })}
+     placeholder="उत्पाद का शीर्षक"
+     value={draft.summary.title}
+    />
+    <p className="font-body text-[12px] lg:text-[14px] text-on-surface-variant mt-0.5">{photos.length} तस्वीरें · {voice ? "1 वॉयस नोट" : "कोई वॉयस नोट नहीं"}</p>
     </div>
     <div className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E6F4EA] text-success border border-[#CEEAD6]">
     <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-    <span className="font-label-small text-[13px] font-semibold tracking-tight">4 तथ्य सत्यापित</span>
+    <span className="font-label-small text-[13px] font-semibold tracking-tight">{completedFacts} विवरण सुरक्षित</span>
     </div>
    </div>
 
+   <section className="mb-space-24 rounded-xl border border-outline-variant bg-surface p-4">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+     <div>
+      <div className="flex items-center gap-1.5 font-title text-[14px] font-semibold text-primary">
+       <span className="material-symbols-outlined text-[18px]">auto_awesome</span>
+       Gemini listing assistance
+      </div>
+      <p className="mt-1 text-[12px] text-secondary">Uses your uploaded photos and entered transcript. You can edit every suggestion.</p>
+     </div>
+     <button className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-[13px] font-semibold text-on-primary disabled:cursor-not-allowed disabled:opacity-60" disabled={aiStatus === "loading"} onClick={runAnalysis} type="button">
+      {aiStatus === "loading" ? "Analyzing…" : draft.aiAnalysis.suggestions ? "Analyze again" : "Generate suggestions"}
+     </button>
+    </div>
+    {aiError && <p className="mt-3 text-[12px] text-error">{aiError} Your draft is unchanged and manual entry remains available.</p>}
+    {aiStatus === "complete" && <p className="mt-3 text-[12px] text-success">Suggestions added. Review and correct them before continuing.</p>}
+   </section>
+
    {/* Structured Summary Card */}
    <section className="bg-surface rounded-xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.02)] mb-space-24 lg:mb-0 overflow-hidden">
+    <div className="p-space-16">
+     <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+      <label className="font-label text-on-surface-variant text-[12px]" htmlFor="summary-description">
+       {t("summaryDescLabel", "Product description")}
+      </label>
+      <div className="flex items-center gap-2">
+       {draft.summary.originalDescription && draft.summary.translatedDescription && (
+        <button
+         type="button"
+         className="text-[11px] font-medium text-secondary hover:text-primary transition-colors underline"
+         onClick={toggleOriginalTranslated}
+        >
+         {isShowingOriginal ? t("useTranslatedText", "अनुवादित देखें") : t("revertOriginalText", "मूल पाठ देखें")}
+        </button>
+       )}
+       <button
+        type="button"
+        className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:text-terracotta transition-colors px-2.5 py-1 rounded-full border border-outline bg-surface-container disabled:opacity-50 cursor-pointer"
+        disabled={isTranslating || !draft.summary.description?.trim()}
+        onClick={handleTranslateDescription}
+       >
+        <span className="material-symbols-outlined text-[13px]">translate</span>
+        <span>
+         {isTranslating
+          ? t("translatingText", "अनुवाद हो रहा है…")
+          : /[\u0900-\u097F]/.test(draft.summary.description || "")
+          ? t("translateToEn", "Translate to English")
+          : t("translateToHi", "हिंदी में अनुवाद करें")}
+        </span>
+       </button>
+      </div>
+     </div>
+     <textarea id="summary-description" className="mt-1 min-h-[96px] w-full resize-y rounded-lg border border-outline bg-surface px-3 py-2 font-body text-[14px] text-on-surface outline-none focus:border-primary" onChange={(event) => updateDraft({ summary: { description: event.target.value } })} placeholder={t("summaryDescPlaceholder", "Describe the product in your own words")} value={draft.summary.description} />
+     {translationError && (
+      <p className="mt-1 text-[12px] text-error">{translationError}</p>
+     )}
+    </div>
+    <div className="h-px bg-outline-variant w-full"></div>
+    <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+     <div className="space-y-0.5 pr-3">
+      <label className="font-label text-on-surface-variant text-[12px]" htmlFor="summary-category">Category</label>
+      <input id="summary-category" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { category: event.target.value } })} placeholder="Product category" value={draft.summary.category} />
+     </div>
+    </div>
+    <div className="h-px bg-outline-variant w-full"></div>
     {/* Row 1: Craft Type */}
     <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
     <div className="space-y-0.5 pr-3">
      <span className="font-label text-on-surface-variant text-[12px]">शिल्प</span>
-     <p className="font-title text-[15px] font-semibold text-on-surface leading-snug">पारंपरिक टेराकोटा नक्काशी</p>
+     <input id="summary-craftType" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { craftType: event.target.value } })} placeholder="शिल्प दर्ज करें" value={draft.summary.craftType} />
     </div>
-    <button aria-label="संपादित करें शिल्प" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+    <button aria-label="संपादित करें शिल्प" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onClick={() => focusField("craftType")} type="button">
      <span className="material-symbols-outlined text-[18px]">edit</span>
     </button>
+    </div>
+    <div className="h-px bg-outline-variant w-full"></div>
+
+    <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+     <div className="space-y-0.5 pr-3">
+      <label className="font-label text-on-surface-variant text-[12px]" htmlFor="summary-tags">Suggested tags</label>
+      <input id="summary-tags" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { tags: event.target.value.split(",").map((tag) => tag.trim()).filter(Boolean) } })} placeholder="handmade, pottery" value={(draft.summary.tags ?? []).join(", ")} />
+     </div>
     </div>
     <div className="h-px bg-outline-variant w-full"></div>
     
@@ -115,9 +272,9 @@ export default function NewProductSummaryPage() {
     <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
     <div className="space-y-0.5 pr-3">
      <span className="font-label text-on-surface-variant text-[12px]">सामग्री</span>
-     <p className="font-title text-[15px] font-semibold text-on-surface leading-snug">प्राकृतिक लाल चिकनी मिट्टी</p>
+     <input id="summary-material" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { material: event.target.value } })} placeholder="सामग्री दर्ज करें" value={draft.summary.material} />
     </div>
-    <button aria-label="संपादित करें सामग्री" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+    <button aria-label="संपादित करें सामग्री" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onClick={() => focusField("material")} type="button">
      <span className="material-symbols-outlined text-[18px]">edit</span>
     </button>
     </div>
@@ -127,9 +284,9 @@ export default function NewProductSummaryPage() {
     <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
     <div className="space-y-0.5 pr-3">
      <span className="font-label text-on-surface-variant text-[12px]">समय व मेहनत</span>
-     <p className="font-title text-[15px] font-semibold text-on-surface leading-snug">3 दिन (लगभग 18 घंटे हस्तकला)</p>
+     <input id="summary-effort" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { effort: event.target.value } })} placeholder="समय व मेहनत दर्ज करें" value={draft.summary.effort} />
     </div>
-    <button aria-label="संपादित करें समय व मेहनत" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+    <button aria-label="संपादित करें समय व मेहनत" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onClick={() => focusField("effort")} type="button">
      <span className="material-symbols-outlined text-[18px]">edit</span>
     </button>
     </div>
@@ -139,9 +296,9 @@ export default function NewProductSummaryPage() {
     <div className="p-space-16 flex items-center justify-between hover:bg-surface-bright transition-colors group">
     <div className="space-y-0.5 pr-3">
      <span className="font-label text-on-surface-variant text-[12px]">रंग</span>
-     <p className="font-title text-[15px] font-semibold text-on-surface leading-snug">प्राकृतिक गेरुआ व वनस्पति रंग</p>
+     <input id="summary-colors" className="w-full bg-transparent border-0 p-0 font-title text-[15px] font-semibold text-on-surface leading-snug outline-none" onChange={(event) => updateDraft({ summary: { colors: event.target.value } })} placeholder="रंग दर्ज करें" value={draft.summary.colors} />
     </div>
-    <button aria-label="संपादित करें रंग" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+    <button aria-label="संपादित करें रंग" className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onClick={() => focusField("colors")} type="button">
      <span className="material-symbols-outlined text-[18px]">edit</span>
     </button>
     </div>
@@ -163,28 +320,28 @@ export default function NewProductSummaryPage() {
     </label>
     {/* 3 Clean Selector Tabs */}
     <div aria-label="उत्पाद का आकार" className="flex flex-col sm:grid sm:grid-cols-3 lg:grid-cols-1 lg:gap-3 gap-2" role="radiogroup">
-     <button aria-checked="false" className="h-12 lg:h-14 rounded-lg bg-surface border border-outline flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-medium hover:border-secondary transition-all active:scale-[0.99]" role="radio" type="button">
-     <span className="hidden lg:inline-block w-4 h-4 rounded-full border border-outline mr-3"></span>
-     छोटा (6–8")
+     <button aria-checked={draft.size === "small"} className={`h-12 lg:h-14 rounded-lg bg-surface flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-medium hover:border-secondary transition-all active:scale-[0.99] ${draft.size === "small" ? "border-2 border-[#1F1F1F] shadow-sm" : "border border-outline"}`} onClick={() => updateDraft({ size: "small" })} role="radio" type="button">
+     <span className={`hidden lg:inline-block w-4 h-4 rounded-full mr-3 ${draft.size === "small" ? "border-[5px] border-[#1F1F1F]" : "border border-outline"}`}></span>
+     छोटा (6–8&quot;)
      </button>
-     <button aria-checked="true" className="h-12 lg:h-14 rounded-lg bg-surface border-2 border-[#1F1F1F] flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-semibold shadow-sm relative transition-all active:scale-[0.99]" role="radio" type="button">
-     <span className="w-1.5 h-1.5 rounded-full bg-[#1F1F1F] absolute left-4 lg:hidden"></span>
-     <span className="hidden lg:flex w-4 h-4 rounded-full border-[5px] border-[#1F1F1F] mr-3 items-center justify-center"></span>
-     <span className="ml-2 lg:ml-0">मध्यम (10–12")</span>
+     <button aria-checked={draft.size === "medium"} className={`h-12 lg:h-14 rounded-lg bg-surface flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-semibold relative transition-all active:scale-[0.99] ${draft.size === "medium" ? "border-2 border-[#1F1F1F] shadow-sm" : "border border-outline"}`} onClick={() => updateDraft({ size: "medium" })} role="radio" type="button">
+     {draft.size === "medium" && <span className="w-1.5 h-1.5 rounded-full bg-[#1F1F1F] absolute left-4 lg:hidden"></span>}
+     <span className={`hidden lg:flex w-4 h-4 rounded-full mr-3 items-center justify-center ${draft.size === "medium" ? "border-[5px] border-[#1F1F1F]" : "border border-outline"}`}></span>
+     <span className="ml-2 lg:ml-0">मध्यम (10–12&quot;)</span>
      </button>
-     <button aria-checked="false" className="h-12 lg:h-14 rounded-lg bg-surface border border-outline flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-medium hover:border-secondary transition-all active:scale-[0.99]" role="radio" type="button">
-     <span className="hidden lg:inline-block w-4 h-4 rounded-full border border-outline mr-3"></span>
-     बड़ा (14"+)
+     <button aria-checked={draft.size === "large"} className={`h-12 lg:h-14 rounded-lg bg-surface flex items-center justify-center lg:justify-start px-4 text-center lg:text-left text-on-surface text-[14px] lg:text-[15px] font-medium hover:border-secondary transition-all active:scale-[0.99] ${draft.size === "large" ? "border-2 border-[#1F1F1F] shadow-sm" : "border border-outline"}`} onClick={() => updateDraft({ size: "large" })} role="radio" type="button">
+     <span className={`hidden lg:inline-block w-4 h-4 rounded-full mr-3 ${draft.size === "large" ? "border-[5px] border-[#1F1F1F]" : "border border-outline"}`}></span>
+     बड़ा (14&quot;+)
      </button>
     </div>
     </div>
     
     {/* Audio Alternative Action */}
     <div className="pt-2 flex items-center justify-end">
-    <button className="inline-flex items-center gap-1.5 text-[14px] font-medium text-on-surface hover:text-primary px-4 py-2 rounded-lg border border-[#F9AB00]/40 bg-surface/80 hover:bg-surface transition-all shadow-sm" type="button">
+    <Link className="inline-flex items-center gap-1.5 text-[14px] font-medium text-on-surface hover:text-primary px-4 py-2 rounded-lg border border-[#F9AB00]/40 bg-surface/80 hover:bg-surface transition-all shadow-sm" href="/artisan/products/new/voice">
      <span className="material-symbols-outlined text-[20px] text-[#B06000]">mic</span>
      <span>बोलकर बताएं</span>
-    </button>
+    </Link>
     </div>
    </section>
 

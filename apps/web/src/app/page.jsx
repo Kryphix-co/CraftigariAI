@@ -1,75 +1,18 @@
 "use client";
-import { useState } from "react";
-
-import Link from "next/link";
 import { ProductCard } from "@/components/buyer/ProductCard";
 import { BuyerHeader } from "@/components/buyer/BuyerHeader";
 import { BuyerFooter } from "@/components/buyer/BuyerFooter";
+import { STATIC_PRODUCTS } from "@/lib/catalog";
 
-
-const MOCK_PRODUCTS = [
-  {
-    id: "p1",
-    name: "Handcrafted Terracotta Planter",
-    artisan: "Master Ram Singh",
-    region: "Rajasthan",
-    category: "Pottery & Ceramics",
-    price: 850,
-    minQty: 20,
-    leadTime: "14 Days Lead",
-    image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
-    batch: "AM-104",
-    featured: true,
-  },
-  {
-    id: "p2",
-    name: "Indigo Block Print Shawl",
-    artisan: "Chhipa Guild",
-    region: "Rajasthan",
-    category: "Textiles & Weaving",
-    price: 2400,
-    minQty: 10,
-    leadTime: "21 Days Lead",
-    image: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=800&auto=format&fit=crop",
-    batch: "BG-092",
-    featured: true,
-  },
-  {
-    id: "p3",
-    name: "Handwoven Bamboo Basket",
-    artisan: "Bodo Weavers Collective",
-    region: "Assam",
-    category: "Bamboo & Cane",
-    price: 1200,
-    minQty: 15,
-    leadTime: "10 Days Lead",
-    image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?q=80&w=800&auto=format&fit=crop",
-    batch: "AS-014",
-    featured: false,
-  },
-  {
-    id: "p4",
-    name: "Carved Wooden Serving Tray",
-    artisan: "Nizam Artisans",
-    region: "Uttar Pradesh",
-    category: "Woodcraft",
-    price: 1850,
-    minQty: 25,
-    leadTime: "18 Days Lead",
-    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop",
-    batch: "SH-201",
-    featured: false,
-  }
-];
+const HOMEPAGE_PRODUCTS = STATIC_PRODUCTS.slice(0, 4);
 
 export default function Home() {
- const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
  return (
  <div className="bg-white text-primary antialiased font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
   <BuyerHeader />
 
   {/* Main Body */}
-  <main className="flex-1 w-full bg-white px-4 lg:px-12">
+  <main className="w-full flex-1 bg-white">
   {/* 1. Refined Hero Section */}
   <section className="w-full px-4 sm:px-6 lg:px-12 py-6 sm:py-12 lg:py-16">
    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -84,12 +27,12 @@ export default function Home() {
     <p className="text-secondary text-[15px] leading-relaxed max-w-lg mb-8 font-normal">
     Direct access to generational pottery, handlooms, metalwork, and regional studio crafts. Verified voice provenance and direct fair remuneration straight to artisan clusters across India.
     </p>
-    <div className="flex flex-wrap items-center gap-3.5 mb-10">
-    <a className="px-6 py-3 bg-primary hover:bg-neutral-800 text-white text-[13px] font-medium tracking-tight transition-all rounded-2xl inline-flex items-center gap-2" href="#inventory">
+    <div className="mb-10 flex flex-wrap items-center gap-3.5">
+    <a className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 text-[13px] font-medium tracking-tight text-white transition-all hover:bg-neutral-800 sm:w-auto" href="#inventory">
      <span className="">Explore Catalog</span>
      <span className="material-symbols-outlined text-[16px]">arrow_downward</span>
     </a>
-    <a className="px-6 py-3 bg-white border border-border hover:border-primary text-primary text-[13px] font-medium tracking-tight transition-all rounded-2xl inline-flex items-center gap-1.5" href="#trade">
+    <a className="inline-flex w-full items-center justify-center gap-1.5 rounded-2xl border border-border bg-white px-6 py-3 text-[13px] font-medium tracking-tight text-primary transition-all hover:border-primary sm:w-auto" href="#trade">
      <span className="">Custom & Bulk Inquiry</span>
      <span className="material-symbols-outlined text-[16px]">east</span>
     </a>
@@ -113,7 +56,7 @@ export default function Home() {
    <div className="lg:col-span-6">
     <div className="relative overflow-hidden bg-surface-muted border border-border aspect-[4/3] group">
     <img alt="Architectural terracotta master vessels arranged in gallery natural light" className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=1200&auto=format&fit=crop" />
-    <div className="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-sm border-t border-border p-3.5 flex items-center justify-between">
+    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 border-t border-border bg-white/95 p-3.5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
      <div className="flex items-center gap-2.5">
      <span className="w-2 h-2 rounded-full bg-terracotta shrink-0"></span>
      <span className="text-[12px] font-medium text-primary tracking-tight">Master Ram Singh · Amer Workshop, Jaipur</span>
@@ -199,8 +142,8 @@ export default function Home() {
    </a>
    </div>
    {/* 4-Column Grid */}
-   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {MOCK_PRODUCTS.map(product => (
+   <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+    {HOMEPAGE_PRODUCTS.map(product => (
       <ProductCard key={product.id} product={product} />
     ))}
    </div>
@@ -223,10 +166,10 @@ export default function Home() {
     <div className="lg:col-span-6 flex flex-col justify-center">
     <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta mb-2 block">Voice of the Lineage</span>
     <blockquote className="text-[16px] sm:text-[18px] text-primary font-normal leading-relaxed italic border-l-2 border-primary pl-4 mb-4">
-     "यह मिट्टी हमारे पुरखों की तालीम है। पहिए पर जब हाथ रखते हैं, तो मिट्टी खुद बताती है कि उसे घड़ा बनना है या बड़ा मर्तबान। बिचौलियों के बिना, हमारी मेहनत का मान सीधे वास्तुकारों तक पहुँचता है।"
+     &ldquo;यह मिट्टी हमारे पुरखों की तालीम है। पहिए पर जब हाथ रखते हैं, तो मिट्टी खुद बताती है कि उसे घड़ा बनना है या बड़ा मर्तबान। बिचौलियों के बिना, हमारी मेहनत का मान सीधे वास्तुकारों तक पहुँचता है।&rdquo;
     </blockquote>
     <p className="text-[13px] text-secondary leading-relaxed mb-6 font-normal">
-     "This alluvial clay carries generations of knowledge. When hands steady the wheel, the clay dictates its own architectural form. Without intermediate trading margins, our studio's craft reaches designers with uncompromising provenance."
+     &ldquo;This alluvial clay carries generations of knowledge. When hands steady the wheel, the clay dictates its own architectural form. Without intermediate trading margins, our studio&apos;s craft reaches designers with uncompromising provenance.&rdquo;
     </p>
     {/* Hairline Spec Grid */}
     <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border">
@@ -284,7 +227,7 @@ export default function Home() {
      </div>
      </div>
     </div>
-    <div className="mt-8 pt-5 border-t border-border flex items-center justify-between text-[12px] text-secondary">
+    <div className="mt-8 flex flex-col items-start gap-3 border-t border-border pt-5 text-[12px] text-secondary sm:flex-row sm:items-center sm:justify-between">
      <span className="">Craftigari Sourcing Catalog & Standards (PDF)</span>
      <button className="font-bold text-primary hover:text-terracotta transition-colors inline-flex items-center gap-1">
      <span className="material-symbols-outlined text-[15px]">download</span>

@@ -1,9 +1,15 @@
-import Image from "next/image";
+"use client";
+
 import { BottomNav } from "@/components/BottomNav";
 import Link from "next/link";
 import { ArtisanHeader } from "@/components/artisan/ArtisanHeader";
+import { useAuth } from "@/features/auth/AuthContext";
+import { useLanguage } from "@/features/i18n/LanguageContext";
 
 export default function ArtisanDashboardPage() {
+ const { artisan } = useAuth();
+ const { language: uiLang, t } = useLanguage();
+
  return (
  <div className="bg-surface text-on-surface antialiased min-h-full flex flex-col justify-between selection:bg-surface-container-high pb-20 lg:pb-0">
   <ArtisanHeader activeTab="home" />
@@ -17,23 +23,27 @@ export default function ArtisanDashboardPage() {
    <section className="py-space-12 flex items-center justify-between lg:py-0 lg:mb-8">
    <div className="flex items-center gap-3">
     <div className="relative">
-    <img
-     className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover border border-outline-variant"
-     alt="Ram Singh Profile"
-     src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop"
-    />
-    <span className="absolute bottom-0 right-0 lg:bottom-1 lg:right-1 w-3 h-3 bg-success rounded-full ring-2 ring-surface"></span>
+    {artisan?.profilePhoto ? (
+     <img
+      className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover border border-outline-variant"
+      alt={artisan.name || "Artisan profile"}
+      src={artisan.profilePhoto}
+     />
+    ) : (
+     <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full border border-outline-variant bg-surface-container flex items-center justify-center text-tertiary">
+      <span className="material-symbols-outlined text-[28px]">person</span>
+     </div>
+    )}
     </div>
     <div>
-    <h1 className="text-[20px] lg:text-[24px] leading-7 font-bold text-[#202124] tracking-tight">नमस्ते, राम सिंह</h1>
-    <div className="flex items-center gap-1 text-[13px] text-[#5F6368] font-body mt-0.5">
-     <span className="material-symbols-outlined text-[15px] text-on-surface-variant">location_on</span>
-     <span>जयपुर, राजस्थान</span>
+     <h1 className="text-[20px] lg:text-[24px] leading-7 font-bold text-[#202124] tracking-tight">
+      {uiLang === "hi" ? `नमस्ते, ${artisan?.name || "कारीगर"}` : `Hello, ${artisan?.name || "Artisan"}`}
+     </h1>
+     <div className="flex items-center gap-1 text-[13px] text-[#5F6368] font-body mt-0.5">
+      <span className="material-symbols-outlined text-[15px] text-on-surface-variant">location_on</span>
+      <span>{artisan?.location || (uiLang === "hi" ? "अपना क्षेत्र जोड़ें" : "Add your region")}</span>
+     </div>
     </div>
-    </div>
-   </div>
-   <div className="hidden sm:flex lg:hidden items-center px-3 py-1 bg-surface-container rounded-full text-[12px] font-medium text-on-surface-variant">
-    <span>कारीगर आईडी: #JP-402</span>
    </div>
    </section>
 
@@ -43,12 +53,12 @@ export default function ArtisanDashboardPage() {
     <span className="material-symbols-outlined text-[22px]">photo_camera</span>
     <span className="text-secondary-fixed-dim font-light text-base">+</span>
     <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
-    <span className="ml-1 tracking-wide">नया उत्पाद जोड़ें</span>
+    <span className="ml-1 tracking-wide">{uiLang === "hi" ? "नया उत्पाद जोड़ें" : "Add New Craft"}</span>
    </Link>
    {/* Subtle Helper Copy */}
    <p className="text-center text-[13px] text-[#5F6368] mt-2.5 font-body flex items-center justify-center gap-1.5">
     <span className="material-symbols-outlined text-[14px] text-on-surface-variant">auto_awesome</span>
-    <span>फ़ोटो खींचें या बोलकर बताएं • कोई टाइपिंग नहीं</span>
+    <span>{uiLang === "hi" ? "फ़ोटो खींचें या बोलकर बताएं • कोई टाइपिंग नहीं" : "Take photos or speak • No typing required"}</span>
    </p>
    </section>
    

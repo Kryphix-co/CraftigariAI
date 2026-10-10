@@ -172,7 +172,7 @@ export default function ProductPage() {
 
                 <div className="bg-surface-muted/40 p-4 border border-border">
                   <blockquote className="text-[12px] sm:text-[13px] text-primary italic leading-relaxed">
-                    "This batch uses exclusively the lakebed clay harvested after the late winter rains in Amer. We temper the silt with 12% washed quartz sand so the urn retains water cold naturally through evaporation without cracking under 800°C open fire reduction. My father taught this ratio to me fifty winters ago."
+                    &quot;This batch uses exclusively the lakebed clay harvested after the late winter rains in Amer. We temper the silt with 12% washed quartz sand so the urn retains water cold naturally through evaporation without cracking under 800°C open fire reduction. My father taught this ratio to me fifty winters ago.&quot;
                   </blockquote>
                   <p className="text-left sm:text-right text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-terracotta mt-3">— Verified by Field Assessor RJ-09</p>
                 </div>
@@ -311,7 +311,7 @@ export default function ProductPage() {
                   <div className="p-3 sm:p-4 bg-forest/5 border border-forest flex items-start gap-2 sm:gap-3">
                     <span className="material-symbols-outlined text-forest text-[18px] sm:text-[20px] shrink-0 mt-0.5">verified_user</span>
                     <p className="text-[11px] sm:text-[12px] text-primary leading-relaxed">
-                      <strong className="text-forest">Fair Living Wage Protocol:</strong> 100% of the artisan component (₹540 per unit) is directly wired to Master Ram Singh's cluster account with zero middleman commissions.
+                      <strong className="text-forest">Fair Living Wage Protocol:</strong> 100% of the artisan component (₹540 per unit) is directly wired to Master Ram Singh&apos;s cluster account with zero middleman commissions.
                     </p>
                   </div>
                 </div>

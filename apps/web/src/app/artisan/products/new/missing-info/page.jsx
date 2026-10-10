@@ -1,10 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { LanguageSelector } from "@/features/i18n/LanguageSelector";
+import AIMissingQuestions from "@/features/product/AIMissingQuestions";
+import { useProductDraft } from "@/features/product/ProductDraftContext";
 
 export default function MissingInfoPage() {
- const [selectedSize, setSelectedSize] = useState("medium");
+ const { draft, photos, updateDraft } = useProductDraft();
+ const selectedSize = draft.size;
+ const productImage = photos[0]?.url ?? "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop";
+ const productTitle = draft.summary.title || "नया उत्पाद";
+
+ if (draft.aiAnalysis.questions.length) {
+  return <AIMissingQuestions draft={draft} updateDraft={updateDraft} />;
+ }
 
  return (
  <div className="bg-surface-container-lowest text-on-surface font-body antialiased min-h-full flex flex-col justify-between selection:bg-outline selection:text-primary pb-20 lg:pb-0">
@@ -26,24 +35,17 @@ export default function MissingInfoPage() {
    {/* Desktop Navigation (Hidden on mobile/tablet) */}
    <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
    <Link href="/artisan/dashboard" className="text-secondary hover:text-primary transition-colors">Home</Link>
-   <Link href="#crafts" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Crafts</Link>
    <Link href="/artisan/products/new" className="flex items-center gap-1.5 text-accent-terracotta bg-accent-terracotta-soft px-3 py-1.5 rounded-full hover:bg-tertiary-fixed transition-colors">
     <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
     Add
    </Link>
-   <Link href="#market" className="text-secondary hover:text-primary transition-colors">Market</Link>
-   <Link href="#profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
+   <Link href="/products" className="text-secondary hover:text-primary transition-colors">Market</Link>
+   <Link href="/artisan/profile" className="text-secondary hover:text-primary transition-colors">Profile</Link>
    </nav>
 
    <div className="flex items-center space-x-2">
-   {/* Desktop Language Switcher (Hidden on mobile) */}
-   <button
-    className="hidden lg:flex h-8 px-2.5 rounded-full border border-outline bg-surface-container text-on-surface font-label text-[12px] hover:bg-surface-container-high active:scale-95 transition-all items-center gap-1"
-    type="button"
-   >
-    <span>हिंदी</span>
-    <span className="text-on-surface-variant font-normal">/ EN</span>
-   </button>
+   <LanguageSelector compact />
    {/* Audio Guidance Speaker Button */}
    <button
     aria-label="ध्वनि निर्देश सुनें"
@@ -72,10 +74,10 @@ export default function MissingInfoPage() {
    {/* Small Product Context Banner */}
    <div className="my-space-8 py-2 px-3 bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
     <div className="flex items-center gap-3 min-w-0">
-    <img className="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-outline-variant" alt="Product" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop" />
+    <img className="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-outline-variant" alt={productTitle} src={productImage} />
     <div className="truncate">
-     <p className="font-title text-[14px] font-medium text-on-surface truncate">मिट्टी का फूलदान</p>
-     <p className="font-label-small text-[11px] text-secondary tracking-tight">शिल्प क्र. #284</p>
+     <p className="font-title text-[14px] font-medium text-on-surface truncate">{productTitle}</p>
+     <p className="font-label-small text-[11px] text-secondary tracking-tight">उत्पाद मसौदा</p>
     </div>
     </div>
     <span className="flex-shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container border border-outline text-warning font-label text-[11px] whitespace-nowrap">
@@ -107,7 +109,7 @@ export default function MissingInfoPage() {
     <div aria-label="उत्पाद का आकार चुनें" className="space-y-space-12" role="radiogroup">
     {/* Option 1: Small */}
     <label className={`relative flex items-center justify-between w-full min-h-[56px] px-4 lg:px-12 py-3.5 bg-surface-container-lowest rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.99] ${selectedSize === "small" ? "border-2 border-on-secondary-container shadow-sm" : "border border-outline-variant hover:border-outline"}`}>
-     <input className="sr-only" name="product_size" type="radio" value="small" checked={selectedSize === "small"} onChange={() => setSelectedSize("small")} />
+     <input className="sr-only" name="product_size" type="radio" value="small" checked={selectedSize === "small"} onChange={() => updateDraft({ size: "small" })} />
      <div className="flex flex-col">
      <span className={`font-title text-[16px] ${selectedSize === "small" ? "font-semibold" : ""} text-on-secondary-container`}>छोटा</span>
      <span className="font-label text-[12px] text-secondary">6–8 इंच (हथेलिया आकार)</span>
@@ -119,7 +121,7 @@ export default function MissingInfoPage() {
 
     {/* Option 2: Medium */}
     <label className={`relative flex items-center justify-between w-full min-h-[56px] px-4 lg:px-12 py-3.5 bg-surface-container-lowest rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.99] ${selectedSize === "medium" ? "border-2 border-on-secondary-container shadow-sm" : "border border-outline-variant hover:border-outline"}`}>
-     <input className="sr-only" name="product_size" type="radio" value="medium" checked={selectedSize === "medium"} onChange={() => setSelectedSize("medium")} />
+     <input className="sr-only" name="product_size" type="radio" value="medium" checked={selectedSize === "medium"} onChange={() => updateDraft({ size: "medium" })} />
      <div className="flex flex-col">
      <div className="flex items-center gap-2">
       <span className={`font-title text-[16px] ${selectedSize === "medium" ? "font-semibold" : ""} text-on-secondary-container`}>मध्यम</span>
@@ -134,7 +136,7 @@ export default function MissingInfoPage() {
 
     {/* Option 3: Large */}
     <label className={`relative flex items-center justify-between w-full min-h-[56px] px-4 lg:px-12 py-3.5 bg-surface-container-lowest rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.99] ${selectedSize === "large" ? "border-2 border-on-secondary-container shadow-sm" : "border border-outline-variant hover:border-outline"}`}>
-     <input className="sr-only" name="product_size" type="radio" value="large" checked={selectedSize === "large"} onChange={() => setSelectedSize("large")} />
+     <input className="sr-only" name="product_size" type="radio" value="large" checked={selectedSize === "large"} onChange={() => updateDraft({ size: "large" })} />
      <div className="flex flex-col">
      <span className={`font-title text-[16px] ${selectedSize === "large" ? "font-semibold" : ""} text-on-secondary-container`}>बड़ा</span>
      <span className="font-label text-[12px] text-secondary">14+ इंच (फ़र्श या मुख्य शोपीस)</span>
@@ -148,10 +150,10 @@ export default function MissingInfoPage() {
 
    {/* Secondary Voice Input Action Pill */}
    <div className="mt-space-24 flex justify-center">
-    <button className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-surface-container-low border border-outline hover:bg-surface-container hover:border-secondary transition-all duration-150 active:scale-95 group" type="button">
+    <Link className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-surface-container-low border border-outline hover:bg-surface-container hover:border-secondary transition-all duration-150 active:scale-95 group" href="/artisan/products/new/voice">
     <span className="material-symbols-outlined text-[18px] text-secondary group-hover:text-on-secondary-container transition-colors">mic</span>
     <span className="font-body-medium text-[14px] text-on-secondary-variant font-medium">बोलकर बताएं</span>
-    </button>
+    </Link>
    </div>
 
    {/* Contextual Hint Strip */}
